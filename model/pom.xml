@@ -10,7 +10,7 @@
 	
 	<artifactId>ft-unifiedContentModel-model</artifactId>
 	<packaging>jar</packaging>
-	<name>Unified Content Model</name>
+	<name>Unified Content Model - model</name>
 	<description>Unified Content Model - model implementation</description>
 	<dependencies>
 		<dependency>
