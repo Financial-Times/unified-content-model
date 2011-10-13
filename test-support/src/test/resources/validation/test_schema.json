@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "properties" : {
+    "users" : {
+      "type" : "array", 
+      "items" : { 
+        "type" : "object",
+        "properties" : {
+          "id": { "type": "number" },
+          "username": { "type" : "string", "required" : true },
+          "numPosts": { "type" : "number", "required" : true },
+          "realName": { "type" : "string" }
+        }
+      }
+    }
+  }
+}
