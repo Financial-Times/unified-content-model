@@ -11,7 +11,7 @@
 	<artifactId>ft-unifiedContentModel-model</artifactId>
 	<packaging>jar</packaging>
 	<name>Unified Content Model</name>
-	<description>Unified Content Model - model</description>
+	<description>Unified Content Model - model implementation</description>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -30,6 +30,22 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency> 
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	
@@ -57,14 +73,6 @@
 		                <include>com/ft/unifiedContentModel/model/response/*</include>
 		           </includes>
 		           <schemas>
-		                <schema>
-		                    <namespace>http://api.ft.com/contentAPI</namespace>
-		                    <file>contentAPI.xsd</file>
-		                </schema>
-		             	<schema>
-		                    <namespace>http://api.ft.com/contentAPI/componentResponse</namespace>
-		                    <file>componentResponse.xsd</file>
-		                </schema>
 		            	<schema>
 		                    <namespace>http://api.ft.com/contentAPI/itemResponse</namespace>
 		                    <file>itemResponse.xsd</file>
@@ -74,24 +82,8 @@
 		                    <file>itemsResponse.xsd</file>
 		                </schema>
 		                <schema>
-		                    <namespace>http://api.ft.com/contentAPI/pageResponse</namespace>
-		                    <file>pageResponse.xsd</file>
-		                </schema>
-		                 <schema>
-		                    <namespace>http://api.ft.com/contentAPI/pagesResponse</namespace>
-		                    <file>pagesResponse.xsd</file>
-		                </schema>
-		                <schema>
 		                    <namespace>http://api.ft.com/contentAPI/contentItem</namespace>
 		                    <file>contentItem.xsd</file>
-		                </schema>
-		                 <schema>
-		                    <namespace>http://api.ft.com/contentAPI/component</namespace>
-		                    <file>component.xsd</file>
-		                </schema>
-		                 <schema>
-		                    <namespace>http://api.ft.com/contentAPI/page</namespace>
-		                    <file>page.xsd</file>
 		                </schema>
 		                 <schema>
 		                    <namespace>http://api.ft.com/contentAPI/metadata</namespace>
@@ -100,10 +92,6 @@
 		                 <schema>
 		                    <namespace>http://api.ft.com/contentAPI/image</namespace>
 		                    <file>image.xsd</file>
-		                </schema>
-		                 <schema>
-		                    <namespace>http://api.ft.com/contentAPI/storyPackageItem</namespace>
-		                    <file>storyPackageItem.xsd</file>
 		                </schema>
 		                 <schema>
 		                    <namespace>http://api.ft.com/contentAPI/aspect</namespace>
