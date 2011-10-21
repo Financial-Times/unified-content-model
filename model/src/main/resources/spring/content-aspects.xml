@@ -255,6 +255,10 @@
 	<bean id="articleAspectSetName" class="java.lang.String">
 		<constructor-arg value="article" />
 	</bean>
+	
+	<bean id="blogAspectSetName" class="java.lang.String">
+		<constructor-arg value="blog" />
+	</bean>
 
 	<bean id="articleAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="articleAspectSetName" />
@@ -277,8 +281,28 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
+		<bean id="blogAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+		<constructor-arg ref="blogAspectSetName" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="titleAspect" />
+				<ref bean="lifecycleAspect" />
+				<ref bean="masterAspect" />
+				<ref bean="packagingAspect" />
+				<ref bean="packageAspect" />
+				<ref bean="bodyAspect" />
+				<ref bean="summaryAspect" />
+				<ref bean="locationAspect" />
+				<ref bean="metadataAspect" />
+				<ref bean="imagesAspect" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
+	
 	<util:set id="allAspectSets">
 		<ref bean="articleAspectSet" />
+		<ref bean="blogAspectSet" />
 	</util:set>
 	
 	<bean id="policyBasedAspectSetCollection" class="com.ft.unifiedContentModel.model.aspect.PolicyBasedAspectSetCollection">

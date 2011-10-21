@@ -32,6 +32,7 @@ public final class XSDs {
 	public static final String FIELD_NAMESPACE = CONTENT_API_BASE + FIELD;
 	public static final String SCHEMAINSTANCE_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 	
+	public static final String CONTENT_API_NAMESPACE_PREFIX = "c";
 	public static final String ITEM_RESPONSE_NAMESPACE_PREFIX = "item";
 	public static final String ITEMS_RESPONSE_NAMESPACE_PREFIX = "items";
 	public static final String CONTENTITEM_NAMESPACE_PREFIX = "i";

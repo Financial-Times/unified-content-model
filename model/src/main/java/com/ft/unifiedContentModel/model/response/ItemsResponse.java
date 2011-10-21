@@ -14,6 +14,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.ft.unifiedContentModel.core.net.Url;
 import com.ft.unifiedContentModel.model.ArticleEntity;
+import com.ft.unifiedContentModel.model.BlogEntity;
 import com.ft.unifiedContentModel.model.ContentEntity;
 import com.ft.unifiedContentModel.model.XSDs;
 
@@ -38,7 +39,8 @@ public class ItemsResponse extends AbstractResponse {
 	
 	@XmlElementWrapper(name="contentItems", namespace=XSDs.ITEMS_RESPONSE_NAMESPACE)
 	@XmlElements({
-		@XmlElement(type=ArticleEntity.class, name="article", namespace=XSDs.CONTENTITEM_NAMESPACE)})
+		@XmlElement(type=ArticleEntity.class, name="article", namespace=XSDs.CONTENTITEM_NAMESPACE),
+		@XmlElement(type=BlogEntity.class, name="blog", namespace=XSDs.CONTENTITEM_NAMESPACE)})
 	public List<ContentEntity> getItems() {
 		return items;
 	}

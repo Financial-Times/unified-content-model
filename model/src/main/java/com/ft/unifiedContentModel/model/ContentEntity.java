@@ -13,7 +13,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @XmlTransient
-@XmlSeeAlso({ArticleEntity.class})
+@XmlSeeAlso({ArticleEntity.class,BlogEntity.class})
 public abstract class ContentEntity extends SimpleEntity implements Package, Images, AspectSetAware {
 	
 	private Location location;

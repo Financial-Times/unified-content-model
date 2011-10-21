@@ -23,6 +23,7 @@
 	    <property name="sourceList">
 	        <list>
 				<value>com.ft.unifiedContentModel.model.ArticleEntity</value>
+				<value>com.ft.unifiedContentModel.model.BlogEntity</value>
 				<value>com.ft.unifiedContentModel.model.SimpleEntity</value>
 				<value>com.ft.unifiedContentModel.model.ContentEntity</value>
 				<value>com.ft.unifiedContentModel.model.StringBasedBody</value>
