@@ -1,9 +1,10 @@
 package com.ft.unifiedContentModel.model;
 
+import com.google.common.base.Objects;
+import org.apache.commons.lang.StringUtils;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.apache.commons.lang.StringUtils;
 
 @XmlType(name="location", namespace=XSDs.ASPECT_NAMESPACE)
 public class LocationImpl implements Location {
@@ -25,6 +26,11 @@ public class LocationImpl implements Location {
 
 	public void setUri(String uri) {
 		this.uri = uri.trim();
+	}
+
+    @Override
+	public String toString() {
+		return Objects.toStringHelper(this).add("uri", uri).toString();
 	}
 	
 }

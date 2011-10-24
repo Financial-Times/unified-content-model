@@ -1,10 +1,12 @@
 package com.ft.unifiedContentModel.model;
 
-import static org.springframework.util.Assert.hasText;
-import static org.springframework.util.Assert.notNull;
+import com.google.common.base.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import static org.springframework.util.Assert.hasText;
+import static org.springframework.util.Assert.notNull;
 
 @XmlType(name="master", namespace=XSDs.ASPECT_NAMESPACE, propOrder={"masterSource", "masterEntityId"})
 public class MasterImpl implements Master {
@@ -40,6 +42,14 @@ public class MasterImpl implements Master {
 
 	public void setMasterSource(String masterSource) {
 		this.masterSource = MasterSource.fromString(masterSource);
+	}
+
+    @Override
+	public String toString() {
+		return Objects.toStringHelper(this)
+						.add("masterSource", masterSource)
+						.add("masterEntityId", masterEntityId)
+						.toString();
 	}
 
 }

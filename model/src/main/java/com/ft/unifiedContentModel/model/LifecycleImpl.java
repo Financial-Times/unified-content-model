@@ -1,12 +1,12 @@
 package com.ft.unifiedContentModel.model;
 
+import com.ft.unifiedContentModel.model.adaptor.DateTimeAdapter;
+import com.google.common.base.Objects;
+import org.joda.time.DateTime;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import org.joda.time.DateTime;
-
-import com.ft.unifiedContentModel.model.adaptor.DateTimeAdapter;
 
 @XmlType(name="lifecycle", namespace=XSDs.ASPECT_NAMESPACE, propOrder={"initialPublishDateTime", "lastPublishDateTime"})
 public class LifecycleImpl implements Lifecycle {
@@ -42,6 +42,11 @@ public class LifecycleImpl implements Lifecycle {
 	
 	public void setLastPublishDateTime(DateTime lastPublishDateTime) {
 		this.lastPublishDateTime = lastPublishDateTime;
+	}
+
+    @Override
+	public String toString() {
+		return Objects.toStringHelper(this).add("lastPublishDateTime", lastPublishDateTime).toString();
 	}
 
 }

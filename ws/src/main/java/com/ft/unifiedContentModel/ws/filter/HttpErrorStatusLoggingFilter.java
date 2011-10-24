@@ -1,9 +1,11 @@
 package com.ft.unifiedContentModel.ws.filter;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,13 +13,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * A {@link Filter} that decorates the {@link HttpServletResponse} to log sent HTTP errors.
@@ -40,6 +39,24 @@ public class HttpErrorStatusLoggingFilter extends OncePerRequestFilter {
        HttpErrorStatusLoggingResponseWrapper(HttpServletResponse response, HttpServletRequest request) {
            super(response);
            this.request = request;
+       }
+
+       @Override
+       public void setStatus(int sc, String sm) {
+    	   if (isStatusError(sc) && log.isErrorEnabled()) {
+			   log.error(createLogMessage(sc, sm));
+    	   }
+           super.setStatus(sc, sm);
+       }
+
+       private boolean isStatusError(int sc) {
+    	  HttpStatus.Series series = HttpStatus.valueOf(sc).series();
+    	  return (series == HttpStatus.Series.CLIENT_ERROR) || (series == HttpStatus.Series.SERVER_ERROR);
+       }
+
+       @Override
+       public void setStatus(int sc) {
+    	  this.setStatus(sc, null);
        }
 
        @Override

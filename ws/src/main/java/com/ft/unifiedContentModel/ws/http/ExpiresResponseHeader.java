@@ -1,10 +1,9 @@
 package com.ft.unifiedContentModel.ws.http;
 
-import java.util.Date;
+import org.apache.commons.httpclient.util.DateUtil;
 
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.httpclient.util.DateUtil;
+import java.util.Date;
 
 /**
  * A {@link ResponseHeader} that adds an 'Expires' response header which
@@ -25,8 +24,7 @@ public class ExpiresResponseHeader implements ResponseHeader{
 
 	protected String getExpiryDate() {
 		Date now = new Date();
-		String formattedNow = DateUtil.formatDate(now, DateUtil.PATTERN_RFC1123);
-		return formattedNow;
+		return DateUtil.formatDate(now, DateUtil.PATTERN_RFC1123);
 	}
 
 }

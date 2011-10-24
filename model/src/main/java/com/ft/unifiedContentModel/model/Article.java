@@ -23,4 +23,8 @@ public interface Article {
 	List<ContentPackageEntry> getPackage();
 	
 	List<Image> getImages();
+
+    Title getTitle();
+
+    Lifecycle getLifecycle();
 }
