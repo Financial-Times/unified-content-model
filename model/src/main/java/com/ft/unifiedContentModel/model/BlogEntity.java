@@ -3,6 +3,8 @@ package com.ft.unifiedContentModel.model;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
@@ -10,6 +12,7 @@ import com.google.common.base.Objects.ToStringHelper;
 		"body", "lifecycle", "location", "summary", "packaging", "master", "metadata", 
 		"images", "package"})
 @XmlSeeAlso({ContentEntity.class, SimpleEntity.class, IdentifiableEntity.class})
+@JsonTypeName(value="blog")
 public class BlogEntity extends ContentEntity implements Blog{
 	
 	public BlogEntity() {}
