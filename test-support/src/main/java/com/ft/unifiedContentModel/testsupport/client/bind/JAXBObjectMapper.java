@@ -5,6 +5,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
 import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 
+import com.ft.unifiedContentModel.mixin.ArticleEntityJacksonMixin;
+import com.ft.unifiedContentModel.mixin.BlogEntityJacksonMixin;
+import com.ft.unifiedContentModel.mixin.ContentEntityJacksonMixin;
+import com.ft.unifiedContentModel.model.ArticleEntity;
+import com.ft.unifiedContentModel.model.BlogEntity;
+import com.ft.unifiedContentModel.model.ContentEntity;
+
 /**
  * This class extends the ObjectMapper class of the Jackson framework to 
  * read in JAXB annotations
@@ -21,5 +28,9 @@ public class JAXBObjectMapper extends ObjectMapper {
 		AnnotationIntrospector secondary = new JacksonAnnotationIntrospector();
 	    AnnotationIntrospector pair = new AnnotationIntrospector.Pair(primary, secondary);
 	    setSerializationConfig(getSerializationConfig().withAnnotationIntrospector(pair));
+		
+		getDeserializationConfig().addMixInAnnotations(ArticleEntity.class, ArticleEntityJacksonMixin.class);
+		getDeserializationConfig().addMixInAnnotations(BlogEntity.class, BlogEntityJacksonMixin.class);
+		getDeserializationConfig().addMixInAnnotations(ContentEntity.class, ContentEntityJacksonMixin.class);
     }
 }
