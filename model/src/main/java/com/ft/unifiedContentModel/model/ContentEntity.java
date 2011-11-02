@@ -9,20 +9,9 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-@JsonTypeInfo(  
-	    use = JsonTypeInfo.Id.NAME,  
-	    include = JsonTypeInfo.As.PROPERTY,  
-	    property = "type") 
-@JsonSubTypes(
-		{
-			@JsonSubTypes.Type(value=ArticleEntity.class, name="article"), 
-			@JsonSubTypes.Type(value=BlogEntity.class, name="blog")
-		})
 @XmlTransient
 @XmlSeeAlso({ArticleEntity.class,BlogEntity.class})
 public abstract class ContentEntity extends SimpleEntity implements Package, Images, AspectSetAware {
