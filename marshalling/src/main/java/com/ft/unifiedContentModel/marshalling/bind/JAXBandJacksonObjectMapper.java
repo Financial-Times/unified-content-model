@@ -4,6 +4,13 @@ import org.codehaus.jackson.map.AnnotationIntrospector;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 
+import com.ft.unifiedContentModel.mixin.ArticleEntityJacksonMixin;
+import com.ft.unifiedContentModel.mixin.BlogEntityJacksonMixin;
+import com.ft.unifiedContentModel.mixin.ContentEntityJacksonMixin;
+import com.ft.unifiedContentModel.model.ArticleEntity;
+import com.ft.unifiedContentModel.model.BlogEntity;
+import com.ft.unifiedContentModel.model.ContentEntity;
+
 /**
  * This class extends the ObjectMapper class of the Jackson framework to provide
  * minor customisations:
@@ -20,6 +27,9 @@ public class JAXBandJacksonObjectMapper extends ObjectMapper {
 
 	public JAXBandJacksonObjectMapper(AnnotationIntrospector annotationIntrospector) {
 		setSerializationConfig(getSerializationConfig().withAnnotationIntrospector(annotationIntrospector));
+		getDeserializationConfig().addMixInAnnotations(ArticleEntity.class, ArticleEntityJacksonMixin.class);
+		getDeserializationConfig().addMixInAnnotations(BlogEntity.class, BlogEntityJacksonMixin.class);
+		getDeserializationConfig().addMixInAnnotations(ContentEntity.class, ContentEntityJacksonMixin.class);
 	}
 
     public void setPrettyPrint(boolean prettyPrint) {
