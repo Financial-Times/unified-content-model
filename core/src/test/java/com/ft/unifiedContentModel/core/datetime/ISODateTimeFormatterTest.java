@@ -1,6 +1,5 @@
 package com.ft.unifiedContentModel.core.datetime;
 
-import static com.ft.unifiedContentModel.core.datetime.DateTimes.now;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -11,12 +10,10 @@ import org.joda.time.format.ISODateTimeFormat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ft.unifiedContentModel.core.datetime.ISODateTimeFormatter;
-
 
 public class ISODateTimeFormatterTest {
 
-	private static final DateTime DATE_TIME = now();
+	private static final DateTime DATE_TIME = new DateTime();
 	
 	private ISODateTimeFormatter instance;
 	

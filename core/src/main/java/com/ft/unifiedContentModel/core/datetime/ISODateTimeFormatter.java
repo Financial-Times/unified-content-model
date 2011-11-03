@@ -1,9 +1,8 @@
 package com.ft.unifiedContentModel.core.datetime;
 
-
-import static com.ft.unifiedContentModel.core.datetime.DateTimes.DEFAULT_ZONE;
 import static org.springframework.util.Assert.notNull;
 
+import org.joda.time.DateTimeZone;
 import org.joda.time.ReadableDateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
@@ -14,7 +13,7 @@ public class ISODateTimeFormatter implements DateTimeFormatter {
 	@Override
 	public String format(ReadableDateTime readableDateTime) {
 		notNull(readableDateTime);
-		return readableDateTime.toDateTime().withZone(DEFAULT_ZONE).toString(DEFAULT_DATE_FORMATTER);
+		return readableDateTime.toDateTime().withZone(DateTimeZone.UTC).toString(DEFAULT_DATE_FORMATTER);
 	}
 
 	@Override
