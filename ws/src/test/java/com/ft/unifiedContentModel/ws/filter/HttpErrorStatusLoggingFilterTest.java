@@ -41,6 +41,7 @@ public class HttpErrorStatusLoggingFilterTest {
 	private static final int INTERNAL_SERVER_ERROR = HttpStatus.INTERNAL_SERVER_ERROR.value();
 	private static final String INTERNAL_SERVER_ERROR_MSG = "500 Internal Server Error";
 	private static final String REQUEST_URI = "/content/items"; 
+	private static final String QUERY_STRING = "query.queryString=test";
 	private static final Map<String, String> REQUEST_HEADER_MAP;
 	static {
 		REQUEST_HEADER_MAP = Maps.newHashMap();
@@ -90,6 +91,7 @@ public class HttpErrorStatusLoggingFilterTest {
 			mockRequest.addHeader(requestHeaderPair.getKey(), requestHeaderPair.getValue());
 		}
 		mockRequest.setRequestURI(REQUEST_URI);
+		mockRequest.setQueryString(QUERY_STRING);
 	}
 
 	private void verifyAndAssertLogInterations() {
@@ -106,6 +108,8 @@ public class HttpErrorStatusLoggingFilterTest {
 		   .append(INTERNAL_SERVER_ERROR_MSG).append(", ")
 		   .append("url=")
 		   .append(REQUEST_URI).append(", ")
+		   .append("queryString=")
+		   .append(QUERY_STRING).append(", ")
 		   .append("IP=")
 		   .append(MockHttpServletRequest.DEFAULT_SERVER_ADDR).append(", ")
 		   .append("headers=")

@@ -80,6 +80,8 @@ public class HttpErrorStatusLoggingFilter extends OncePerRequestFilter {
    			   .append(errorMessage).append(", ")
    			   .append("url=")
    			   .append(request.getRequestURI()).append(", ")
+   			   .append("queryString=")
+   			   .append(request.getQueryString()).append(", ")
    			   .append("IP=")
    			   .append(request.getRemoteAddr()).append(", ")
    			   .append("headers=")
