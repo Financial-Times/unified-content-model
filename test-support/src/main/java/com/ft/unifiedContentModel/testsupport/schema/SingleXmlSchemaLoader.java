@@ -25,7 +25,7 @@ public class SingleXmlSchemaLoader implements XmlSchemaLoader {
 	}
 	
 	public SingleXmlSchemaLoader(Resource resource){
-		setResource(resource);
+		this.resource = resource;
 	}
 	
 	
@@ -51,7 +51,7 @@ public class SingleXmlSchemaLoader implements XmlSchemaLoader {
 			throw new SAXException("Schema "+schemaResource+" does not exist", e);
 		}
 
-		Schema schema = schemaFactory.newSchema(schemaUrl);
+		schema = schemaFactory.newSchema(schemaUrl);
 		LOGGER.debug("Schema : " + schema.toString());
 		
 		return schema;

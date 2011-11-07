@@ -11,10 +11,12 @@ import org.jbehave.core.io.CasePreservingResolver;
  */
 public class CasePreservingTestSuffixRemovingResolver extends CasePreservingResolver {
 
-    @Override
+    private static final int NUMBER_OF_CHARACTERS_TO_REMOVE = 4;
+
+	@Override
     protected String resolveName(Class<? extends Embeddable> embeddableClass) {
         String className = embeddableClass.getSimpleName();
-        return className.substring(0, className.length() - 4);
+        return className.substring(0, className.length() - NUMBER_OF_CHARACTERS_TO_REMOVE);
     }
     
     @Override

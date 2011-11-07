@@ -11,16 +11,16 @@ public enum MasterSource {
 	
 	METHODE("Methode");
 	
-	private static final Map<String, MasterSource> stringToEnum = Maps.newHashMap();
+	private static final Map<String, MasterSource> ENUM_NAMES = Maps.newHashMap();
 	
 	static { 
 		for (MasterSource masterSource : values()) {
-			stringToEnum.put(masterSource.toString(), masterSource);
+			ENUM_NAMES.put(masterSource.toString(), masterSource);
 		}
 	}
 
 	public static MasterSource fromString(String displayName) {
-		return stringToEnum.get(displayName);
+		return ENUM_NAMES.get(displayName);
 	}
 	
 	private String displayName;

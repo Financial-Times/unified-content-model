@@ -36,11 +36,11 @@ public class ResponseHeaderSettingFilter extends OncePerRequestFilter {
 
 	@Override
 	protected final void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		response = new ResponseHeaderLoggingResponseWrapper(response);
-		filterChain.doFilter(request, response);
+		ResponseHeaderLoggingResponseWrapper wrapped = new ResponseHeaderLoggingResponseWrapper(response);
 		for (ResponseHeader responseHeader : responseHeaders) {
-			responseHeader.setOn(response);
+			responseHeader.setOn(wrapped);
 		}
+		filterChain.doFilter(request, wrapped);
 	}
 	
 	private static class ResponseHeaderLoggingResponseWrapper extends HttpServletResponseWrapper {

@@ -118,16 +118,16 @@ public class TypeBasedImage implements Image {
 
 		private String displayName;
 		
-		private static final Map<String, ImageType> stringToEnum = Maps.newHashMap();
+		private static final Map<String, ImageType> ENUM_NAMES = Maps.newHashMap();
 		
 		static { 
 			for (ImageType imageType : values()) {
-				stringToEnum.put(imageType.toString(), imageType);
+				ENUM_NAMES.put(imageType.toString(), imageType);
 			}
 		}
 
 		public static ImageType fromString(String displayName) {
-			return stringToEnum.get(displayName);
+			return ENUM_NAMES.get(displayName);
 		}
 		
 

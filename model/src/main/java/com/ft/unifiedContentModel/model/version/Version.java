@@ -8,11 +8,11 @@ public enum Version {
 	
 	ONE("1");
 	
-	private static final Map<String, Version> stringToEnum = Maps.newHashMap();
+	private static final Map<String, Version> ENUM_NAMES = Maps.newHashMap();
 	
 	static { 
 		for (Version version : values()) {
-			stringToEnum.put(version.toString(), version);
+			ENUM_NAMES.put(version.toString(), version);
 		}
 	}
 	
@@ -28,7 +28,7 @@ public enum Version {
 	}
 	
 	public Version fromString(String version) {
-		return stringToEnum.get(version);
+		return ENUM_NAMES.get(version);
 	}
 }
 

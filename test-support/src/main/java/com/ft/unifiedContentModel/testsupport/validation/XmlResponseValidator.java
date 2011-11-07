@@ -29,7 +29,7 @@ public class XmlResponseValidator implements ResponseValidator {
 	}
 	
 	public XmlResponseValidator(XmlSchemaLoader xmlSchemaLoader) {
-		setXmlSchemaLoader(xmlSchemaLoader);
+		this.xmlSchemaLoader = xmlSchemaLoader;
 	}
 	
 	@Override

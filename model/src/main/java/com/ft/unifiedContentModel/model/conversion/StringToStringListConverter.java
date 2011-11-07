@@ -14,10 +14,11 @@ public class StringToStringListConverter implements Converter<String, List<Strin
 	
 	@Override
 	public List<String> convert(String source) {
-		source = StringUtils.remove(source, START_LIST);
-		source = StringUtils.remove(source, END_LIST);
-		source = source.replaceAll("\\s", "");
-		return Arrays.asList(source.split(SEPARATOR));
+		String modified = source;
+		modified = StringUtils.remove(modified, START_LIST);
+		modified = StringUtils.remove(modified, END_LIST);
+		modified = modified.replaceAll("\\s", "");
+		return Arrays.asList(modified.split(SEPARATOR));
 	}
 	
 	public String unconvert(List<String> elements) {

@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.marshalling.bind;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +29,12 @@ public class ResponseNamespacePrefixMapper extends NamespacePrefixMapper {
 
 	@Override
 	public String[] getPreDeclaredNamespaceUris() {
-		return nameSpaceUris;
+		return Arrays.copyOf(nameSpaceUris, nameSpaceUris.length);
 	}
 
 	@Override
 	public String[] getContextualNamespaceDecls() {
-		return interpolatedNamespacesAndPrefixes;
+		return Arrays.copyOf(interpolatedNamespacesAndPrefixes, interpolatedNamespacesAndPrefixes.length);
 	}
 
 	private String[] flattenNamespaces() {

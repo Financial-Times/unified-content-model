@@ -23,8 +23,10 @@ public class UrlGeneratorImpl implements UrlGenerator {
 
     public UrlGeneratorImpl(String baseApiUrl, String baseImageUrl, PathFactory pathFactory) {
 		this(pathFactory);
-		setBaseApiUrl(baseApiUrl);
-		setBaseImageUrl(baseImageUrl);
+		notNull(baseApiUrl);
+		notNull(baseImageUrl);
+		this.baseApiUrl = baseApiUrl;
+		this.baseImageUrl = baseImageUrl;
 	}
 
 	public void setBaseApiUrl(String baseApiUrl) {

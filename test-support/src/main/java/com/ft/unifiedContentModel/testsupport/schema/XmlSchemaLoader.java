@@ -4,6 +4,6 @@ import javax.xml.validation.Schema;
 
 public interface XmlSchemaLoader {
 
-	public Schema getSchema();
+	Schema getSchema();
 	
 }

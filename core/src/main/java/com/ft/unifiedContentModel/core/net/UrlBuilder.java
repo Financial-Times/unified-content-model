@@ -24,8 +24,8 @@ import org.springframework.util.Assert;
  */
 public final class UrlBuilder {
 	
+	private static final int DEFAULT_PORT = 80;
 	private static final String SLASH = "/";
-    private static final String DOT = ".";
 	private static final String HTTP = "http";
 	private static final String HTTPS = "https";
 
@@ -36,7 +36,6 @@ public final class UrlBuilder {
     private String servletPath;
     private String pathInfo;
     private String query;
-    private String requestFormat;
     
     private UrlBuilder(URI uri) {
     	withScheme(uri.getScheme());
@@ -96,9 +95,10 @@ public final class UrlBuilder {
 
     public UrlBuilder withPort(int port) {
     	if (port <= 0) {
-            port = 80; // Work around java.net.URL bug
+            this.port = DEFAULT_PORT; // Work around java.net.URL bug
+        } else {
+        	this.port = port;
         }
-        this.port = port;
         return this;
     }
 
@@ -121,7 +121,7 @@ public final class UrlBuilder {
 	public Url build() {
     	StringBuilder sb;
     	if (StringUtils.isNotEmpty(scheme) && StringUtils.isNotEmpty(serverName)) {
-    		sb = createServerStringBuilder(scheme, serverName, port);
+    		sb = createServerStringBuilder(scheme, serverName);
     	} else {
     		sb = new StringBuilder();
     	}
@@ -143,10 +143,6 @@ public final class UrlBuilder {
             sb.append(pathInfo);
         }
 
-        if (isNotBlank(requestFormat)) {
-            sb.append(DOT).append(requestFormat);
-        }
-
         if (isNotBlank(query)) {
             sb.append(query);
         }
@@ -164,7 +160,7 @@ public final class UrlBuilder {
 	}
     
     /** Return StringBuffer representing the scheme, server, and port number of the current request.*/
-    private StringBuilder createServerStringBuilder(String scheme, String server, int port) {
+    private StringBuilder createServerStringBuilder(String scheme, String server) {
     	StringBuilder url = new StringBuilder().append(scheme).append("://").append(server);
     	return appendPortIfNotStandardForScheme(url);
     }

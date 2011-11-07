@@ -27,7 +27,7 @@ public class MultipleXmlSchemaLoader implements XmlSchemaLoader {
 	public MultipleXmlSchemaLoader(){}
 	
 	public MultipleXmlSchemaLoader(List<? extends Resource> resources){
-		setResources(resources);
+		this.resources = resources;
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class MultipleXmlSchemaLoader implements XmlSchemaLoader {
 			}
 		}
 
-		Schema schema = schemaFactory.newSchema(urlArrayToSourceArray(schemaUrls.toArray(new URL[schemaUrls.size()])));
+		schema = schemaFactory.newSchema(urlArrayToSourceArray(schemaUrls.toArray(new URL[schemaUrls.size()])));
 		LOGGER.debug("Schema : " + schema.toString());
 		
 		return schema;

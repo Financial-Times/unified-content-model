@@ -1,6 +1,7 @@
 package com.ft.unifiedContentModel.marshalling.view;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 public class SimpleJacksonJsonView extends MappingJacksonJsonView {
 	
+	private static final int BUFFER_SIZE = 2048;
+
 	private ObjectMapper objectMapper = new ObjectMapper();
 	      
 	private JsonEncoding encoding = JsonEncoding.UTF8;
@@ -37,10 +40,9 @@ public class SimpleJacksonJsonView extends MappingJacksonJsonView {
 	 */
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			HttpServletRequest request, HttpServletResponse response) throws IOException{
 		Object value = filterModel(model);
-				ByteArrayOutputStream bos = new ByteArrayOutputStream(2048);
+				ByteArrayOutputStream bos = new ByteArrayOutputStream(BUFFER_SIZE);
 		 		JsonGenerator generator =
 						objectMapper.getJsonFactory().createJsonGenerator(bos, encoding);
 		 		if (prefixJson) {
