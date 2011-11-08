@@ -12,15 +12,18 @@ import com.google.common.collect.Sets;
 
 public class AllowedPathFactory implements PathFactory {
 	
+	private static final class AllowedPathFunction implements
+			Function<Object, String> {
+		@Override
+		public String apply(Object input) {
+			return ObjectUtils.toString(input);
+		}
+	}
+
 	private Set<String> allowedPaths;
 	
 	public AllowedPathFactory() {
-		allowedPaths = Sets.newHashSet(Iterables.transform(new Constants(Paths.class).getValues(null), new Function<Object, String>() {
-			@Override
-			public String apply(Object input) {
-				return ObjectUtils.toString(input);
-			}
-		}));
+		allowedPaths = Sets.newHashSet(Iterables.transform(new Constants(Paths.class).getValues(null), new AllowedPathFunction()));
 	}
 	
 	@Override

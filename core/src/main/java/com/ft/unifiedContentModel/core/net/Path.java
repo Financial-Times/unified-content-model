@@ -23,7 +23,14 @@ public class Path {
     
     public static class Builder {
     	
-        private String uri;
+        private static final class PathBuilderFunction implements
+				Function<Object, String> {
+			@Override public String apply(Object input) {
+				return ObjectUtils.toString(input);
+			}
+		}
+
+		private String uri;
 	    private Map<String, String> vars = Maps.newHashMap();
 	    
 		public Builder() {}
@@ -39,11 +46,7 @@ public class Path {
 
 	    public Builder withVars(Map<String, Object> vars) {
 	    	Assert.notEmpty(vars);
-	    	this.vars = Maps.transformValues(vars, new Function<Object, String>() {
-				@Override public String apply(Object input) {
-					return ObjectUtils.toString(input);
-				}
-			});
+	    	this.vars = Maps.transformValues(vars, new PathBuilderFunction());
 	        return this;
 	    }
 

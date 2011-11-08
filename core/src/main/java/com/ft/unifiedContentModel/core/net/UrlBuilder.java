@@ -24,6 +24,8 @@ import org.springframework.util.Assert;
  */
 public final class UrlBuilder {
 	
+	private static final int DEFAULT_HTTPS_PORT = 443;
+	private static final int DEFAULT_HTTP_PORT = 80;
 	private static final int DEFAULT_PORT = 80;
 	private static final String SLASH = "/";
 	private static final String HTTP = "http";
@@ -166,7 +168,7 @@ public final class UrlBuilder {
     }
     
     private StringBuilder appendPortIfNotStandardForScheme(StringBuilder url) {
-    	if ((scheme.equals(HTTP) && (port != 80)) || (scheme.equals(HTTPS) && (port != 443))) {
+    	if ((scheme.equals(HTTP) && (port != DEFAULT_HTTP_PORT)) || (scheme.equals(HTTPS) && (port != DEFAULT_HTTPS_PORT))) {
             url.append(':');
             url.append(port);
         }

@@ -11,6 +11,14 @@ import com.google.common.collect.Lists;
 
 public final class ImmutableAspectSet implements AspectSet {
 
+	private static final class ApplyAspectSetFunction implements
+			Function<Aspect, String> {
+		@Override
+		public String apply(Aspect input) {
+			return input.toString();
+		}
+	}
+
 	private AssignableVoter assignableVoter;
 	private NamedNode<Aspect> namedNode;
 
@@ -28,12 +36,7 @@ public final class ImmutableAspectSet implements AspectSet {
 	public void applyTo(AspectSetAware aspectSetAware) {
 		aspectSetAware.setAspectSet(toString());
 		aspectSetAware.setAspects(Lists.newArrayList(Iterables.transform(namedNode.getChildren(), 
-				new Function<Aspect, String>() {
-					@Override
-					public String apply(Aspect input) {
-						return input.toString();
-					}
-				})));
+				new ApplyAspectSetFunction())));
 	}
 
 	@Override

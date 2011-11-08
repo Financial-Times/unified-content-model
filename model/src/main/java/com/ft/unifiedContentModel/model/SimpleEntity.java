@@ -32,7 +32,8 @@ public abstract class SimpleEntity extends IdentifiableEntity {
 	
 	@Override
 	protected ToStringHelper toStringHelper() {
-		return super.toStringHelper()
+		ToStringHelper toStringHelper = super.toStringHelper();
+		return toStringHelper
 					.add("title", title)
 					.add("lifecycle", lifecycle);
 	}

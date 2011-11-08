@@ -61,7 +61,8 @@ public class ArticleEntity extends ContentEntity implements Article {
 	
 	@Override
 	protected ToStringHelper toStringHelper() {
-		return super.toStringHelper()
+		ToStringHelper toStringHelper = super.toStringHelper();
+		return toStringHelper
 					.add("aspectSet", getAspectSet())
 					.add("aspects", getAspects())
 					.add("location", getLocation())
