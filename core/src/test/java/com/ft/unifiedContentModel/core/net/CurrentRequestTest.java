@@ -25,7 +25,7 @@ public class CurrentRequestTest {
     @Mock
     private UrlPathHelper urlPathHelper;
 
-    private final String requestUrl = "http://localhost/structure/pages/0d19f22d-9946-44a5-9198-9f181b195e99";
+    private static final String REQUEST_URL = "http://localhost/structure/pages/0d19f22d-9946-44a5-9198-9f181b195e99";
 
     @Before
 	public void setup() {
@@ -36,7 +36,7 @@ public class CurrentRequestTest {
 
 	@Test
 	public void testToString_xml() {
-        String s = requestUrl + ".xml";
+        String s = REQUEST_URL + ".xml";
         when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
         String actual = currentRequestFormat.getFormat();
         Assert.assertEquals("xml", actual);
@@ -44,7 +44,7 @@ public class CurrentRequestTest {
 
     @Test
 	public void testToString_json() {
-        String s = requestUrl + ".json";
+        String s = REQUEST_URL + ".json";
         when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
         String actual = currentRequestFormat.getFormat();
         Assert.assertEquals("json", actual);
@@ -52,7 +52,7 @@ public class CurrentRequestTest {
 
     @Test
 	public void testToString_default() {
-        when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(requestUrl);
+        when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(REQUEST_URL);
         String actual = currentRequestFormat.getFormat();
         Assert.assertNull(actual);
 	}

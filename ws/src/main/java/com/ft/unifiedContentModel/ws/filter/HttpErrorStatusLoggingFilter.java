@@ -1,21 +1,23 @@
 package com.ft.unifiedContentModel.ws.filter;
 
-import com.ft.unifiedContentModel.core.log.SupportLogger;
-import com.ft.unifiedContentModel.core.log.SystemSupportLogger;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
-import javax.servlet.Filter;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.ft.unifiedContentModel.core.log.SupportLogger;
+import com.ft.unifiedContentModel.core.log.SystemSupportLogger;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * A {@link Filter} that decorates the {@link HttpServletResponse} to supportLogger sent HTTP errors.
@@ -100,9 +102,9 @@ public class HttpErrorStatusLoggingFilter extends OncePerRequestFilter {
        /** Return an unmodifiable Map that contains all request headers.*/
        @SuppressWarnings("unchecked")
        private Map<String, Collection<String>> getRequestHeaderMap() {
-    	   Multimap<String, String> headersMap = null;
+    	   Map<String, Collection<String>> headers = null;
     	   if (request != null) {
-    		   headersMap = ArrayListMultimap.create();
+    		   Multimap<String, String> headersMap = ArrayListMultimap.create();
     		   Collection<String> headerNames = Collections.list(request.getHeaderNames());
     		   for (String headerName : headerNames) {
     			   Collection<String> headerValues = Collections.list(request.getHeaders(headerName));
@@ -110,8 +112,9 @@ public class HttpErrorStatusLoggingFilter extends OncePerRequestFilter {
     				   headersMap.put(headerName, headerValue);
     			   }
     		   }
+    		   headers = Collections.unmodifiableMap(headersMap.asMap());
     	   }
-    	   return Collections.unmodifiableMap(headersMap.asMap());
+    	   return headers;
  	  }
    }
 }

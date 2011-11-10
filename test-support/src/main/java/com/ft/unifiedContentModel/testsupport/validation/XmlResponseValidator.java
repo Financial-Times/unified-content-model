@@ -73,7 +73,7 @@ public class XmlResponseValidator implements ResponseValidator {
 		return valid;
 	}
 	
-	private class TestErrorHandler implements ErrorHandler {
+	private static class TestErrorHandler implements ErrorHandler {
 		
 		private List<SAXParseException> errors = new ArrayList<SAXParseException>();
 		private List<SAXParseException> warnings = new ArrayList<SAXParseException>();
