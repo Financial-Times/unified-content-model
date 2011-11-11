@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NO_CONTENT)
 public class NoContentException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7021796235118889196L;
 
 	public NoContentException() {
+	}
+	
+	public NoContentException(Throwable cause){
+		super(cause);
 	}
 }
