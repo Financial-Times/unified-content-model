@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>unifiedContentModel</artifactId>
 		<groupId>com.ft.unifiedContentModel</groupId>
-		<version>0.1</version>
+		<version>0.2-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>ft-unifiedContentModel-marshalling</artifactId>
