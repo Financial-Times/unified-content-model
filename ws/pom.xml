@@ -6,7 +6,7 @@
   	<parent>
         <groupId>com.ft.unifiedContentModel</groupId>
 		<artifactId>unifiedContentModel</artifactId>
-		<version>0.2-SNAPSHOT</version>
+		<version>0.2</version>
   	</parent>
 	
 	<artifactId>ft-unifiedContentModel-ws</artifactId>
