@@ -87,7 +87,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
 		Path pageListRelativePath = pathFactory.createPath(Paths.PAGE_LIST);
 		
 		return UrlBuilder.basedOn(baseApiUrl)
-				.overridePaths(pageListRelativePath.toString())
+				.withPathInfo(pageListRelativePath.toString())
 				.build();
 	}
 	
