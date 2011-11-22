@@ -13,10 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.util.UriTemplate;
 
-import com.ft.unifiedContentModel.core.net.Path;
-import com.ft.unifiedContentModel.core.net.PathFactory;
-import com.ft.unifiedContentModel.core.net.Paths;
-import com.ft.unifiedContentModel.core.net.UrlGeneratorImpl;
 import com.google.common.collect.Maps;
 
 @RunWith(MockitoJUnitRunner.class)
