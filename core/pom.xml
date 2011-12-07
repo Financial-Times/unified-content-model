@@ -5,13 +5,14 @@
 	<parent>
 		<artifactId>unifiedContentModel</artifactId>
 		<groupId>com.ft.unifiedContentModel</groupId>
-		<version>0.3-SNAPSHOT</version>
+		<version>0.3</version>
 	</parent>
 	
 	<artifactId>ft-unifiedContentModel-core</artifactId>
 	<packaging>jar</packaging>
 	<name>Unified Content Model - Core</name>
 	<description>Core utility library for the unified content model</description>
+	
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
