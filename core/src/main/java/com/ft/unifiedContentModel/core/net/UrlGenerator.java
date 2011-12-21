@@ -6,6 +6,5 @@ public interface UrlGenerator {
     Url createUrlForItem(String itemUuid);
     Url createUrlForPage(String pageUuid);
     Url createUrlForPages();
-    Url createUrlForComponent(String pageUuid, String componentUuid);
     Url createUrlForImage(String relativeImagePathInfo);
 }

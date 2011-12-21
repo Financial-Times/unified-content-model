@@ -58,18 +58,6 @@ public class UrlGeneratorImpl implements UrlGenerator {
 				.withPathInfo(itemReadRelativePath.toString())
 				.build();
 	}
-	
-	@Override
-	public Url createUrlForComponent(String pageUuid, String componentUuid) {
-		Map<String, Object> vars = Maps.newHashMap();
-		vars.put("pageId", pageUuid);
-		vars.put("componentId", componentUuid);
-		Path componentReadRelativePath = pathFactory.createPath(Paths.COMPONENT_READ, vars);
-
-		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(componentReadRelativePath.toString())
-				.build();
-	}
 
 	@Override
 	public Url createUrlForPage(String pageUuid) {

@@ -72,19 +72,6 @@ public class UrlGeneratorImplTest {
 	}
 
 	@Test
-	public void componentUrl() {
-		Map<String, Object> vars = Maps.newHashMap();
-		vars.put("pageId", UUID);
-		vars.put("componentId", ANOTHER_UUID);
-		when(path.toString()).thenReturn(RESOLVED_COMPONENT_READ_PATH);
-		when(pathFactory.createPath(Mockito.eq(Paths.COMPONENT_READ), Mockito.eq(vars))).thenReturn(path);
-		
-		String url = instance.createUrlForComponent(UUID, ANOTHER_UUID).toString();
-		
-		assertEquals(API_URL + COMPONENT_PATH.expand(UUID, ANOTHER_UUID), url);
-	}
-
-	@Test
 	public void pageUrl() {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("pageId", UUID);
