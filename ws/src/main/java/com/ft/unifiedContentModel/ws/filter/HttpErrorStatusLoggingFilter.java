@@ -73,7 +73,7 @@ public class HttpErrorStatusLoggingFilter extends OncePerRequestFilter {
        @Override
        public void sendError(int errorCode, String errorMessage) throws IOException {
 		   supportLogger.error(createLogMessage(errorCode, errorMessage));
-           super.sendError(errorCode, errorMessage);
+		   super.setStatus(errorCode, errorMessage);
        }	 
        
        @Override
