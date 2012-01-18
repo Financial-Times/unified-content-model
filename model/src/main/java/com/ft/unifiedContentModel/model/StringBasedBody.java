@@ -19,6 +19,7 @@ public class StringBasedBody implements Body {
 		this.body = isNotBlank(body) ? body : null;
 	}
 
+	@Override
 	@XmlElement(name="body", namespace=XSDs.FIELD_NAMESPACE)
 	public String getBody() {
 		return body;

@@ -7,5 +7,5 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 @XmlTransient
 @JsonDeserialize(as=StringBasedBody.class)
 public interface Body {
-
+	String getBody();
 }
