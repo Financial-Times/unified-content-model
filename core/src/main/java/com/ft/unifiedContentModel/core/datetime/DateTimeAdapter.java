@@ -1,4 +1,4 @@
-package com.ft.unifiedContentModel.model.adaptor;
+package com.ft.unifiedContentModel.core.datetime;
 
 
 import static org.apache.commons.lang.StringUtils.EMPTY;
@@ -7,11 +7,8 @@ import static org.springframework.util.Assert.notNull;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import org.joda.time.DateTime;
 import org.joda.time.ReadableDateTime;
 
-import com.ft.unifiedContentModel.core.datetime.DateTimeFormatter;
-import com.ft.unifiedContentModel.core.datetime.ISODateTimeFormatter;
 
 public class DateTimeAdapter extends XmlAdapter<String, ReadableDateTime> {
 	
@@ -33,6 +30,6 @@ public class DateTimeAdapter extends XmlAdapter<String, ReadableDateTime> {
 
     @Override
     public ReadableDateTime unmarshal(String dateString) {
-         return isNotBlank(dateString) ? new DateTime(dateString) : null;
+         return isNotBlank(dateString) ? dateTimeFormatter.parseDateTime(dateString) : null;
     }
 }

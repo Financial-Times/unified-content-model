@@ -1,6 +1,6 @@
 package com.ft.unifiedContentModel.model;
 
-import com.ft.unifiedContentModel.model.adaptor.DateTimeAdapter;
+import com.ft.unifiedContentModel.core.datetime.DateTimeAdapter;
 import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 

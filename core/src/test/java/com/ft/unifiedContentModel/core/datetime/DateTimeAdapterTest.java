@@ -1,4 +1,4 @@
-package com.ft.unifiedContentModel.model.adaptor;
+package com.ft.unifiedContentModel.core.datetime;
 
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.hamcrest.Matchers.equalTo;
@@ -14,8 +14,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ft.unifiedContentModel.core.datetime.DateTimeFormatter;
-import com.ft.unifiedContentModel.model.adaptor.DateTimeAdapter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DateTimeAdapterTest {
@@ -47,7 +45,7 @@ public class DateTimeAdapterTest {
 	@Test
 	public void dateTimeIsInflatedFromString() {
 		when(mockDateTimeFormatter.parseDateTime(DATE_STRING)).thenReturn(mockDateTime);
-		assertThat(dateTimeAdapter.unmarshal(DATE_STRING).toString(), is(DATE_STRING));
+		assertThat(dateTimeAdapter.unmarshal(DATE_STRING), is(mockDateTime));
 	}
 	
 	@Test
