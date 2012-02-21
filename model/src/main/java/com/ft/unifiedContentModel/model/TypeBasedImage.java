@@ -23,7 +23,7 @@ public class TypeBasedImage implements Image {
 	private String alt;
 	private String caption;
 	
-	protected void init (String url, ImageType type,String source, String alt, String caption) {
+	public TypeBasedImage (String url, ImageType type,String source, String alt, String caption) {
 		this.url = url;
 		this.imageType = type;
 		this.source = source;
