@@ -23,8 +23,8 @@ public class UrlGeneratorImplTest {
 	private static final UriTemplate COMPONENT_PATH = new UriTemplate(Paths.COMPONENT_READ);
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
-	private static final String RESOLVED_COMPONENT_READ_PATH = "/structure/pages/123/components/456";
-	private static final String RESOLVED_PAGE_READ_PATH = "/structure/pages/123";
+	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/pages/123/components/456";
+	private static final String RESOLVED_PAGE_READ_PATH = "/site/pages/123";
 	
 	private static final String IMAGE_URL = "http://im.media.ft.com/content/images";
 	private static final String API_URL = "http://api.ft.com";

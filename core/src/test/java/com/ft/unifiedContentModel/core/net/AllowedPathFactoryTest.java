@@ -23,8 +23,8 @@ public class AllowedPathFactoryTest {
 	private static final String FAKE_PARAM = "fake";
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
-	private static final String RESOLVED_COMPONENT_READ_PATH = "/structure/pages/123/components/456";
-	private static final String RESOLVED_PAGE_READ_PATH = "/structure/pages/123";
+	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/pages/123/components/456";
+	private static final String RESOLVED_PAGE_READ_PATH = "/site/pages/123";
 	
 	private static final String RESOLVED_ITEM_LIST_PATH = Paths.ITEM_LIST;
 	private static final String RESOLVED_PAGE_LIST_PATH = Paths.PAGE_LIST;
