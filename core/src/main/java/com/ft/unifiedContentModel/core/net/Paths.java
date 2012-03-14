@@ -7,13 +7,12 @@ public final class Paths {
 	}
 	
 	public static final String ITEM_READ = "/content/items/v1/{itemId}";
-	public static final String ITEM_READ_MULTIPLE = "/content/items/[{itemIds}]";
-	public static final String ITEM_LIST = "/content/items";
+	public static final String ITEM_LIST = "/content/items/v1";
 	
-	public static final String COMPONENT_READ = "/site/pages/{pageId}/components/{componentId}";
+	public static final String COMPONENT_READ = "/site/v1/pages/{pageId}/components/{componentId}";
 	
-	public static final String PAGE_READ = "/site/pages/{pageId}";
-	public static final String PAGE_LIST = "/site/pages";
+	public static final String PAGE_READ = "/site/v1/pages/{pageId}";
+	public static final String PAGE_LIST = "/site/v1/pages";
 
 	
 }
