@@ -14,7 +14,7 @@ import com.ft.unifiedContentModel.model.XSDs;
 
 @XmlRootElement(name="response", namespace=XSDs.ITEM_RESPONSE_NAMESPACE)
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-@XmlType(namespace=XSDs.ITEM_RESPONSE_NAMESPACE, propOrder = {"total","requestUrl", "item"})
+@XmlType(namespace=XSDs.ITEM_RESPONSE_NAMESPACE, propOrder = {"requestUrl", "item"})
 public class ItemResponse extends AbstractResponse {
 	
 	private ArticleEntity item;
@@ -28,7 +28,6 @@ public class ItemResponse extends AbstractResponse {
 		notNull(item);
 		notNull(requestUrl);
 		this.item = item;
-		setTotal(1);
 		setRequestUrl(requestUrl.toString());
 	}
 	

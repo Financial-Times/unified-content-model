@@ -14,21 +14,11 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public abstract class AbstractResponse implements Response {
 	
-	private int total;
+	
 	private String requestUrl;
 	
 	public AbstractResponse() {
 		// required for JAXB
-	}
-
-	protected void setTotal(int total) {
-		this.total = total;
-	}
-
-	@XmlAttribute
-	@Override
-	public int getTotal() {
-		return total;
 	}
 
 	@XmlAttribute

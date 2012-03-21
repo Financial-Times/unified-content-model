@@ -4,6 +4,7 @@ import static org.springframework.util.Assert.notNull;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlElements;
@@ -23,6 +24,8 @@ import com.ft.unifiedContentModel.model.XSDs;
 @XmlType(namespace=XSDs.ITEMS_RESPONSE_NAMESPACE, propOrder = {"total","requestUrl", "items"})
 public class ItemsResponse extends AbstractResponse {
 
+	private int total;
+	
 	private List<ContentEntity> items;
     @SuppressWarnings("unused")
 	private ItemsResponse() {
@@ -52,5 +55,14 @@ public class ItemsResponse extends AbstractResponse {
 		this.items = items;
 	}
 
+	
+	protected void setTotal(int total) {
+		this.total = total;
+	}
+
+	@XmlAttribute
+	public int getTotal() {
+		return total;
+	}
 
 }
