@@ -30,7 +30,7 @@ public class HttpErrorStatusLoggingFilterTest {
 	
 	private static final int INTERNAL_SERVER_ERROR = HttpStatus.INTERNAL_SERVER_ERROR.value();
 	private static final String INTERNAL_SERVER_ERROR_MSG = "500 Internal Server Error";
-	private static final String REQUEST_URI = "/content/items"; 
+	private static final String REQUEST_URI = "/content/items/v1"; 
 	private static final String QUERY_STRING = "query.queryString=test";
 	private static final Map<String, String> REQUEST_HEADER_MAP;
 	static {
