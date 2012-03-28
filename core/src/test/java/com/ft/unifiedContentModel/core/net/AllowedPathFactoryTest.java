@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AllowedPathFactoryTest {
 	
 	private static final String UUID = "123";
-	private static final String ANOTHER_UUID = "456";
+	private static final String COMPONENT_NAME = "main-content";
 	
 	private static final String ITEM_ID = "itemId";
 	private static final String PAGE_ID = "pageId";
@@ -19,7 +19,7 @@ public class AllowedPathFactoryTest {
 	private static final String FAKE_PARAM = "fake";
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
-	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/v1/pages/123/components/456";
+	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/v1/pages/" + UUID + "/" + COMPONENT_NAME;
 	private static final String RESOLVED_PAGE_READ_PATH = "/site/v1/pages/123";
 	
 	private static final String RESOLVED_ITEM_LIST_PATH = Paths.ITEM_LIST;
@@ -120,7 +120,7 @@ public class AllowedPathFactoryTest {
 	public void createPathComponent() {
 		Map<String, Object> vars = new HashMap<String, Object>();
 		vars.put(PAGE_ID, UUID);
-		vars.put(COMPONENT_ID, ANOTHER_UUID);
+		vars.put(COMPONENT_ID, COMPONENT_NAME);
 		Path path = factory.createPath(Paths.COMPONENT_READ, vars);
 		assertEquals(RESOLVED_COMPONENT_READ_PATH, path.toString());
 	}
@@ -138,12 +138,8 @@ public class AllowedPathFactoryTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void cannotCreatePathComponentWithMissingVar() {
 		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(COMPONENT_ID, ANOTHER_UUID);
+		vars.put(COMPONENT_ID, COMPONENT_NAME);
 		factory.createPath(Paths.COMPONENT_READ, vars);
 	}
-	
-	
-
-	
 
 }
