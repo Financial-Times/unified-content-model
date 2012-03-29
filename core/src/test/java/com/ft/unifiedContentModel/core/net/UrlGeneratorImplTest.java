@@ -20,7 +20,7 @@ public class UrlGeneratorImplTest {
 
 	private static final UriTemplate ITEM_PATH = new UriTemplate(Paths.ITEM_READ);
 	private static final UriTemplate PAGE_PATH = new UriTemplate(Paths.PAGE_READ);
-	private static final UriTemplate COMPONENT_PATH = new UriTemplate(Paths.COMPONENT_READ);
+	private static final UriTemplate COMPONENT_PATH = new UriTemplate(Paths.PAGE_MAIN_CONTENT_READ);
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
 	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/v1/pages/123/main-content";
@@ -30,8 +30,7 @@ public class UrlGeneratorImplTest {
 	private static final String API_URL = "http://api.ft.com";
 
 	private static final String UUID = "123";
-	private static final String COMPONENT_NAME = "main-content";
-	private static final String IMAGE_PATH = "1234-5678.img";
+    private static final String IMAGE_PATH = "1234-5678.img";
 	
 	private UrlGeneratorImpl instance;
     
@@ -101,12 +100,11 @@ public class UrlGeneratorImplTest {
 	public void pageContentUrl() {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("pageId", UUID);
-        vars.put("componentId", COMPONENT_NAME);
 		when(path.toString()).thenReturn(RESOLVED_COMPONENT_READ_PATH);
-		when(pathFactory.createPath(Mockito.eq(Paths.COMPONENT_READ), Mockito.eq(vars))).thenReturn(path);
+		when(pathFactory.createPath(Mockito.eq(Paths.PAGE_MAIN_CONTENT_READ), Mockito.eq(vars))).thenReturn(path);
 
-		String url = instance.createUrlForMainContentList(UUID, COMPONENT_NAME).toString();
-		assertEquals(API_URL + COMPONENT_PATH.expand(UUID, COMPONENT_NAME), url);
+		String url = instance.createUrlForMainContentList(UUID).toString();
+		assertEquals(API_URL + COMPONENT_PATH.expand(UUID), url);
 	}
 
 }
