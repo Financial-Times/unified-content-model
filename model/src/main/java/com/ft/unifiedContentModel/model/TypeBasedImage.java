@@ -22,6 +22,14 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
     private Integer height;
     private Integer width;
 
+    public TypeBasedImage (String url, ImageType type,String source, String alt, String caption) {
+		this.url = url;
+		this.imageType = type;
+		this.source = source;
+		this.alt = alt;
+		this.caption = caption;
+	}
+
     public TypeBasedImage(String url, ImageType imageType, String source, String alt, String caption, Integer height, Integer width) {
         this.url = url;
         this.imageType = imageType;
