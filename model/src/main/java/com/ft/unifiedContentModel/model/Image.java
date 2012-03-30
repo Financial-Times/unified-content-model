@@ -18,4 +18,8 @@ public interface Image {
 
 	String getCaption();
 
+    Integer getHeight();
+
+    Integer getWidth();
+
 }

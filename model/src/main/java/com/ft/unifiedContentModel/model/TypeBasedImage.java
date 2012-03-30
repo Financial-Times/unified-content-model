@@ -2,36 +2,37 @@ package com.ft.unifiedContentModel.model;
 
 import static org.apache.commons.lang.StringUtils.EMPTY;
 
-import java.util.Map;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
-import org.codehaus.jackson.annotate.JsonTypeName;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import org.codehaus.jackson.annotate.JsonTypeName;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonTypeName(value="image")
-@XmlType(name="image", namespace=XSDs.IMAGE_NAMESPACE, propOrder = {"url", "type","source", "alt", "caption"})
-public class TypeBasedImage implements Image {
+@XmlType(name="image", namespace= XSDs.IMAGE_NAMESPACE, propOrder = {"url", "type","source", "alt", "caption", "height", "width"})
+public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	
 	private String url;
 	private ImageType imageType;
 	private String source;
 	private String alt;
 	private String caption;
-	
-	public TypeBasedImage (String url, ImageType type,String source, String alt, String caption) {
-		this.url = url;
-		this.imageType = type;
-		this.source = source;
-		this.alt = alt;
-		this.caption = caption;
-	}
+    private Integer height;
+    private Integer width;
 
-	protected TypeBasedImage(){
+    public TypeBasedImage(String url, ImageType imageType, String source, String alt, String caption, Integer height, Integer width) {
+        this.url = url;
+        this.imageType = imageType;
+        this.source = source;
+        this.alt = alt;
+        this.caption = caption;
+        this.height = height;
+        this.width = width;
+    }
+
+    protected TypeBasedImage(){
 		// required for JAXB
 	}
 	
@@ -80,7 +81,26 @@ public class TypeBasedImage implements Image {
 		this.caption = caption;
 	}
 
-	@Override
+
+    @Override
+    public Integer getHeight(){
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    @Override
+    public Integer getWidth(){
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    @Override
 	public boolean equals(Object o) {
 		if(o == null){
 			return false;
@@ -108,6 +128,8 @@ public class TypeBasedImage implements Image {
 					.add("source", source)
 					.add("alt", alt)
 					.add("caption", caption)
+					.add("height", height)
+					.add("width", width)
 					.toString();
 	}
 	
