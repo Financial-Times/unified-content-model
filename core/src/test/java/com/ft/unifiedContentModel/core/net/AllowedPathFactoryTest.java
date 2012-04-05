@@ -17,6 +17,7 @@ public class AllowedPathFactoryTest {
 	private static final String ITEM_ID = "itemId";
 	private static final String PAGE_ID = "pageId";
 	private static final String COMPONENT_ID = "componentId";
+    private static final String COMPONENT_VANITY_ID = "componentVanityId";
 	private static final String FAKE_PARAM = "fake";
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
@@ -131,7 +132,8 @@ public class AllowedPathFactoryTest {
 	public void createPathPageMainContent() {
 		Map<String, Object> vars = new HashMap<String, Object>();
 		vars.put(PAGE_ID, UUID);
-		Path path = factory.createPath(Paths.PAGE_MAIN_CONTENT_READ, vars);
+        vars.put(COMPONENT_VANITY_ID, COMPONENT_NAME);
+		Path path = factory.createPath(Paths.PAGE_CONTENT_READ, vars);
 		assertEquals(RESOLVED_PAGE_MAIN_CONTENT_READ_PATH, path.toString());
 	}
 	

@@ -7,5 +7,5 @@ public interface UrlGenerator {
     Url createUrlForPage(String pageUuid);
     Url createUrlForPages();
     Url createUrlForImage(String relativeImagePathInfo);
-    Url createUrlForMainContentList(String pageUuid);
+    Url createUrlForContentList(String pageUuid, String contentVanityId);
 }

@@ -85,13 +85,14 @@ public class UrlGeneratorImpl implements UrlGenerator {
 	}
 
     @Override
-    public Url createUrlForMainContentList(String pageUuid) {
+    public Url createUrlForContentList(String pageUuid, String componentVanityId) {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("pageId", pageUuid);
-		Path mainContentReadRelativePath = pathFactory.createPath(Paths.PAGE_MAIN_CONTENT_READ, vars);
+        vars.put("componentVanityId", componentVanityId);
+		Path contentReadRelativePath = pathFactory.createPath(Paths.PAGE_CONTENT_READ, vars);
 
 		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(mainContentReadRelativePath.toString())
+				.withPathInfo(contentReadRelativePath.toString())
 				.build();
     }
 
