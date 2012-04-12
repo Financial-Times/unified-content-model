@@ -8,7 +8,7 @@ import org.joda.time.format.ISODateTimeFormat;
 
 public class ISODateTimeFormatter implements DateTimeFormatter {
 	
-	static final org.joda.time.format.DateTimeFormatter DEFAULT_DATE_FORMATTER = ISODateTimeFormat.dateTime();
+	static final org.joda.time.format.DateTimeFormatter DEFAULT_DATE_FORMATTER = ISODateTimeFormat.dateTimeNoMillis();
 	
 	@Override
 	public String format(ReadableDateTime readableDateTime) {

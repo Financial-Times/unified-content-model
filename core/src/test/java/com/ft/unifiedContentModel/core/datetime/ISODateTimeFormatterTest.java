@@ -34,7 +34,7 @@ public class ISODateTimeFormatterTest {
 	
 	@Test
 	public void whenAnIsoFormatStringIsProvidedADateIsReturned(){
-		String text = "2011-07-14T23:58:04.000Z";
+		String text = "2011-07-14T23:58:04Z";
 		ReadableDateTime dateTime = instance.parseDateTime(text);
 		assertNotNull(dateTime);
 	}
@@ -57,8 +57,16 @@ public class ISODateTimeFormatterTest {
 		instance.parseDateTime(text);
 	}
 	
+	@Test
+	public void whenADateTimeIsFormattedAnIsoFormattedDateIsReturned(){
+		String text = "2011-07-14T23:58:04Z";
+		ReadableDateTime dateTime = new DateTime(2011, 7, 14, 23, 58, 4,0,DateTimeZone.UTC);
+		String formatted = instance.format(dateTime);
+		assertEquals(text,formatted);
+	}
+	
 	private String toIsoFormatWithUTCTimeZone(DateTime dateTime) {
-		return dateTime.withZone(DateTimeZone.UTC).toString(ISODateTimeFormat.dateTime());
+		return dateTime.withZone(DateTimeZone.UTC).toString(ISODateTimeFormat.dateTimeNoMillis());
 	}
 
 }
