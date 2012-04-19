@@ -115,10 +115,16 @@ public final class UrlBuilder {
     }
     
     public UrlBuilder withQueryParameter(String strKey, String strValue){
-    	appendToQuery(strKey);
-    	query = "=" + strValue;
+    	appendToQuery(String.format("%s=%s", strKey, strValue));
     	return this;
     } 
+    
+	public UrlBuilder withQueryString(String queryString) {
+		appendToQuery(queryString);
+		return this;
+	}
+    
+    
 
 	public Url build() {
     	StringBuilder sb;
@@ -184,4 +190,5 @@ public final class UrlBuilder {
         	}
     	}
     }
+
 }

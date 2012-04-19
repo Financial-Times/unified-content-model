@@ -33,41 +33,37 @@ public class UrlGeneratorImplTest {
     private static final String IMAGE_PATH = "1234-5678.img";
     private static final String COMPONENT_VANITY = "main-content";
 	
-	private UrlGeneratorImpl instance;
+	private UrlGeneratorImpl generator;
     
-    private @Mock PathFactory pathFactory;
-    private @Mock Path path;
+    private @Mock PathFactory mockPathFactory;
+    private @Mock Path mockpath;
 
 
 	@Before
 	public void setup() {
-		instance = new UrlGeneratorImpl(API_URL, IMAGE_URL, pathFactory);
-        
+		generator = new UrlGeneratorImpl(API_URL, IMAGE_URL, mockPathFactory);
 	}
-	
 	
 	@Test
 	public void itemUrl() {
-		instance.setBaseApiUrl(API_URL);
+		generator.setBaseApiUrl(API_URL);
 		
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("itemId", UUID);
-		when(path.toString()).thenReturn(RESOLVED_ITEM_READ_PATH);
-		when(pathFactory.createPath(Mockito.eq(Paths.ITEM_READ), Mockito.eq(vars))).thenReturn(path);
+		when(mockpath.toString()).thenReturn(RESOLVED_ITEM_READ_PATH);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_READ), Mockito.eq(vars))).thenReturn(mockpath);
 		
-		String url = instance.createUrlForItem(UUID).toString();
+		String url = generator.createUrlForItem(UUID).toString();
 	
 		assertEquals(API_URL + ITEM_PATH.expand(UUID), url);
 	}
 
-	
-
 	@Test
 	public void itemsUrl() {
-		when(path.toString()).thenReturn(Paths.ITEM_LIST);
-		when(pathFactory.createPath(Mockito.eq(Paths.ITEM_LIST))).thenReturn(path);
+		when(mockpath.toString()).thenReturn(Paths.ITEM_LIST);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_LIST))).thenReturn(mockpath);
 		
-		String url = instance.createUrlForItems().toString();
+		String url = generator.createUrlForItems().toString();
 		assertEquals(API_URL + Paths.ITEM_LIST, url);
 	}
 
@@ -75,25 +71,25 @@ public class UrlGeneratorImplTest {
 	public void pageUrl() {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("pageId", UUID);
-		when(path.toString()).thenReturn(RESOLVED_PAGE_READ_PATH);
-		when(pathFactory.createPath(Mockito.eq(Paths.PAGE_READ), Mockito.eq(vars))).thenReturn(path);
+		when(mockpath.toString()).thenReturn(RESOLVED_PAGE_READ_PATH);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.PAGE_READ), Mockito.eq(vars))).thenReturn(mockpath);
 			
-		String url = instance.createUrlForPage(UUID).toString();
+		String url = generator.createUrlForPage(UUID).toString();
 		assertEquals(API_URL + PAGE_PATH.expand(UUID), url);
 	}
 
 	@Test
 	public void pagesUrl() {
-		when(path.toString()).thenReturn(Paths.PAGE_LIST);
-		when(pathFactory.createPath(Mockito.eq(Paths.PAGE_LIST))).thenReturn(path);
+		when(mockpath.toString()).thenReturn(Paths.PAGE_LIST);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.PAGE_LIST))).thenReturn(mockpath);
 		
-		String url = instance.createUrlForPages().toString();
+		String url = generator.createUrlForPages().toString();
 		assertEquals(API_URL + Paths.PAGE_LIST, url);
 	}
 
 	@Test
 	public void imageUrl() {
-		String url = instance.createUrlForImage(IMAGE_PATH).toString();
+		String url = generator.createUrlForImage(IMAGE_PATH).toString();
 		assertEquals(IMAGE_URL + "/" + IMAGE_PATH, url);
 	}
 
@@ -102,11 +98,35 @@ public class UrlGeneratorImplTest {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("pageId", UUID);
         vars.put("componentVanityId", COMPONENT_VANITY);
-		when(path.toString()).thenReturn(RESOLVED_COMPONENT_READ_PATH);
-		when(pathFactory.createPath(Mockito.eq(Paths.PAGE_CONTENT_READ), Mockito.eq(vars))).thenReturn(path);
+		when(mockpath.toString()).thenReturn(RESOLVED_COMPONENT_READ_PATH);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.PAGE_CONTENT_READ), Mockito.eq(vars))).thenReturn(mockpath);
 
-		String url = instance.createUrlForContentList(UUID, COMPONENT_VANITY).toString();
+		String url = generator.createUrlForContentList(UUID, COMPONENT_VANITY).toString();
 		assertEquals(API_URL + COMPONENT_PATH.expand(UUID, COMPONENT_VANITY), url);
+	}
+
+    @Test
+	public void shouldCreateRequestUrlBasedOnSupplied() throws Exception {
+    	String url = generator.createRequestUrl("/servlet", "/path", "param1=foo&param2=bar").toString();
+    	assertEquals("http://api.ft.com/servlet/path?param1=foo&param2=bar", url);
+	}
+
+    @Test
+	public void shouldCreateRequestUrlBasedOnSuppliedWithNullQueryString() throws Exception {
+    	String url = generator.createRequestUrl("/servlet", "/path", null).toString();
+    	assertEquals("http://api.ft.com/servlet/path", url);
+	}
+
+    @Test
+	public void shouldCreateRequestUrlBasedOnSuppliedWithNullQueryStringAndNullPathInfo() throws Exception {
+    	String url = generator.createRequestUrl("/servlet", null, null).toString();
+    	assertEquals("http://api.ft.com/servlet", url);
+	}
+
+    @Test
+	public void shouldCreateRequestUrlBasedOnSuppliedWithdNullPathInfo() throws Exception {
+    	String url = generator.createRequestUrl("/servlet", null, "param1=foo&param2=bar").toString();
+    	assertEquals("http://api.ft.com/servlet?param1=foo&param2=bar", url);
 	}
 
 }

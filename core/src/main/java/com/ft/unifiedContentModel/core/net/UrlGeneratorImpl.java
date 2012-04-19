@@ -7,6 +7,7 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 
 public class UrlGeneratorImpl implements UrlGenerator {
+	
     static final String CONTEXT_REGEX = "http[s]*://[A-Za-z0-9-.]+/content/[content|structure]([A-Za-z0-9-/.?=]+)";
     static final String ORIGINAL_REQUEST_HEADER_NAME = "X-Original-Request";
 
@@ -95,5 +96,14 @@ public class UrlGeneratorImpl implements UrlGenerator {
 				.withPathInfo(contentReadRelativePath.toString())
 				.build();
     }
+
+	@Override
+	public Url createRequestUrl(String servletPath, String pathInfo, String queryString) {
+		return UrlBuilder.basedOn(baseApiUrl)
+			.withPath(servletPath)
+			.withPathInfo(pathInfo)
+			.withQueryString(queryString)
+			.build();
+	}
 
 }
