@@ -2,12 +2,8 @@ package com.ft.unifiedContentModel.model;
 
 import java.io.Serializable;
 import java.util.UUID;
-
-import javax.xml.bind.annotation.XmlTransient;
-
 import org.springframework.util.Assert;
 
-@XmlTransient
 public final class Identity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

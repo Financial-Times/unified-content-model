@@ -1,15 +1,12 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
-
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-@XmlType(namespace=XSDs.CONTENTITEM_NAMESPACE, propOrder = {"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title", 
+@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "location", "summary", "packaging", "master", "metadata", 
 		"images", "package"})
-@XmlSeeAlso({ContentEntity.class, SimpleEntity.class, IdentifiableEntity.class})
 public class BlogEntity extends ContentEntity implements Blog{
 	
 	public BlogEntity() {}

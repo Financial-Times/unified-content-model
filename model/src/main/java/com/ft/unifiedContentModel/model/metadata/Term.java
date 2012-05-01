@@ -1,12 +1,10 @@
 package com.ft.unifiedContentModel.model.metadata;
 
 import java.util.Set;
-
-import javax.xml.bind.annotation.XmlTransient;
-
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@XmlTransient
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonDeserialize(as=TermImpl.class)
 public interface Term {
 	

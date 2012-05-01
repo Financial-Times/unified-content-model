@@ -1,17 +1,11 @@
 package com.ft.unifiedContentModel.model.metadata;
 
-import java.util.Set;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlType;
-
-import org.apache.commons.lang.StringUtils;
-
-import com.ft.unifiedContentModel.model.XSDs;
 import com.google.common.base.Objects;
+import java.util.Set;
+import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-@XmlType(name="term", namespace=XSDs.METADATA_NAMESPACE, propOrder={"name", "id", "attributes", "taxonomy"})
+@JsonPropertyOrder({"name", "id", "attributes", "taxonomy"})
 public class TermImpl implements Term {
 	
 	private String id;
@@ -30,7 +24,6 @@ public class TermImpl implements Term {
 	}
 	
 	@Override
-	@XmlElement(name="id", namespace=XSDs.METADATA_NAMESPACE)
 	public String getId() {
 		return id;
 	}
@@ -40,7 +33,6 @@ public class TermImpl implements Term {
 	}
 	
 	@Override
-	@XmlElement(name="name", namespace=XSDs.METADATA_NAMESPACE)
 	public String getName() {
 		return name;
 	}
@@ -50,7 +42,6 @@ public class TermImpl implements Term {
 	}
 	
 	@Override
-	@XmlElement(name="taxonomy", namespace=XSDs.METADATA_NAMESPACE)
 	public String getTaxonomy() {
 		return taxonomy;
 	}
@@ -60,8 +51,6 @@ public class TermImpl implements Term {
 	}
 	
 	@Override
-	@XmlElementWrapper(name="attributes", namespace=XSDs.METADATA_NAMESPACE)
-	@XmlElement(name="attribute", type=AttributeImpl.class)
 	public Set<Attribute> getAttributes() {
 		return attributes;
 	}

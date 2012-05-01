@@ -5,13 +5,12 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
 import java.util.Map;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.annotate.JsonTypeName;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonTypeName(value="image")
-@XmlType(name="image", namespace= XSDs.IMAGE_NAMESPACE, propOrder = {"url", "type","source", "alt", "caption", "height", "width"})
+@JsonPropertyOrder({"url", "type","source", "alt", "caption", "height", "width"})
 public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	
 	private String url;
@@ -53,7 +52,6 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	}
 
 	@Override
-	@XmlElement(name="type")
 	public String getType() {
 		return imageType.toString();
 	}
@@ -140,8 +138,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 					.add("width", width)
 					.toString();
 	}
-	
-	@XmlType(namespace=XSDs.IMAGE_NAMESPACE)
+
 	public static enum ImageType {
 
 		PRIMARY("primary"),SECONDARY("secondary"),ALTERNATIVE("alternative"),ARTICLE("article"),POPUP("pop-up"),POPUP_PREVIEW("pop-up-promo"),INLINE("inline"),INLINE_EXT("inline-external"),NULL(null),NONE(EMPTY);

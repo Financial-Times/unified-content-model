@@ -2,12 +2,8 @@ package com.ft.unifiedContentModel.model;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.google.common.base.Objects;
 
-@XmlType(name="body", namespace=XSDs.ASPECT_NAMESPACE)
 public class StringBasedBody implements Body {
 
 	private String body;
@@ -20,7 +16,6 @@ public class StringBasedBody implements Body {
 	}
 
 	@Override
-	@XmlElement(name="body", namespace=XSDs.FIELD_NAMESPACE)
 	public String getBody() {
 		return body;
 	}

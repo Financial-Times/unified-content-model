@@ -1,12 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-
 import com.ft.unifiedContentModel.model.version.Version;
 import com.google.common.base.Objects;
 
-@XmlTransient
 public abstract class IdentifiableEntity implements Identifiable, Versionable, Retrievable {
 
 	private String id;
@@ -17,7 +13,6 @@ public abstract class IdentifiableEntity implements Identifiable, Versionable, R
 	}
 	
 	@Override
-	@XmlElement(name="id", required=true)
 	public String getId() {
 		return id;
 	}
@@ -28,7 +23,6 @@ public abstract class IdentifiableEntity implements Identifiable, Versionable, R
 	}
 	
 	@Override
-	@XmlElement(name="apiUrl", required=true)
 	public String getApiUrl() {
 		return apiUrl;
 	}
@@ -39,7 +33,6 @@ public abstract class IdentifiableEntity implements Identifiable, Versionable, R
 	}
 
 	@Override
-	@XmlElement(name="modelVersion", required=true)
 	public String getModelVersion() {
 		return modelVersion;
 	}

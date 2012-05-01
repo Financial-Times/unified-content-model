@@ -1,16 +1,12 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
-
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-@XmlType(namespace=XSDs.CONTENTITEM_NAMESPACE, propOrder = {"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title", 
+@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "location", "summary", "packaging", "master", "editorial", "provenance", "metadata", 
 		"images", "package"})
-@XmlSeeAlso({ContentEntity.class, SimpleEntity.class, IdentifiableEntity.class})
 public class ArticleEntity extends ContentEntity implements Article {
 	
 	private Editorial editorial;
@@ -23,7 +19,6 @@ public class ArticleEntity extends ContentEntity implements Article {
 	}
 	
 	@Override
-	@XmlElement(name="editorial", namespace=XSDs.ASPECT_NAMESPACE)
 	public Editorial getEditorial() {
 		return editorial;
 	}
@@ -33,7 +28,6 @@ public class ArticleEntity extends ContentEntity implements Article {
 	}
 
 	@Override
-	@XmlElement(name="provenance", namespace=XSDs.ASPECT_NAMESPACE)
 	public Provenance getProvenance() {
 		return provenance;
 	}

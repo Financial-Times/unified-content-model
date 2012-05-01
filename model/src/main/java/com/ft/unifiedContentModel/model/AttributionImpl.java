@@ -1,13 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Objects;
-
-@XmlType(name="attribution", namespace=XSDs.ASPECT_NAMESPACE)
 public class AttributionImpl implements Attributed {
 
 	private String byline;
@@ -20,7 +15,6 @@ public class AttributionImpl implements Attributed {
 	}
 	
 	@Override
-	@XmlElement(name="byline", namespace=XSDs.FIELD_NAMESPACE)
 	public String getByline() {
 		return byline;
 	}

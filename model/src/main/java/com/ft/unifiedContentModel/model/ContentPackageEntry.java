@@ -1,19 +1,14 @@
 package com.ft.unifiedContentModel.model;
 
+import com.google.common.base.Objects;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlType;
-
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.annotate.JsonTypeName;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import com.google.common.base.Objects;
-
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonTypeName(value="storyPackageItem")
-@XmlType(namespace=XSDs.CONTENTITEM_NAMESPACE, propOrder = {"aspectSet", "aspects", "id", "apiUrl", "packaging", "provenance"})
+@JsonPropertyOrder({"aspectSet", "aspects", "id", "apiUrl", "packaging", "provenance"})
 public class ContentPackageEntry implements Identifiable, AspectSetAware {
 	
 	private String id;
@@ -37,7 +32,6 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 	}
 
 	@Override
-	@XmlElement(name="id")
 	public String getId() {
 		return id;
 	}
@@ -46,7 +40,6 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 		this.id = guid;
 	}
 	
-	@XmlElement(name="apiUrl")
 	public String getApiUrl() {
 		return apiUrl;
 	}
@@ -54,7 +47,6 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 		this.apiUrl = apiUrl;
 	}
 	
-	@XmlElement(name="packaging", namespace=XSDs.ASPECT_NAMESPACE)
 	public Packaging getPackaging() {
 		return packaging;
 	}
@@ -62,7 +54,6 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 		this.packaging = packaging;
 	}
 	
-	@XmlElement(name="provenance", namespace=XSDs.ASPECT_NAMESPACE)
 	public Provenance getProvenance() {
 		return provenance;
 	}
@@ -70,17 +61,16 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 		this.provenance = provenance;
 	}
 	
-	@XmlElement(name="aspectSet")
 	public String getAspectSet() {
 		return aspectSet;
 	}
+
 	@Override
 	public void setAspectSet(String aspectSet) {
 		this.aspectSet = aspectSet;
 	}
 	
-	@XmlElementWrapper(name="aspects")
-	@XmlElement(name="aspect")
+
 	public List<String> getAspects() {
 		return aspects;
 	}

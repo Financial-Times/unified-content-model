@@ -1,14 +1,10 @@
 package com.ft.unifiedContentModel.model.metadata;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.springframework.util.Assert;
 
-import com.ft.unifiedContentModel.model.XSDs;
-import com.google.common.base.Objects;
-
-@XmlType(name="attribute", namespace=XSDs.METADATA_NAMESPACE)
+@JsonPropertyOrder({"key", "value"})
 public class AttributeImpl implements Attribute, Comparable<AttributeImpl> {
 
 	private String key;
@@ -25,13 +21,11 @@ public class AttributeImpl implements Attribute, Comparable<AttributeImpl> {
 	}
 
 	@Override
-	@XmlElement(name="key", namespace=XSDs.METADATA_NAMESPACE)
 	public String getKey() {
 		return key;
 	}
 
 	@Override
-	@XmlElement(name="value", namespace=XSDs.METADATA_NAMESPACE)
 	public String getValue() {
 		return value;
 	}

@@ -1,12 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-import javax.xml.bind.annotation.XmlType;
-
-import com.google.common.collect.Maps;
-
-@XmlType(namespace=XSDs.CONTENTITEM_NAMESPACE)
 public enum MasterSource {
 	
 	METHODE("Methode");

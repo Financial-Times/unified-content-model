@@ -3,17 +3,9 @@ package com.ft.unifiedContentModel.model;
 import static org.springframework.util.Assert.notNull;
 
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
-
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-@XmlTransient
-@XmlSeeAlso({ArticleEntity.class,BlogEntity.class})
 public abstract class ContentEntity extends SimpleEntity implements Package, Images, AspectSetAware {
 	
 	private Location location;
@@ -43,13 +35,10 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.aspectSet = aspectSet;
 	}
 	
-	@XmlElement(name="aspectSet")
 	public String getAspectSet() {
 		return aspectSet;
 	}
 	
-	@XmlElementWrapper(name="aspects")
-	@XmlElement(name="aspect")
 	public List<String> getAspects() {
 		return aspects;
 	}
@@ -59,7 +48,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.aspects = aspects;
 	}
 
-	@XmlElement(name="location", namespace=XSDs.ASPECT_NAMESPACE)
 	public Location getLocation() {
 		return location;
 	}
@@ -67,7 +55,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.location = location;
 	}
 
-	@XmlElement(name="master", namespace=XSDs.ASPECT_NAMESPACE)
 	public Master getMaster() {
 		return master;
 	}
@@ -75,7 +62,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.master = master;
 	}
 
-	@XmlElement(name="packaging", namespace=XSDs.ASPECT_NAMESPACE)
 	public Packaging getPackaging() {
 		return packaging;
 	}
@@ -83,7 +69,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.packaging = packaging;
 	}
 
-	@XmlElement(name="body", namespace=XSDs.ASPECT_NAMESPACE)
 	public Body getBody() {
 		return body;
 	}
@@ -91,7 +76,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.body = body;
 	}
 
-	@XmlElement(name="summary", namespace=XSDs.ASPECT_NAMESPACE)
 	public Summary getSummary() {
 		return summary;
 	}
@@ -99,7 +83,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		this.summary = summary;
 	}
 	
-	@XmlElement(name="metadata", namespace=XSDs.METADATA_NAMESPACE)
 	public Metadata getMetadata() {
 		return metadata;
 	}
@@ -108,8 +91,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	}
 	
 	@Override
-	@XmlElementWrapper(name="package", namespace=XSDs.CONTENTITEM_NAMESPACE)
-	@XmlElement(name="packageItem", namespace=XSDs.CONTENTITEM_NAMESPACE)
 	public List<ContentPackageEntry> getPackage() {
 		return contentPackage;
 	}
@@ -118,8 +99,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	}
 	
 	@Override
-	@XmlElementWrapper(name="images", namespace=XSDs.CONTENTITEM_NAMESPACE)
-	@XmlElement(name="image", namespace=XSDs.IMAGE_NAMESPACE)
 	public List<Image> getImages() {
 		return images;
 	}

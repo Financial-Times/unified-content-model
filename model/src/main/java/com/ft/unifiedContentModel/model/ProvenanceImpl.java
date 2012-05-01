@@ -1,13 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Objects;
-
-@XmlType(name="provenance", namespace=XSDs.ASPECT_NAMESPACE)
 
 public class ProvenanceImpl implements Provenance {
 	
@@ -20,7 +15,6 @@ public class ProvenanceImpl implements Provenance {
 	}
 
 	@Override
-	@XmlElement(name="originatingParty", namespace=XSDs.FIELD_NAMESPACE)
 	public String getOriginatingParty(){
 		return originatingParty;
 	}

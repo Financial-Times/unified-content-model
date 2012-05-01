@@ -1,12 +1,7 @@
 package com.ft.unifiedContentModel.model.metadata;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.ft.unifiedContentModel.model.XSDs;
 import com.google.common.base.Objects;
 
-@XmlType(name="tag", namespace=XSDs.METADATA_NAMESPACE)
 public class TagImpl implements Tag {
 	
 	private Term term;
@@ -19,7 +14,6 @@ public class TagImpl implements Tag {
 	}
 
 	@Override
-	@XmlElement(name="term", type=TermImpl.class, namespace=XSDs.METADATA_NAMESPACE)
 	public Term getTerm() {
 		return term;
 	}

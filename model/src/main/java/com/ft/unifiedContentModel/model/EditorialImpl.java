@@ -1,13 +1,10 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.google.common.base.Objects;
+import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-@XmlType(name="editorial", namespace=XSDs.ASPECT_NAMESPACE, propOrder={"subheading", "leadBody", "standFirst"})
+@JsonPropertyOrder({"subheading", "leadBody", "standFirst"})
 public class EditorialImpl extends AttributionImpl implements Editorial  {
 	
 	private String subheading;
@@ -24,19 +21,16 @@ public class EditorialImpl extends AttributionImpl implements Editorial  {
 	}
 	
 	@Override
-	@XmlElement(name="subheading", namespace=XSDs.FIELD_NAMESPACE)
 	public String getSubheading() {
 		return subheading;
 	}
 
 	@Override
-	@XmlElement(name="leadBody", namespace=XSDs.FIELD_NAMESPACE)
 	public String getLeadBody() {
 		return leadBody;
 	}
 
 	@Override
-	@XmlElement(name="standFirst", namespace=XSDs.FIELD_NAMESPACE)
 	public String getStandFirst() {
 		return standFirst;
 	}

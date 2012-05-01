@@ -1,13 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Objects;
-
-@XmlType(name="packaging", namespace=XSDs.ASPECT_NAMESPACE , propOrder={"kicker", "spHeadline"})
 public class PackagingImpl implements Packaging {
 
 	private String kicker;
@@ -22,7 +17,6 @@ public class PackagingImpl implements Packaging {
 	}
 	
 	@Override
-	@XmlElement(name="kicker", namespace=XSDs.FIELD_NAMESPACE)
 	public String getKicker() {
 		return kicker;
 	}
@@ -32,7 +26,6 @@ public class PackagingImpl implements Packaging {
 	}
 	
 	@Override
-	@XmlElement(name="spHeadline", namespace=XSDs.FIELD_NAMESPACE)
 	public String getSpHeadline() {
 		return spHeadline;
 	}

@@ -1,14 +1,10 @@
 package com.ft.unifiedContentModel.model;
 
-import com.google.common.base.Objects;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
 import static org.springframework.util.Assert.hasText;
 import static org.springframework.util.Assert.notNull;
 
-@XmlType(name="master", namespace=XSDs.ASPECT_NAMESPACE, propOrder={"masterSource", "masterEntityId"})
+import com.google.common.base.Objects;
+
 public class MasterImpl implements Master {
 
 	private String masterEntityId;
@@ -25,7 +21,6 @@ public class MasterImpl implements Master {
 	}
 	
 	@Override
-	@XmlElement(name="masterSource", required=true, namespace=XSDs.FIELD_NAMESPACE)
 	public String getMasterSource() {
 		return masterSource.toString();
 	}
@@ -35,7 +30,6 @@ public class MasterImpl implements Master {
 	}
 	
 	@Override
-	@XmlElement(name="masterEntityId", required=true, namespace=XSDs.FIELD_NAMESPACE)
 	public String getMasterEntityId() {
 		return masterEntityId;
 	}

@@ -1,20 +1,14 @@
 package com.ft.unifiedContentModel.model;
 
-import java.util.Set;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlType;
-
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import com.ft.unifiedContentModel.model.metadata.Tag;
-import com.ft.unifiedContentModel.model.metadata.TagImpl;
 import com.google.common.base.Objects;
+import java.util.Set;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@XmlType(name="metadata", namespace=XSDs.METADATA_NAMESPACE, propOrder = { "primarySection", "primaryTheme", "tags" })
+@JsonPropertyOrder({"primarySection", "primaryTheme", "tags"})
 public class MetadataImpl implements Metadata {
 
 	private Tag primarySection;
@@ -32,7 +26,6 @@ public class MetadataImpl implements Metadata {
 	}
 
 	@Override
-	@XmlElement(name="primarySection", namespace=XSDs.METADATA_NAMESPACE)
 	public Tag getPrimarySection() {
 		return primarySection;
 	}
@@ -42,7 +35,6 @@ public class MetadataImpl implements Metadata {
 	}
 
 	@Override
-	@XmlElement(name="primaryTheme", namespace=XSDs.METADATA_NAMESPACE)
 	public Tag getPrimaryTheme() {
 		return primaryTheme;
 	}
@@ -52,8 +44,6 @@ public class MetadataImpl implements Metadata {
 	}
 
 	@Override
-	@XmlElementWrapper(name="tags", namespace=XSDs.METADATA_NAMESPACE)
-	@XmlElement(name="tag", type=TagImpl.class)
 	public Set<Tag> getTags() {
 		return tags;
 	}

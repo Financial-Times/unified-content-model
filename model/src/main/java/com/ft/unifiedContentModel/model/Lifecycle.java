@@ -1,11 +1,10 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlTransient;
-
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.joda.time.DateTime;
 
-@XmlTransient
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonDeserialize(as=LifecycleImpl.class)
 public interface Lifecycle {
 	

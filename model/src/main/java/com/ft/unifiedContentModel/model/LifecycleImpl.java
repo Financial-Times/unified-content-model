@@ -1,14 +1,12 @@
 package com.ft.unifiedContentModel.model;
 
-import com.ft.unifiedContentModel.core.datetime.DateTimeAdapter;
+import com.ft.unifiedContentModel.core.datetime.JsonDateTimeSerializer;
 import com.google.common.base.Objects;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.joda.time.DateTime;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-@XmlType(name="lifecycle", namespace=XSDs.ASPECT_NAMESPACE, propOrder={"initialPublishDateTime", "lastPublishDateTime"})
+@JsonPropertyOrder({"initialPublishDateTime", "lastPublishDateTime"})
 public class LifecycleImpl implements Lifecycle {
 
 	private DateTime initialPublishDateTime;
@@ -21,17 +19,16 @@ public class LifecycleImpl implements Lifecycle {
 		this.initialPublishDateTime = initialPublishDateTime;
 		this.lastPublishDateTime = lastPublishDateTime;
 	}	
-	
+
+
+    @JsonSerialize(using=JsonDateTimeSerializer.class, include=JsonSerialize.Inclusion.NON_NULL)
 	@Override
-	@XmlElement(name="initialPublishDateTime", namespace=XSDs.FIELD_NAMESPACE)
-	@XmlJavaTypeAdapter(value=DateTimeAdapter.class, type=DateTime.class)
 	public DateTime getInitialPublishDateTime() {
 		return initialPublishDateTime;
 	}
 
+    @JsonSerialize(using=JsonDateTimeSerializer.class, include=JsonSerialize.Inclusion.NON_NULL)
 	@Override
-	@XmlElement(name="lastPublishDateTime", namespace=XSDs.FIELD_NAMESPACE)
-	@XmlJavaTypeAdapter(value=DateTimeAdapter.class, type=DateTime.class)
 	public DateTime getLastPublishDateTime() {
 		return lastPublishDateTime;
 	}

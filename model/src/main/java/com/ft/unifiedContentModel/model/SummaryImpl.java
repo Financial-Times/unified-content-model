@@ -1,13 +1,8 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Objects;
-
-@XmlType(name="summary", namespace=XSDs.ASPECT_NAMESPACE)
 public class SummaryImpl implements Summary {
 
 	private String excerpt;
@@ -20,7 +15,6 @@ public class SummaryImpl implements Summary {
 	}
 	
 	@Override
-	@XmlElement(name="excerpt", namespace=XSDs.FIELD_NAMESPACE)
 	public String getExcerpt() {
 		return excerpt;
 	}

@@ -1,18 +1,14 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-
 import com.google.common.base.Objects.ToStringHelper;
 
 
-@XmlTransient
+
 public abstract class SimpleEntity extends IdentifiableEntity {
 
 	private Title title;
 	private Lifecycle lifecycle;
-	
-	@XmlElement(name="lifecycle", namespace=XSDs.ASPECT_NAMESPACE)
+
 	public Lifecycle getLifecycle() {
 		return lifecycle;
 	}
@@ -21,7 +17,6 @@ public abstract class SimpleEntity extends IdentifiableEntity {
 		this.lifecycle = lifecycle;
 	}
 
-	@XmlElement(name="title", namespace=XSDs.ASPECT_NAMESPACE)
 	public Title getTitle() {
 		return title;
 	}

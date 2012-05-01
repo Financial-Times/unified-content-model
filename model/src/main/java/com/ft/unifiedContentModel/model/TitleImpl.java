@@ -1,13 +1,9 @@
 package com.ft.unifiedContentModel.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
+import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.common.base.Objects;
 
-@XmlType(name="title", namespace=XSDs.ASPECT_NAMESPACE)
 public class TitleImpl implements Title {
 
 	private String title;
@@ -18,8 +14,7 @@ public class TitleImpl implements Title {
 	public TitleImpl(String title) {
 		this.title = StringUtils.isNotBlank(title) ? title : null;
 	}
-	
-	@XmlElement(name="title", namespace=XSDs.FIELD_NAMESPACE)
+
 	@Override
 	public String getTitle() {
 		return title;
