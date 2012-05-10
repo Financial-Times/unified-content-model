@@ -1,22 +1,19 @@
 package com.ft.unifiedContentModel.model;
 
 import com.google.common.base.Objects;
-import java.util.List;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.annotate.JsonTypeName;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonTypeName(value="storyPackageItem")
-@JsonPropertyOrder({"aspectSet", "aspects", "id", "apiUrl", "packaging", "provenance"})
-public class ContentPackageEntry implements Identifiable, AspectSetAware {
+@JsonPropertyOrder({"id", "apiUrl", "packaging", "provenance"})
+public class ContentPackageEntry implements Identifiable {
 	
 	private String id;
 	private String apiUrl;
 	private Packaging packaging;
 	private Provenance provenance;
-	private String aspectSet;
-	private List<String> aspects;
 	
 	public ContentPackageEntry(String apiUrl,String headline, String kicker, String source, String guid) {
 		this.apiUrl = apiUrl;
@@ -28,7 +25,7 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 
 	@SuppressWarnings("unused")
 	private ContentPackageEntry(){
-		// required for JAXB
+		// required for Jackson
 	}
 
 	@Override
@@ -49,6 +46,7 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 	
 	public Packaging getPackaging() {
 		return packaging;
+
 	}
 	public void setPackaging(Packaging packaging) {
 		this.packaging = packaging;
@@ -60,25 +58,7 @@ public class ContentPackageEntry implements Identifiable, AspectSetAware {
 	public void setProvenance(Provenance provenance) {
 		this.provenance = provenance;
 	}
-	
-	public String getAspectSet() {
-		return aspectSet;
-	}
 
-	@Override
-	public void setAspectSet(String aspectSet) {
-		this.aspectSet = aspectSet;
-	}
-	
-
-	public List<String> getAspects() {
-		return aspects;
-	}
-	@Override
-	public void setAspects(List<String> aspects) {
-		this.aspects = aspects;
-	}
-	
 	@Override
 	public boolean equals(Object o) {
 		if(o == null){
