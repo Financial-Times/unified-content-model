@@ -108,7 +108,17 @@
 		<constructor-arg value="images" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
-	
+
+    <bean name="slidesField" class="com.ft.unifiedContentModel.model.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="slides" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
+
+    <bean name="slideshowHeadingField" class="com.ft.unifiedContentModel.model.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="slideshowHeading" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
+
 	<!-- Aspect Definitions -->
 	
 	<bean name="titleAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
@@ -246,7 +256,18 @@
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
-	</bean>	
+	</bean>
+
+    <bean name="slideshowAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="slideshow" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="slideshowHeadingField" />
+				<ref bean="slidesField" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
 	
 	
 	
@@ -258,6 +279,10 @@
 	
 	<bean id="blogAspectSetName" class="java.lang.String">
 		<constructor-arg value="blog" />
+	</bean>
+
+    <bean id="slideshowAspectSetName" class="java.lang.String">
+		<constructor-arg value="slideshow" />
 	</bean>
 
 	<bean id="articleAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
@@ -281,7 +306,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-		<bean id="blogAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+	<bean id="blogAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="blogAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -299,17 +324,54 @@
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
+
+    <bean id="slideshowAspectSet" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+		<constructor-arg ref="slideshowAspectSetName" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="titleAspect" />
+				<ref bean="lifecycleAspect" />
+				<ref bean="masterAspect" />
+				<ref bean="packagingAspect" />
+				<ref bean="bodyAspect" />
+				<ref bean="provenanceAspect" />
+				<ref bean="editorialAspect" />
+				<ref bean="locationAspect" />
+				<ref bean="metadataAspect" />
+				<ref bean="imagesAspect" />
+				<ref bean="slideshowAspect" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
 	
 	<util:set id="allAspectSets">
 		<ref bean="articleAspectSet" />
 		<ref bean="blogAspectSet" />
+		<ref bean="slideshowAspectSet" />
 	</util:set>
 	
 	<bean id="policyBasedAspectSetCollection" class="com.ft.unifiedContentModel.model.aspect.PolicyBasedAspectSetCollection">
 		<constructor-arg ref="allAspectSets" />
 		<constructor-arg>
-			<bean class="com.ft.unifiedContentModel.model.aspect.HardwiredAspectSetSelectionPolicy">
-				<constructor-arg ref="articleAspectSet" />
+			<bean class="com.ft.unifiedContentModel.model.aspect.TypeBasedAspectSetSelectionPolicy">
+				<constructor-arg>
+                     <map>
+                        <entry>
+                            <key><value>com.ft.unifiedContentModel.model.ArticleEntity</value></key>
+                            <ref bean="articleAspectSet" />
+                        </entry>
+                        <entry>
+                            <key><value>com.ft.unifiedContentModel.model.SlideshowArticleEntity</value></key>
+                            <ref bean="slideshowAspectSet" />
+                        </entry>
+                        <entry>
+                            <key><value>default</value></key>
+                            <ref bean="articleAspectSet" />
+                        </entry>
+                    </map>
+				</constructor-arg>
+
 			</bean>
 		</constructor-arg>
 	</bean>

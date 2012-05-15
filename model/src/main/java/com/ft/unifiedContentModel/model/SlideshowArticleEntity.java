@@ -4,6 +4,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 	"body", "lifecycle", "location", "packaging", "master", "editorial", "provenance", "metadata", 
@@ -44,6 +45,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 		return slideshow;
 	}
 
+    @JsonDeserialize(as=SlideshowImpl.class)
 	public void setSlideshow(Slideshow slideshow) {
 		this.slideshow = slideshow;
 	}
