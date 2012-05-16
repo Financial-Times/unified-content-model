@@ -10,9 +10,10 @@ import java.util.Set;
 public class TypeBasedAspectSetSelectionPolicy implements AspectSetSelectionPolicy {
 
     private Map<String, AspectSet> aspectSetMap;
-    private static final String DEFAULT = "default";
+    private AspectSet defaultAspectSet;
 
-    public TypeBasedAspectSetSelectionPolicy(Map<String, AspectSet> aspectSetMap) {
+    public TypeBasedAspectSetSelectionPolicy(AspectSet aspectSet, Map<String, AspectSet> aspectSetMap) {
+        defaultAspectSet = aspectSet;
         this.aspectSetMap = aspectSetMap;
     }
 
@@ -22,7 +23,7 @@ public class TypeBasedAspectSetSelectionPolicy implements AspectSetSelectionPoli
         notNull(type,"type cannot be null");
         AspectSet aspectSet =   aspectSetMap.get(type.getName());
         if(aspectSet == null){
-            aspectSet = aspectSetMap.get(DEFAULT);
+            return defaultAspectSet;
         }
         return aspectSet;
     }

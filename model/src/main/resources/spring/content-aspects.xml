@@ -258,8 +258,8 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-    <bean name="slideshowAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
-		<constructor-arg value="slideshow" />
+    <bean name="mediaAssetsAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="mediaAsset" />
 		<constructor-arg>
 			<util:set>
 				<ref bean="slideshowHeadingField" />
@@ -301,6 +301,7 @@
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
 				<ref bean="imagesAspect" />
+                <ref bean="mediaAssetsAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -339,7 +340,7 @@
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
 				<ref bean="imagesAspect" />
-				<ref bean="slideshowAspect" />
+				<ref bean="mediaAssetsAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -355,7 +356,8 @@
 		<constructor-arg ref="allAspectSets" />
 		<constructor-arg>
 			<bean class="com.ft.unifiedContentModel.model.aspect.TypeBasedAspectSetSelectionPolicy">
-				<constructor-arg>
+				<constructor-arg index="0" ref="articleAspectSet"/>
+                <constructor-arg index="1">
                      <map>
                         <entry>
                             <key><value>com.ft.unifiedContentModel.model.ArticleEntity</value></key>
@@ -365,13 +367,8 @@
                             <key><value>com.ft.unifiedContentModel.model.SlideshowArticleEntity</value></key>
                             <ref bean="slideshowAspectSet" />
                         </entry>
-                        <entry>
-                            <key><value>default</value></key>
-                            <ref bean="articleAspectSet" />
-                        </entry>
                     </map>
 				</constructor-arg>
-
 			</bean>
 		</constructor-arg>
 	</bean>

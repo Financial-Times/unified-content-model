@@ -37,7 +37,7 @@ public class TypeBasedAspectSetSelectionPolicyTest {
         aspectSetMap.put(ARTICLE_CLASS_NAME, article);
         aspectSetMap.put(SS_ARTICLE_CLASS_NAME , slideshow);
         aspectSetMap.put("default", defaultSet);
-        instance = new TypeBasedAspectSetSelectionPolicy(aspectSetMap);
+        instance = new TypeBasedAspectSetSelectionPolicy(defaultSet,aspectSetMap);
     }
 
     @Test
