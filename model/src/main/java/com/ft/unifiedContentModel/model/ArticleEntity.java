@@ -1,16 +1,20 @@
 package com.ft.unifiedContentModel.model;
 
+import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "location", "summary", "packaging", "master", "editorial", "provenance", "metadata", 
-		"images", "package"})
-public class ArticleEntity extends ContentEntity implements Article {
+		"images", "package", "mediaAssets"})
+public class ArticleEntity extends ContentEntity implements Article, MediaAssetAware {
 	
 	private Editorial editorial;
 	private Provenance provenance;
+	private List<MediaAsset> mediaAssets;
 	
 	public ArticleEntity() {}
 	
@@ -38,14 +42,23 @@ public class ArticleEntity extends ContentEntity implements Article {
 	
 	@Override
 	public boolean equals(Object o) {
-		if(o == this){
+		if (o == this) {
 			return true;
 		}
-		if(o instanceof ContentEntity) {
-			ContentEntity a = (ContentEntity)o;
+		if (o instanceof ContentEntity) {
+			ContentEntity a = (ContentEntity) o;
 			return Objects.equal(this.getId(), a.getId());
 		}
 		return false;
+	}
+
+	@Override
+	public List<MediaAsset> getMediaAssets() {
+		return mediaAssets;
+	}
+
+	public void setMediaAssets(List<MediaAsset> mediaAssets) {
+		this.mediaAssets = mediaAssets;
 	}
 
 	@Override
@@ -68,6 +81,8 @@ public class ArticleEntity extends ContentEntity implements Article {
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial", editorial)
-					.add("provenance", provenance);
-	}	
+					.add("provenance", provenance)
+					.add("mediaAssets", mediaAssets);
+	}
+
 }

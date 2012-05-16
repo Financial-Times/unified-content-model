@@ -1,9 +1,11 @@
 package com.ft.unifiedContentModel.model;
 
+import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
-import java.util.List;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 	"body", "lifecycle", "location", "packaging", "master", "editorial", "provenance", "metadata", 
@@ -75,11 +77,11 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 					.add("body", getBody())
 					.add("packaging", getPackaging())
 					.add("metadata", getMetadata())
-					.add("contentPackage", getPackage())
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial", editorial)
-					.add("provenance", provenance);
+					.add("provenance", provenance)
+					.add("mediaAssets", mediaAssets);
 	}	
 	
 }
