@@ -20,7 +20,5 @@ public interface SlideshowArticle {
     Title getTitle();
 
     Lifecycle getLifecycle();
-	
-	Slideshow getSlideshow();
 
 }

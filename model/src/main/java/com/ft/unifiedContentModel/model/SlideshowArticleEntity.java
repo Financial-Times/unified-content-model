@@ -1,20 +1,19 @@
 package com.ft.unifiedContentModel.model;
 
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import java.util.List;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 	"body", "lifecycle", "location", "packaging", "master", "editorial", "provenance", "metadata", 
-	"images", "package", "slideshow"})
-public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle {
+	"images", "package", "mediaAssets"})
+public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, MediaAssetAware {
 
 	private Editorial editorial;
 	private Provenance provenance;
-	private Slideshow slideshow;
-	
+	private List<MediaAsset> mediaAssets;
+
 	public SlideshowArticleEntity() {
 	}
 	
@@ -40,17 +39,16 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 		return provenance;
 	}
 
-	@Override
-	public Slideshow getSlideshow() {
-		return slideshow;
-	}
+    @Override
+    public List<MediaAsset> getMediaAssets() {
+        return mediaAssets;
+    }
 
-    @JsonDeserialize(as=SlideshowImpl.class)
-	public void setSlideshow(Slideshow slideshow) {
-		this.slideshow = slideshow;
-	}
-	
-	@Override
+    public void setMediaAssets(List<MediaAsset> mediaAssets) {
+        this.mediaAssets = mediaAssets;
+    }
+
+    @Override
 	public boolean equals(Object o) {
 		if(o == this){
 			return true;
@@ -81,8 +79,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial", editorial)
-					.add("provenance", provenance)
-					.add("slideshow", slideshow);
+					.add("provenance", provenance);
 	}	
 	
 }
