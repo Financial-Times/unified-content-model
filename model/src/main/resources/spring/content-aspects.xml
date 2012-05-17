@@ -259,7 +259,7 @@
 	</bean>
 
     <bean name="mediaAssetsAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
-		<constructor-arg value="mediaAsset" />
+		<constructor-arg value="mediaAssets" />
 		<constructor-arg>
 			<util:set>
 				<ref bean="slideshowHeadingField" />
