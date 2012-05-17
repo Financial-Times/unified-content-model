@@ -20,7 +20,8 @@ public class Slideshow implements MediaAsset {
 		
 	}
 	
-	public Slideshow(String slideshowHeading, List<Image> slides) {
+	public Slideshow(String uuid, String slideshowHeading, List<Image> slides) {
+		this.uuid = uuid;
 		this.slideshowHeading = slideshowHeading;
 		this.slides = slides;
 	}
