@@ -12,6 +12,7 @@ import com.google.common.base.Objects;
 public class Slideshow implements MediaAsset {
 
 	private String name;
+	private String uuid;
 	private String slideshowHeading;
 	List<Image> slides;
 	
@@ -29,9 +30,20 @@ public class Slideshow implements MediaAsset {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
+    
+    @Override
+    public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
 
 	public String getSlideshowHeading() {
 		return slideshowHeading;
