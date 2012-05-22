@@ -53,11 +53,18 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 
 	@Override
 	public String getType() {
+		if (imageType == null) {
+			return null;
+		}
 		return imageType.toString();
 	}
 
 	public void setType(String imageType) {
-		this.imageType = ImageType.fromString(imageType);
+		if (imageType == null) {
+			this.imageType = null;
+		} else {
+			this.imageType = ImageType.fromString(imageType);
+		}	
 	}
 
 	@Override
@@ -130,7 +137,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	public String toString() {
 		return Objects.toStringHelper(this)
 					.add("url", url)
-					.add("imageType", imageType)
+					.add("imageType", imageType.toString())
 					.add("source", source)
 					.add("alt", alt)
 					.add("caption", caption)
