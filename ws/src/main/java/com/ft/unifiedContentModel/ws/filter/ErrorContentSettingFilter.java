@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.Assert;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -22,8 +20,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * @author alberto.faci
  */
 public class ErrorContentSettingFilter extends OncePerRequestFilter {
-	
-	private static final Log log = LogFactory.getLog(ErrorContentSettingFilter.class);
 	
 	private Map<String, String> mediaTypesMap;
 	private String defaultContentType;

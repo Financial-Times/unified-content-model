@@ -9,8 +9,8 @@ import javax.xml.transform.sax.SAXSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.Validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -20,7 +20,7 @@ import com.ft.unifiedContentModel.testsupport.schema.XmlSchemaLoader;
 
 public class XmlResponseValidator implements ResponseValidator {
 	
-	private static Log logger = LogFactory.getLog(XmlResponseValidator.class);
+	private static Logger logger = LoggerFactory.getLogger(XmlResponseValidator.class);
 		
 	private Schema schema;
 	private XmlSchemaLoader xmlSchemaLoader;

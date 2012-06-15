@@ -7,15 +7,15 @@ import javax.xml.XMLConstants;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.xml.sax.SAXException;
 
 public class SingleXmlSchemaLoader implements XmlSchemaLoader {
 
 	
-	private static final Log LOGGER = LogFactory.getLog(SingleXmlSchemaLoader.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SingleXmlSchemaLoader.class);
 	
 	private Schema schema; 
 	private Resource resource;
