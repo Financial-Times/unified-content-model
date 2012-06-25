@@ -14,13 +14,13 @@ public class Slideshow implements MediaAsset {
 	private String name;
 	private String uuid;
 	private String slideshowHeading;
-	List<Image> slides;
+	List<IndexedImage> slides;
 	
 	public Slideshow() {
 		
 	}
 	
-	public Slideshow(String uuid, String slideshowHeading, List<Image> slides) {
+	public Slideshow(String uuid, String slideshowHeading, List<IndexedImage> slides) {
 		this.uuid = uuid;
 		this.slideshowHeading = slideshowHeading;
 		this.slides = slides;
@@ -54,11 +54,11 @@ public class Slideshow implements MediaAsset {
 		this.slideshowHeading = slideshowHeading;
 	}
 
-	public List<Image> getSlides() {
+	public List<IndexedImage> getSlides() {
 		return slides;
 	}
 	
-	public void setSlides(List<Image> slides) {
+	public void setSlides(List<IndexedImage> slides) {
 		this.slides = slides;
 	}
 	
