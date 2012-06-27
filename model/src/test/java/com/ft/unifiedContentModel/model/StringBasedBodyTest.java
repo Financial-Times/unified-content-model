@@ -8,23 +8,21 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ft.unifiedContentModel.model.Body;
-import com.ft.unifiedContentModel.model.StringBasedBody;
-
 public class StringBasedBodyTest {
 	
 	private static final String TEXT = "The quick brown fox jumps over the lazy dog";
-	
+	private static final String MEDIA_TYPE = "test/html";
+
 	private StringBasedBody instance;
 	
 	@Before
 	public void setUp() {
-		instance = new StringBasedBody(TEXT);
+		instance = new StringBasedBody(TEXT, MEDIA_TYPE);
 	}
 
 	@Test
 	public void bodyTextEmptyIfConstructorArgIsNull() {
-		instance = new StringBasedBody(null);
+		instance = new StringBasedBody(null, null);
 		assertThat(instance.toString(), equalTo(null));
 	}
 
@@ -43,7 +41,7 @@ public class StringBasedBodyTest {
 	
 	@Test
 	public void twoDifferentInstancesAreNotEqual() {
-		Body another = new StringBasedBody("I AM NOT A FOX OR A DOG");
+		Body another = new StringBasedBody("I AM NOT A FOX OR A DOG", MEDIA_TYPE);
 		assertThat(instance, not(equalTo(another)));
 	}
 

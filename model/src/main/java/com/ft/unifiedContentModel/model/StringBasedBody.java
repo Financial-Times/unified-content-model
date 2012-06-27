@@ -4,18 +4,20 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 import com.google.common.base.Objects;
 
-public class StringBasedBody implements Body {
+public class StringBasedBody implements com.ft.unifiedContentModel.model.Body {
 
 	private String body;
+    private String mediaType;
 
 	public StringBasedBody(){
 	}
-	
-	public StringBasedBody(String body) {
-		this.body = isNotBlank(body) ? body : null;
-	}
 
-	@Override
+    public StringBasedBody(String body, String mediaType) {
+        this.body = isNotBlank(body) ? body : null;
+        this.mediaType = isNotBlank(mediaType) ? mediaType : null;
+    }
+
+    @Override
 	public String getBody() {
 		return body;
 	}
@@ -23,19 +25,36 @@ public class StringBasedBody implements Body {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	
-	@Override
+
+    @Override
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    @Override
 	public boolean equals(Object that) {
-		if (!(that instanceof StringBasedBody)) {
+        if(that == null){
 			return false;
 		}
-		StringBasedBody thatBody = (StringBasedBody) that;
-		return body.equals(thatBody.toString());
+		if(that == this){
+			return true;
+		}
+		if(that instanceof StringBasedBody) {
+            StringBasedBody thatBody = (StringBasedBody) that;
+
+			return (Objects.equal(thatBody.getBody(), this.body) &&
+                    Objects.equal(thatBody.getMediaType(), this.mediaType));
+        }
+		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(body);
+        return Objects.hashCode(body);
 	}
 	
 	@Override
