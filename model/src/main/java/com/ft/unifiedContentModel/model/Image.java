@@ -19,4 +19,6 @@ public interface Image {
 
     Integer getWidth();
 
+    String getMediaType();
+
 }

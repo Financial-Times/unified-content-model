@@ -6,7 +6,7 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-@JsonPropertyOrder({"slideNumber","url", "type","source", "alt", "caption", "height", "width"})
+@JsonPropertyOrder({"slideNumber","url", "type","source", "alt", "caption", "height", "width", "mediaType"})
 public class IndexedTypeBasedImage implements IndexedImage {
 
     @JsonUnwrapped
@@ -57,9 +57,17 @@ public class IndexedTypeBasedImage implements IndexedImage {
         return typeBasedImage.getWidth();
     }
 
+    @Override
+    public String getMediaType() {
+        return typeBasedImage.getMediaType();
+    }
+
+    @Override
     public Integer getSlideNumber() {
         return slideNumber;
     }
+
+
 }
 
 

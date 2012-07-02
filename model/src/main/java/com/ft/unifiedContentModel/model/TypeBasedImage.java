@@ -10,7 +10,7 @@ import org.codehaus.jackson.annotate.JsonTypeName;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 @JsonTypeName(value="image")
-@JsonPropertyOrder({"url", "type","source", "alt", "caption", "height", "width"})
+@JsonPropertyOrder({"url", "type","source", "alt", "caption", "height", "width", "mediaType"})
 public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	
 	private String url;
@@ -20,6 +20,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 	private String caption;
     private Integer height;
     private Integer width;
+    private String mediaType;
 
     public TypeBasedImage (String url, ImageType type,String source, String alt, String caption) {
 		this.url = url;
@@ -29,7 +30,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 		this.caption = caption;
 	}
 
-    public TypeBasedImage(String url, ImageType imageType, String source, String alt, String caption, Integer height, Integer width) {
+    public TypeBasedImage(String url, ImageType imageType, String source, String alt, String caption, Integer height, Integer width, String mediaType) {
         this.url = url;
         this.imageType = imageType;
         this.source = source;
@@ -37,6 +38,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
         this.caption = caption;
         this.height = height;
         this.width = width;
+        this.mediaType = mediaType;
     }
 
     protected TypeBasedImage(){
@@ -114,6 +116,15 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
     }
 
     @Override
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    @Override
 	public boolean equals(Object o) {
 		if(o == null){
 			return false;
@@ -143,6 +154,7 @@ public class TypeBasedImage implements com.ft.unifiedContentModel.model.Image {
 					.add("caption", caption)
 					.add("height", height)
 					.add("width", width)
+					.add("mediaType", mediaType)
 					.toString();
 	}
 
