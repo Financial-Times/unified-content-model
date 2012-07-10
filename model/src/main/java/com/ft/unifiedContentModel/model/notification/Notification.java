@@ -1,4 +1,12 @@
 package com.ft.unifiedContentModel.model.notification;
 
-public class Notification {
+import org.joda.time.DateTime;
+
+public interface Notification {
+
+    String getType();
+
+    DateTime getUpdated();
+
+    NotificationData getData();
 }
