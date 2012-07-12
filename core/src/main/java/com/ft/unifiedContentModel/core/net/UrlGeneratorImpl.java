@@ -97,7 +97,17 @@ public class UrlGeneratorImpl implements UrlGenerator {
 				.build();
     }
 
-	@Override
+    @Override
+    public Url createUrlForContentItemUpdateNotifications() {
+        Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
+
+        return UrlBuilder.basedOn(baseApiUrl)
+                .withPathInfo(contentItemNotificationsPath.toString())
+                .build();
+    }
+
+
+    @Override
 	public Url createRequestUrl(String servletPath, String pathInfo, String queryString) {
 		return UrlBuilder.basedOn(baseApiUrl)
 			.withPath(servletPath)

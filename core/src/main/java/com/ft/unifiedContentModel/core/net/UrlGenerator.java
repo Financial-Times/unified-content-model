@@ -9,6 +9,7 @@ public interface UrlGenerator {
     Url createUrlForPages();
     Url createUrlForImage(String relativeImagePathInfo);
     Url createUrlForContentList(String pageUuid, String contentVanityId);
+    Url createUrlForContentItemUpdateNotifications();
     
     Url createRequestUrl(String servletPath, String pathInfo, String queryString);
     

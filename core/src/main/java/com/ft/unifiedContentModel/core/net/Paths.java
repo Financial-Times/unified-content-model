@@ -15,4 +15,6 @@ public final class Paths {
 	public static final String PAGE_READ = "/site/v1/pages/{pageId}";
 	public static final String PAGE_LIST = "/site/v1/pages";
 
+    public static final String ITEM_NOTIFICATIONS_LIST = "content/notifications/items";
+
 }

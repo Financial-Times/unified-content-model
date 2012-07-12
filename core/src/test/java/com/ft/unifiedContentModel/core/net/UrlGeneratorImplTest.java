@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -104,6 +105,15 @@ public class UrlGeneratorImplTest {
 		String url = generator.createUrlForContentList(UUID, COMPONENT_VANITY).toString();
 		assertEquals(API_URL + COMPONENT_PATH.expand(UUID, COMPONENT_VANITY), url);
 	}
+
+    @Test
+    public void contentItemNotificationsUrl(){
+        when(mockpath.toString()).thenReturn(Paths.ITEM_NOTIFICATIONS_LIST);
+        when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_NOTIFICATIONS_LIST))).thenReturn(mockpath);
+
+        String url = generator.createUrlForContentItemUpdateNotifications().toString();
+        assertEquals(API_URL + "/" + Paths.ITEM_NOTIFICATIONS_LIST, url);
+    }
 
     @Test
 	public void shouldCreateRequestUrlBasedOnSupplied() throws Exception {
