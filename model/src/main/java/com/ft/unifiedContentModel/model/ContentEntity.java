@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.model;
 
+
 import static org.springframework.util.Assert.notNull;
 
 import java.util.List;

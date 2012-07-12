@@ -30,4 +30,9 @@ public class ControlledClock implements Clock {
 	public String toString() {
 		return dateTime.toString();
 	}
+
+    @Override
+    public DateTime getDateTime() {
+        return this.dateTime;
+    }
 }

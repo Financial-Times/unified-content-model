@@ -24,8 +24,13 @@ public class SystemClock implements Clock {
 	public boolean isAfter(long millis) {
 		return now().isAfter(millis);
 	}
-	
-	private DateTime now() {
+
+    @Override
+    public DateTime getDateTime() {
+        return now();
+    }
+
+    private DateTime now() {
 		return new DateTime(DateTimeZone.UTC);
 	}
 }
