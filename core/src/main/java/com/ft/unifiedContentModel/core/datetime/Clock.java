@@ -14,6 +14,5 @@ public interface Clock {
 	
 	boolean isAfter(long millis);
 
-    DateTime getDateTime();
-
+	DateTime minsOffset(Integer minutes);
 }

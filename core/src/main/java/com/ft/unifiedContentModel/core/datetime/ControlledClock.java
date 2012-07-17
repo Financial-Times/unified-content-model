@@ -16,6 +16,7 @@ public class ControlledClock implements Clock {
 		return dateTime.getMillis();
 	}
 
+
 	@Override
 	public boolean isBefore(long millis) {
 		return dateTime.isBefore(millis);
@@ -31,8 +32,8 @@ public class ControlledClock implements Clock {
 		return dateTime.toString();
 	}
 
-    @Override
-    public DateTime getDateTime() {
-        return this.dateTime;
-    }
+	@Override
+	public DateTime minsOffset(Integer minutes) {
+		return dateTime.plusMinutes(minutes);
+	}
 }

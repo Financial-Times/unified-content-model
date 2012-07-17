@@ -25,12 +25,12 @@ public class SystemClock implements Clock {
 		return now().isAfter(millis);
 	}
 
-    @Override
-    public DateTime getDateTime() {
-        return now();
-    }
+	@Override
+	public DateTime minsOffset(Integer minutes) {
+		return now().plusMinutes(minutes);
+	}
 
-    private DateTime now() {
+	private DateTime now() {
 		return new DateTime(DateTimeZone.UTC);
 	}
 }
