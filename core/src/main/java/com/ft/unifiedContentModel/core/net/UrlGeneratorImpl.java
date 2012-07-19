@@ -16,6 +16,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
     
     
     private final PathFactory pathFactory;
+	private final String LAST_MODIFIED_DATE_PREFIX = "lastModifiedDate=";
 
 	public UrlGeneratorImpl(PathFactory pathFactory) {
 		notNull(pathFactory);
@@ -106,8 +107,14 @@ public class UrlGeneratorImpl implements UrlGenerator {
                 .build();
     }
 
+	@Override
+	public Url createUrlForItemWithLastModifiedDate(String itemUuid, String lastModifiedDate) {
+		return UrlBuilder.basedOn(createUrlForItem(itemUuid).toString())
+				.withQueryString(LAST_MODIFIED_DATE_PREFIX + lastModifiedDate)
+				.build();
+	}
 
-    @Override
+	@Override
 	public Url createRequestUrl(String servletPath, String pathInfo, String queryString) {
 		return UrlBuilder.basedOn(baseApiUrl)
 			.withPath(servletPath)

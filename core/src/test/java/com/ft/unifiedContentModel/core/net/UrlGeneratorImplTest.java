@@ -3,18 +3,15 @@ package com.ft.unifiedContentModel.core.net;
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import com.google.common.collect.Maps;
 import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.util.UriTemplate;
-
-import com.google.common.collect.Maps;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UrlGeneratorImplTest {
@@ -139,4 +136,17 @@ public class UrlGeneratorImplTest {
     	assertEquals("http://api.ft.com/servlet?param1=foo&param2=bar", url);
 	}
 
+	@Test
+	public void shouldCreateItemUrlWithLastModifiedQueryParam() throws Exception {
+		generator.setBaseApiUrl(API_URL);
+
+		Map<String, Object> vars = Maps.newHashMap();
+		vars.put("itemId", UUID);
+		when(mockpath.toString()).thenReturn(RESOLVED_ITEM_READ_PATH);
+		when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_READ), Mockito.eq(vars))).thenReturn(mockpath);
+
+		String timestamp = "16-07-2012T13.33.56.123Z";
+		String url = generator.createUrlForItemWithLastModifiedDate(UUID, "16-07-2012T13.33.56.123Z").toString();
+		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?lastModifiedDate=" + timestamp, url );
+	}
 }

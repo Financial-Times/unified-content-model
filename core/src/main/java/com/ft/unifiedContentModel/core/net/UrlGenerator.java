@@ -5,6 +5,7 @@ package com.ft.unifiedContentModel.core.net;
 public interface UrlGenerator {
     Url createUrlForItems();
     Url createUrlForItem(String itemUuid);
+    Url createUrlForItemWithLastModifiedDate(String itemUuid, String lastModifiedDate);
     Url createUrlForPage(String pageUuid);
     Url createUrlForPages();
     Url createUrlForImage(String relativeImagePathInfo);
