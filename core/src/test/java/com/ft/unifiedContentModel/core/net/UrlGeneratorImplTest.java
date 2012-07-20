@@ -147,6 +147,6 @@ public class UrlGeneratorImplTest {
 
 		String timestamp = "16-07-2012T13.33.56.123Z";
 		String url = generator.createUrlForItemWithLastModifiedDate(UUID, "16-07-2012T13.33.56.123Z").toString();
-		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?lastModifiedDate=" + timestamp, url );
+		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?lastModified=" + timestamp, url );
 	}
 }
