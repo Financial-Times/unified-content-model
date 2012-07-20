@@ -33,7 +33,7 @@ public class ControlledClock implements Clock {
 	}
 
 	@Override
-	public DateTime minsOffset(Integer minutes) {
+	public DateTime minusMinutes(Integer minutes) {
 		return dateTime.plusMinutes(minutes);
 	}
 }

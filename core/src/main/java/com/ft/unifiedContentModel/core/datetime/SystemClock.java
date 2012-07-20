@@ -26,8 +26,8 @@ public class SystemClock implements Clock {
 	}
 
 	@Override
-	public DateTime minsOffset(Integer minutes) {
-		return now().plusMinutes(minutes);
+	public DateTime minusMinutes(Integer minutes) {
+		return now().minusMinutes(minutes);
 	}
 
 	private DateTime now() {
