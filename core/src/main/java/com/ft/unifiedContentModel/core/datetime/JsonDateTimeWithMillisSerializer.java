@@ -5,16 +5,14 @@ import static org.springframework.util.Assert.notNull;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JsonDateTimeSerializer extends BaseJsonDateTimeSerializer {
+public class JsonDateTimeWithMillisSerializer extends BaseJsonDateTimeSerializer {
 
-    public JsonDateTimeSerializer() {
-		this(new ISODateTimeFormatter());
+	public JsonDateTimeWithMillisSerializer() {
+		this(new ISODateTimeWithMillisFormatter());
 	}
 
-	JsonDateTimeSerializer (DateTimeFormatter dateTimeFormatter) {
+	JsonDateTimeWithMillisSerializer(DateTimeFormatter dateTimeFormatter) {
 		notNull(dateTimeFormatter);
 		super.dateTimeFormatter = dateTimeFormatter;
 	}
 }
-
-
