@@ -3,16 +3,14 @@ package com.ft.unifiedContentModel.ws.http;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.ft.unifiedContentModel.core.net.Host;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import com.ft.unifiedContentModel.core.net.Host;
-import com.ft.unifiedContentModel.ws.http.ServedByResponseHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServedByResponseHeaderTest {
@@ -21,7 +19,8 @@ public class ServedByResponseHeaderTest {
 	
 	@Mock private Host mockHost;
 	@Mock private HttpServletResponse mockResponse;
-	
+	@Mock private HttpServletRequest mockRequest;
+
 	private ServedByResponseHeader instance;
 	
 	@Before
@@ -32,7 +31,7 @@ public class ServedByResponseHeaderTest {
 	@Test
 	public void hostNameSetOnResponse() {
 		when(mockHost.getHostName()).thenReturn(HOST_NAME);
-		instance.setOn(mockResponse);
+		instance.setOn(mockResponse, mockRequest);
 		verify(mockResponse).addHeader(ServedByResponseHeader.SERVED_BY_HEADER_NAME, HOST_NAME);
 	}
 	

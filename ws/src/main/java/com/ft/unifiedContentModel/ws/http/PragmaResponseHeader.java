@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.ws.http;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -14,7 +15,7 @@ public class PragmaResponseHeader implements ResponseHeader{
 
 	
 	@Override
-	public void setOn(HttpServletResponse response) {
+	public void setOn(HttpServletResponse response, HttpServletRequest request) {
 		response.addHeader(PRAGMA_HEADER_NAME, PRAGMA_HEADER_VALUE);
 	}
 }

@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.ws.http;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ft.unifiedContentModel.core.datetime.Clock;
@@ -24,7 +25,7 @@ public class LastBuiltResponseHeader implements ResponseHeader {
 	}
 	
 	@Override
-	public void setOn(HttpServletResponse response) {
+	public void setOn(HttpServletResponse response, HttpServletRequest request) {
 		response.addHeader(LAST_BUILT_HEADER_NAME, clock.toString());
 	}
 	

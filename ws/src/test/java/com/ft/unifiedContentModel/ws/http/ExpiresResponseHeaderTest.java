@@ -7,17 +7,14 @@ import static org.mockito.Mockito.verify;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.httpclient.util.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import com.ft.unifiedContentModel.ws.http.ExpiresResponseHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ExpiresResponseHeaderTest {
@@ -27,6 +24,7 @@ public class ExpiresResponseHeaderTest {
 
 	@Mock 
 	private HttpServletResponse mockResponse;
+	@Mock private HttpServletRequest mockRequest;
 	
 	@Before
 	public void setup(){
@@ -35,7 +33,7 @@ public class ExpiresResponseHeaderTest {
 	
 	@Test
 	public void cacheControlSetOnResponse(){
-		header.setOn(mockResponse);
+		header.setOn(mockResponse, mockRequest);
 		verify(mockResponse).addHeader(eq(ExpiresResponseHeader.EXPIRES_HEADER_NAME), any(String.class));
 	}
 	

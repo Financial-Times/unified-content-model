@@ -3,6 +3,7 @@ package com.ft.unifiedContentModel.ws.http;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Before;
@@ -19,6 +20,7 @@ public class LastBuiltResponseHeaderTest {
 	private static final String UTC_DATE = "2011-10-31T15:03:36.180Z";
 		
 	@Mock private HttpServletResponse mockResponse;
+	@Mock private HttpServletRequest mockRequest;
 	@Mock private Clock mockClock;
 	
 	private LastBuiltResponseHeader instance;
@@ -31,7 +33,7 @@ public class LastBuiltResponseHeaderTest {
 	@Test
 	public void dateSetOnResponse() {
 		when(mockClock.toString()).thenReturn(UTC_DATE);
-		instance.setOn(mockResponse);
+		instance.setOn(mockResponse, mockRequest);
 		verify(mockResponse).addHeader(LastBuiltResponseHeader.LAST_BUILT_HEADER_NAME, UTC_DATE);
 	}
 	

@@ -38,7 +38,7 @@ public class ResponseHeaderSettingFilter extends OncePerRequestFilter {
 	protected final void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		ResponseHeaderLoggingResponseWrapper wrapped = new ResponseHeaderLoggingResponseWrapper(response);
 		for (ResponseHeader responseHeader : responseHeaders) {
-			responseHeader.setOn(wrapped);
+			responseHeader.setOn(wrapped, request);
 		}
 		filterChain.doFilter(request, wrapped);
 	}

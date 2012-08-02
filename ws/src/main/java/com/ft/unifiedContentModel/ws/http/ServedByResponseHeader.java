@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.ws.http;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ft.unifiedContentModel.core.net.Host;
@@ -21,7 +22,7 @@ public class ServedByResponseHeader implements ResponseHeader {
 	}
 	
 	@Override
-	public void setOn(HttpServletResponse response) {
+	public void setOn(HttpServletResponse response, HttpServletRequest request) {
 		response.addHeader(SERVED_BY_HEADER_NAME, host.getHostName());
 	}
 }

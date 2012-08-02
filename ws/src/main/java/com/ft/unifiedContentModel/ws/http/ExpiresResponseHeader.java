@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.ws.http;
 
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.httpclient.util.DateUtil;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ public class ExpiresResponseHeader implements ResponseHeader{
 	protected static final String EXPIRES_HEADER_NAME = "Expires";
 	
 	@Override
-	public void setOn(HttpServletResponse response) {
+	public void setOn(HttpServletResponse response, HttpServletRequest request) {
 		String expiryDate = getExpiryDate();
 		
 		response.addHeader(EXPIRES_HEADER_NAME, expiryDate);

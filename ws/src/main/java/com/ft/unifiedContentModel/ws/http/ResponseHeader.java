@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.ws.http;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -9,6 +10,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface ResponseHeader {
 	
-	void setOn(HttpServletResponse response);
+	void setOn(HttpServletResponse response, HttpServletRequest request);
 
 }
