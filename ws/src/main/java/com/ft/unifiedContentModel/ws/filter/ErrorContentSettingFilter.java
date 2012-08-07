@@ -69,8 +69,9 @@ public class ErrorContentSettingFilter extends OncePerRequestFilter {
 		}
 				
 		private boolean isStatusError(int sc) {
-			HttpStatus.Series series = HttpStatus.valueOf(sc).series();
-			return (series == HttpStatus.Series.CLIENT_ERROR)
+		    HttpStatus status = HttpStatus.valueOf(sc);
+		    HttpStatus.Series series = HttpStatus.valueOf(sc).series();
+			return ((series == HttpStatus.Series.CLIENT_ERROR && status != HttpStatus.NOT_FOUND))
 					|| (series == HttpStatus.Series.SERVER_ERROR);
 		}
 		
