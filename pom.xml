@@ -68,6 +68,14 @@
 
 	</build>
 
+    <distributionManagement>
+        <site>
+            <id>com.ft.unifiedContentModel</id>
+            <name>Unified Content Model Documentation</name>
+            <url>scp://mvnsite@sites.svc.ft.com/var/www/html/ft-unifiedContentModel</url>
+        </site>
+    </distributionManagement>
+
 	<dependencyManagement>
 		<dependencies>
 	
