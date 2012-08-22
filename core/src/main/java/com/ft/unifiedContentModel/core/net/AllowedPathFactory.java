@@ -12,8 +12,7 @@ import com.google.common.collect.Sets;
 
 public class AllowedPathFactory implements PathFactory {
 	
-	private static final class AllowedPathFunction implements
-			Function<Object, String> {
+	private static final class AllowedPathFunction implements Function<Object, String> {
 		@Override
 		public String apply(Object input) {
 			return ObjectUtils.toString(input);

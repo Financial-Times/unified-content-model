@@ -60,43 +60,11 @@ public class UrlGeneratorImpl implements UrlGenerator {
 				.withPathInfo(itemReadRelativePath.toString())
 				.build();
 	}
-
-	@Override
-	public Url createUrlForPage(String pageUuid) {
-		Map<String, Object> vars = Maps.newHashMap();
-		vars.put("pageId", pageUuid);
-		Path pageReadRelativePath = pathFactory.createPath(Paths.PAGE_READ, vars);
-		
-		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(pageReadRelativePath.toString())
-				.build();
-	}
-	
-	@Override
-	public Url createUrlForPages() {
-		Path pageListRelativePath = pathFactory.createPath(Paths.PAGE_LIST);
-		
-		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(pageListRelativePath.toString())
-				.build();
-	}
 	
 	@Override
 	public Url createUrlForImage(String relativeImagePathInfo) {
 		return UrlBuilder.basedOn(baseImageUrl).withPathInfo(relativeImagePathInfo).build();
 	}
-
-    @Override
-    public Url createUrlForContentList(String pageUuid, String componentVanityId) {
-		Map<String, Object> vars = Maps.newHashMap();
-		vars.put("pageId", pageUuid);
-        vars.put("componentVanityId", componentVanityId);
-		Path contentReadRelativePath = pathFactory.createPath(Paths.PAGE_CONTENT_READ, vars);
-
-		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(contentReadRelativePath.toString())
-				.build();
-    }
 
     @Override
     public Url createUrlForContentItemUpdateNotifications() {

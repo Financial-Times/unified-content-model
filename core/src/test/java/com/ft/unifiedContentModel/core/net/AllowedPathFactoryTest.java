@@ -11,22 +11,13 @@ import org.junit.Test;
 public class AllowedPathFactoryTest {
 	
 	private static final String UUID = "123";
-    private static final String UUID2 = "456";
-	private static final String COMPONENT_NAME = "main-content";
 	
 	private static final String ITEM_ID = "itemId";
-	private static final String PAGE_ID = "pageId";
-	private static final String COMPONENT_ID = "componentId";
-    private static final String COMPONENT_VANITY_ID = "componentVanityId";
 	private static final String FAKE_PARAM = "fake";
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
-	private static final String RESOLVED_COMPONENT_READ_PATH = "/site/v1/pages/" + UUID + "/components/" + UUID2;
-	private static final String RESOLVED_PAGE_READ_PATH = "/site/v1/pages/123";
-    private static final String RESOLVED_PAGE_MAIN_CONTENT_READ_PATH = "/site/v1/pages/" + UUID + "/" + COMPONENT_NAME;
 
 	private static final String RESOLVED_ITEM_LIST_PATH = Paths.ITEM_LIST;
-	private static final String RESOLVED_PAGE_LIST_PATH = Paths.PAGE_LIST;
 	
 	
 	private AllowedPathFactory factory;
@@ -77,81 +68,4 @@ public class AllowedPathFactoryTest {
 		assertEquals(RESOLVED_ITEM_LIST_PATH, path.toString());
 	}
 	
-	@Test
-	public void createPathPage() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(PAGE_ID, UUID);
-		Path path = factory.createPath(Paths.PAGE_READ, vars);
-		assertEquals(RESOLVED_PAGE_READ_PATH, path.toString());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void cannotCreatePathPageNullVars() {
-		factory.createPath(Paths.PAGE_READ, null);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void cannotCreatePathPageWithoutVars() {
-		factory.createPath(Paths.PAGE_READ);
-	}
-	
-	@Test
-	public void createPathPageWithAdditionalFakeParam() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(PAGE_ID, UUID);
-		vars.put(FAKE_PARAM, "fake");
-		Path path = factory.createPath(Paths.PAGE_READ, vars);
-		assertEquals(RESOLVED_PAGE_READ_PATH, path.toString());
-	}
-	
-	@Test
-	public void createPathPages() {
-		Path path = factory.createPath(Paths.PAGE_LIST);
-		assertEquals(RESOLVED_PAGE_LIST_PATH, path.toString());
-	}
-	
-	@Test
-	public void canCreatePathPagesWithFakeParams() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(FAKE_PARAM, "fake");
-		Path path = factory.createPath(Paths.PAGE_LIST, vars);
-		assertEquals(RESOLVED_PAGE_LIST_PATH, path.toString());
-	}
-	
-	
-	@Test
-	public void createPathComponent() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(PAGE_ID, UUID);
-		vars.put(COMPONENT_ID, UUID2);
-		Path path = factory.createPath(Paths.COMPONENT_READ, vars);
-		assertEquals(RESOLVED_COMPONENT_READ_PATH, path.toString());
-	}
-
-    @Test
-	public void createPathPageMainContent() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(PAGE_ID, UUID);
-        vars.put(COMPONENT_VANITY_ID, COMPONENT_NAME);
-		Path path = factory.createPath(Paths.PAGE_CONTENT_READ, vars);
-		assertEquals(RESOLVED_PAGE_MAIN_CONTENT_READ_PATH, path.toString());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void cannotCreatePathComponentNullVars() {
-		factory.createPath(Paths.COMPONENT_READ, null);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void cannotCreatePathComponentWithoutVars() {
-		factory.createPath(Paths.COMPONENT_READ);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void cannotCreatePathComponentWithMissingVar() {
-		Map<String, Object> vars = new HashMap<String, Object>();
-		vars.put(COMPONENT_ID, COMPONENT_NAME);
-		factory.createPath(Paths.COMPONENT_READ, vars);
-	}
-
 }
