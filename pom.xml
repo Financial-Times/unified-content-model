@@ -35,6 +35,7 @@
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
 		<restassured.version>1.2.2</restassured.version>
+		<groovy.version>1.7.9</groovy.version>
 		<jbehave.core.version>3.4.5</jbehave.core.version>
 		<jbehave.site.version>3.1.1</jbehave.site.version>
   	</properties>
@@ -258,15 +259,24 @@
 			<version>${hamcrest.version}</version>
 		</dependency>
 		<dependency>
-      		<groupId>com.jayway.restassured</groupId>
-      		<artifactId>rest-assured</artifactId>
-      		<version>${restassured.version}</version>
-      		<exclusions>
-      			<exclusion>
-      				<artifactId>nekohtml</artifactId>
-      				<groupId>net.sourceforge.nekohtml</groupId>
-      			</exclusion>
-      		</exclusions>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>${groovy.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>nekohtml</artifactId>
+					<groupId>net.sourceforge.nekohtml</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		</dependencies>
