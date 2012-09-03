@@ -43,7 +43,7 @@
 	<name>FT Unified Content model parent</name>
 
 	<scm>
-		<connection>scm:svn:svn://anthill.svc.ft.com/repo/online/website/ft-unifiedContentModel/tags/unifiedContentModel-0.8</connection>
+		<connection>scm:svn:svn://anthill.svc.ft.com/repo/online/website/ft-unifiedContentModel/trunk</connection>
 	</scm>
 
 	<modules>
