@@ -2,8 +2,8 @@ package com.ft.unifiedContentModel.model;
 
 import java.util.List;
 
-public interface MediaAssetAware {
+public interface AssetAware {
 
-    List<MediaAsset> getMediaAssets();
+	List<Asset> getAssets();
 
 }

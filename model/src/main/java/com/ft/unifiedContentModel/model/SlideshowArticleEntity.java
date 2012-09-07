@@ -9,12 +9,13 @@ import com.google.common.base.Objects.ToStringHelper;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 	"body", "lifecycle", "location", "packaging", "master", "editorial", "provenance", "metadata", 
-	"images", "package", "mediaAssets"})
-public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, MediaAssetAware {
+	"images", "package", "assets", "mediaAssets"})
+public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, AssetAware {
 
 	private Editorial editorial;
 	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
+	private List<Asset> assets;
 
 	public SlideshowArticleEntity() {
 	}
@@ -41,7 +42,6 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 		return provenance;
 	}
 
-    @Override
     public List<MediaAsset> getMediaAssets() {
         return mediaAssets;
     }
@@ -49,6 +49,15 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
     public void setMediaAssets(List<MediaAsset> mediaAssets) {
         this.mediaAssets = mediaAssets;
     }
+
+	@Override
+	public List<Asset> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
+	}
 
     @Override
 	public boolean equals(Object o) {
@@ -81,7 +90,8 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 					.add("master", getMaster())
 					.add("editorial", editorial)
 					.add("provenance", provenance)
-					.add("mediaAssets", mediaAssets);
-	}	
+					.add("mediaAssets", mediaAssets)
+					.add("assets", assets);
+	}
 	
 }

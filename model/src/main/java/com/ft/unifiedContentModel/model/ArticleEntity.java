@@ -9,13 +9,14 @@ import com.google.common.base.Objects.ToStringHelper;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "location", "summary", "packaging", "master", "editorial", "provenance", "metadata", 
-		"images", "package", "mediaAssets"})
-public class ArticleEntity extends ContentEntity implements Article, MediaAssetAware {
+		"images", "package", "assets", "mediaAssets"})
+public class ArticleEntity extends ContentEntity implements Article, AssetAware {
 	
 	private Editorial editorial;
 	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
-	
+	private List<Asset> assets;
+
 	public ArticleEntity() {}
 	
 	public ArticleEntity(String id, String apiUrl){
@@ -52,13 +53,21 @@ public class ArticleEntity extends ContentEntity implements Article, MediaAssetA
 		return false;
 	}
 
-	@Override
 	public List<MediaAsset> getMediaAssets() {
 		return mediaAssets;
 	}
 
 	public void setMediaAssets(List<MediaAsset> mediaAssets) {
 		this.mediaAssets = mediaAssets;
+	}
+
+	@Override
+	public List<Asset> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
 	}
 
 	@Override
