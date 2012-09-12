@@ -31,7 +31,6 @@ public class Slideshow implements Asset {
 		this.name = name;
 	}
 
-	@Override
 	public String getUuid() {
 		return uuid;
 	}

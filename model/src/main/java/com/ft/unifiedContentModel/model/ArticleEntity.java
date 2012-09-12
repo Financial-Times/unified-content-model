@@ -3,6 +3,8 @@ package com.ft.unifiedContentModel.model;
 import com.google.common.collect.Lists;
 import java.util.List;
 
+import java.util.Map;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 import com.google.common.base.Objects;
@@ -16,7 +18,9 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 	private Editorial editorial;
 	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
+	private Map<String, MediaAsset> mediaAssetMap;
 	private List<Asset> assets;
+	private Map<String, Asset> assetMap;
 
 	public ArticleEntity() {}
 	
@@ -54,16 +58,54 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 		return false;
 	}
 
+	@Override
+	@JsonIgnore
+	public Map<String, Asset> getAssetMap() {
+		return assetMap;
+	}
+
+	@Override
+	@JsonIgnore
+	public Map<String, MediaAsset> getMediaAssetMap() {
+		return mediaAssetMap;
+	}
+
+	@JsonIgnore
+	public void setAssetMap(Map<String, Asset> assetMap) {
+		this.assetMap = assetMap;
+	}
+
+	@JsonIgnore
+	public void setMediaAssetMap(Map<String, MediaAsset> mediaAssetMap) {
+		this.mediaAssetMap = mediaAssetMap;
+	}
+
+	@Override
 	public List<MediaAsset> getMediaAssets() {
+		if(mediaAssets != null && mediaAssets.size() == 0){
+			return null;
+		}
 		return mediaAssets;
 	}
 
+	@Override
 	public void setMediaAssets(List<MediaAsset> mediaAssets) {
 		this.mediaAssets = mediaAssets;
 	}
 
 	@Override
+	public void add(MediaAsset asset) {
+		if(mediaAssets == null){
+			mediaAssets = Lists.newArrayList();
+		}
+		mediaAssets.add(asset);
+	}
+
+	@Override
 	public List<Asset> getAssets() {
+		if(assets != null && assets.size() == 0){
+			return null;
+		}
 		return assets;
 	}
 

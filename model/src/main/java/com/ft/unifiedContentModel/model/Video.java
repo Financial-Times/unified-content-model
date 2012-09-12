@@ -29,7 +29,6 @@ public class Video implements Asset {
 		this.name = name;
 	}
 
-	@Override
 	public String getUuid() {
 		return uuid;
 	}
