@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.model;
 
+import com.google.common.collect.Lists;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
@@ -66,8 +67,17 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 		return assets;
 	}
 
+	@Override
 	public void setAssets(List<Asset> assets) {
 		this.assets = assets;
+	}
+
+	@Override
+	public void add(Asset asset) {
+		if(assets == null){
+			assets = Lists.newArrayList();
+		}
+		assets.add(asset);
 	}
 
 	@Override
