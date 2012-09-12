@@ -4,14 +4,15 @@
 
   	<parent>
         <groupId>com.ft.unifiedContentModel</groupId>
-		<artifactId>unifiedContentModel</artifactId>
+		<artifactId>ft-unifiedContentModel-parent</artifactId>
 		<version>0.14.0-SNAPSHOT</version>
   	</parent>
 	
 	<artifactId>ft-unifiedContentModel-ws</artifactId>
 	<packaging>jar</packaging>
-	<name>Unified Content Model web service support classes</name>
+	<name>${project.artifactId}</name>
 	<description>Support classes for ws built on top of the unified content model</description>
+	
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>

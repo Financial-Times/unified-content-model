@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<artifactId>unifiedContentModel</artifactId>
 		<groupId>com.ft.unifiedContentModel</groupId>
+		<artifactId>ft-unifiedContentModel-parent</artifactId>
 		<version>0.14.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>ft-unifiedContentModel-core</artifactId>
 	<packaging>jar</packaging>
-	<name>Unified Content Model - Core</name>
+	<name>${project.artifactId}</name>
 	<description>Core utility library for the unified content model</description>
 	
 	<dependencies>
