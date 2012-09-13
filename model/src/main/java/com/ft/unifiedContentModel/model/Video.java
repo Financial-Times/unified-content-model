@@ -40,4 +40,8 @@ public class Video implements Asset {
 	public void setFields(VideoFields fields) {
 		this.fields = fields;
 	}
+
+	public void setType(String type) {
+	}
+
 }
