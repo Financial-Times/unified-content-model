@@ -119,6 +119,16 @@
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
+    <bean name="assetNameField" class="com.ft.unifiedContentModel.model.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="name" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
+
+    <bean name="assetFieldsField" class="com.ft.unifiedContentModel.model.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="fields" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
+
 	<!-- Aspect Definitions -->
 	
 	<bean name="titleAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
@@ -262,14 +272,24 @@
 		<constructor-arg value="mediaAssets" />
 		<constructor-arg>
 			<util:set>
-				<ref bean="slideshowHeadingField" />
-				<ref bean="slidesField" />
+                <ref bean="slideshowHeadingField" />
+            	<ref bean="slidesField" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
-	
-	
+
+    <bean name="assetsAspect" class="com.ft.unifiedContentModel.model.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="assets" />
+		<constructor-arg>
+			<util:set>
+                <ref bean="assetNameField" />
+            	<ref bean="assetFieldsField" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
+
 	
 	<!-- AspectSet Definitions -->
 	
@@ -302,6 +322,7 @@
 				<ref bean="metadataAspect" />
 				<ref bean="imagesAspect" />
                 <ref bean="mediaAssetsAspect" />
+                <ref bean="assetsAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -341,6 +362,7 @@
 				<ref bean="metadataAspect" />
 				<ref bean="imagesAspect" />
 				<ref bean="mediaAssetsAspect" />
+				<ref bean="assetsAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
