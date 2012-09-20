@@ -14,8 +14,7 @@ public class Video implements Asset {
 	public Video() {
 	}
 
-	public Video(String name, VideoFields fields) {
-		this.name = name;
+	public Video(VideoFields fields) {
 		this.fields = fields;
 	}
 
