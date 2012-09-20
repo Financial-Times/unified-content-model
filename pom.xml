@@ -50,7 +50,6 @@
 		<module>core</module>
 		<module>model</module>
 		<module>ws</module>
-		<module>test-support</module>
 	</modules>
 
 	<build>
