@@ -5,16 +5,16 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonPropertyOrder({"name", "type", "fields"})
-public class Video implements Asset {
+public class VideoAsset implements Asset {
 
 	private String name;
 	private VideoFields fields;
 	private String uuid;
 
-	public Video() {
+	public VideoAsset() {
 	}
 
-	public Video(VideoFields fields) {
+	public VideoAsset(VideoFields fields) {
 		this.fields = fields;
 	}
 
