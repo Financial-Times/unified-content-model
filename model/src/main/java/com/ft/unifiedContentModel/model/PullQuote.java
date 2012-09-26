@@ -9,13 +9,11 @@ public class PullQuote implements Asset {
 
     private String name;
     private PullQuoteFields fields;
-    private String type;
 
     public PullQuote() {}
     
-    public PullQuote(PullQuoteFields fields, String type) { 
+    public PullQuote(PullQuoteFields fields) { 
         this.fields = fields;
-        this.type = type;
     }
     
     public PullQuoteFields getFields() {
@@ -34,9 +32,5 @@ public class PullQuote implements Asset {
     @Override
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return this.type;
     }
 }
