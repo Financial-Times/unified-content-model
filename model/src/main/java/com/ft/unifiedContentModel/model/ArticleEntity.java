@@ -45,18 +45,6 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 	public void setProvenance(Provenance provenance) {
 		this.provenance = provenance;
 	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if (o == this) {
-			return true;
-		}
-		if (o instanceof ContentEntity) {
-			ContentEntity a = (ContentEntity) o;
-			return Objects.equal(this.getId(), a.getId());
-		}
-		return false;
-	}
 
 	@Override
 	@JsonIgnore
@@ -123,8 +111,15 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hashCode(this.getId());
+	public boolean equals(Object o) {
+		if(o == this){
+			return true;
+		}
+		if(o instanceof ArticleEntity) {
+			ArticleEntity a = (ArticleEntity)o;
+			return Objects.equal(this.getId(), a.getId());
+		}
+		return false;
 	}
 	
 	@Override

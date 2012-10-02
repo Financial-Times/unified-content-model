@@ -14,22 +14,17 @@ public class BlogEntity extends ContentEntity implements Blog{
 	public BlogEntity(String id, String apiUrl){
 		super(id, apiUrl);
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if(o == this){
 			return true;
 		}
-		if(o instanceof ContentEntity) {
-			ContentEntity a = (ContentEntity)o;
+		if(o instanceof BlogEntity) {
+			BlogEntity a = (BlogEntity)o;
 			return Objects.equal(this.getId(), a.getId());
 		}
 		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(this.getId());
 	}
 	
 	@Override

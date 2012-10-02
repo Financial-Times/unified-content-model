@@ -112,21 +112,16 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 		assets.add(asset);
 	}
 
-    @Override
+	@Override
 	public boolean equals(Object o) {
 		if(o == this){
 			return true;
 		}
-		if(o instanceof ContentEntity) {
-			ContentEntity a = (ContentEntity)o;
+		if(o instanceof SlideshowArticleEntity) {
+			SlideshowArticleEntity a = (SlideshowArticleEntity)o;
 			return Objects.equal(this.getId(), a.getId());
 		}
 		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(this.getId());
 	}
 	
 	@Override

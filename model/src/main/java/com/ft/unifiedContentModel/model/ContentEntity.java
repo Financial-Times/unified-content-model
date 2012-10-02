@@ -6,6 +6,8 @@ import static org.springframework.util.Assert.notNull;
 import java.util.List;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.google.common.base.Objects;
+
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public abstract class ContentEntity extends SimpleEntity implements Package, Images, AspectSetAware {
 	
@@ -22,6 +24,11 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	
 	public ContentEntity(){
 		// required for JAXB
+	}
+	
+	public ContentEntity(String id){
+		notNull(id);
+		setId(id);
 	}
 	
 	public ContentEntity(String id, String apiUrl){
@@ -52,6 +59,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	public Location getLocation() {
 		return location;
 	}
+	
 	public void setLocation(Location location) {
 		this.location = location;
 	}
@@ -106,4 +114,12 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	public void setImages(List<Image> images){
 		this.images = images;
 	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(this.getId());
+	}
+	
+	
 }
