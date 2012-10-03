@@ -10,6 +10,4 @@ public interface ContentItemUrlGenerator {
 
     Url createUrlForContentItemUpdateNotifications();
 
-    Url createUrlForImage(String relativeImagePathInfo);
-
 }

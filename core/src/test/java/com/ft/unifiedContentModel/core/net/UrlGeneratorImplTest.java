@@ -20,11 +20,9 @@ public class UrlGeneratorImplTest {
 	
 	private static final String RESOLVED_ITEM_READ_PATH = "/content/items/v1/123";
 	
-	private static final String IMAGE_URL = "http://im.media.ft.com/content/images";
 	private static final String API_URL = "http://api.ft.com";
 
 	private static final String UUID = "123";
-    private static final String IMAGE_PATH = "1234-5678.img";
 	
 	private UrlGeneratorImpl generator;
     
@@ -34,7 +32,7 @@ public class UrlGeneratorImplTest {
 
 	@Before
 	public void setup() {
-		generator = new UrlGeneratorImpl(API_URL, IMAGE_URL, mockPathFactory);
+		generator = new UrlGeneratorImpl(API_URL, mockPathFactory);
 	}
 	
 	@Test
@@ -58,12 +56,6 @@ public class UrlGeneratorImplTest {
 		
 		String url = generator.createUrlForItems().toString();
 		assertEquals(API_URL + Paths.ITEM_LIST, url);
-	}
-
-	@Test
-	public void imageUrl() {
-		String url = generator.createUrlForImage(IMAGE_PATH).toString();
-		assertEquals(IMAGE_URL + "/" + IMAGE_PATH, url);
 	}
 
     @Test

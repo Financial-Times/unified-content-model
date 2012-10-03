@@ -11,7 +11,6 @@ public class UrlGeneratorImpl implements UrlGenerator {
     static final String CONTEXT_REGEX = "http[s]*://[A-Za-z0-9-.]+/content/[content|structure]([A-Za-z0-9-/.?=]+)";
     static final String ORIGINAL_REQUEST_HEADER_NAME = "X-Original-Request";
 
-    private String baseImageUrl;
     private String baseApiUrl;
     
     
@@ -23,22 +22,15 @@ public class UrlGeneratorImpl implements UrlGenerator {
 		this.pathFactory = pathFactory;
 	}
 
-    public UrlGeneratorImpl(String baseApiUrl, String baseImageUrl, PathFactory pathFactory) {
+    public UrlGeneratorImpl(String baseApiUrl, PathFactory pathFactory) {
 		this(pathFactory);
 		notNull(baseApiUrl);
-		notNull(baseImageUrl);
 		this.baseApiUrl = baseApiUrl;
-		this.baseImageUrl = baseImageUrl;
 	}
 
 	public void setBaseApiUrl(String baseApiUrl) {
 		notNull(baseApiUrl);
 		this.baseApiUrl = baseApiUrl;
-	}
-	
-	public void setBaseImageUrl(String baseImageUrl) {
-		notNull(baseImageUrl);
-		this.baseImageUrl = baseImageUrl;
 	}
 	
 	@Override
@@ -61,11 +53,6 @@ public class UrlGeneratorImpl implements UrlGenerator {
 				.build();
 	}
 	
-	@Override
-	public Url createUrlForImage(String relativeImagePathInfo) {
-		return UrlBuilder.basedOn(baseImageUrl).withPathInfo(relativeImagePathInfo).build();
-	}
-
     @Override
     public Url createUrlForContentItemUpdateNotifications() {
         Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
