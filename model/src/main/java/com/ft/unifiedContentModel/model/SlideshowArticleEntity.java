@@ -1,5 +1,7 @@
 package com.ft.unifiedContentModel.model;
 
+import static org.springframework.util.Assert.notNull;
+
 import com.google.common.collect.Lists;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 	
 	public SlideshowArticleEntity(String id, String apiUrl){
 		super(id, apiUrl);
+		notNull(apiUrl);
 	}
 	
 	public void setEditorial(Editorial editorial) {
