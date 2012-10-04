@@ -7,13 +7,13 @@ import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 
-@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id",  "title", "lifecycle", "location", "master"})
+@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title", "lifecycle", "location", "master"})
 public class VideoEntity extends ContentEntity implements Video {
 	
 	public VideoEntity() {}
 	
-	public VideoEntity(String id){
-			super(id);
+	public VideoEntity(String id, String apiUrl){
+		super(id, apiUrl);
 	}
 	
 	@Override

@@ -27,32 +27,32 @@ public class BlogEntityTest {
 		new BlogEntity(null, API_URL);
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
-	public void exceptionThrownWhenApiUrlIsNull() {
+	@Test
+	public void exceptionNOThrownWhenApiUrlIsNull() {
 		new BlogEntity(UUID, null);
 	}
 
 	@Test
-	public void articleIsCreated() {
+	public void blogIsCreated() {
 		assertEquals(API_URL, instance.getApiUrl());
 		assertEquals(UUID, instance.getId());
 	}
 	
 	@Test
-	public void twoArticlesAreEqualIfTheyAreTheSame() {
+	public void twoBlogsAreEqualIfTheyAreTheSame() {
 		Blog another = instance;
 		assertThat(instance, equalTo(another));
 		assertThat(instance.hashCode(), is(another.hashCode()));
 	}
 	
 	@Test
-	public void twoArticlesAreNotEqualIfOneIsNull() {
+	public void twoBlogsAreNotEqualIfOneIsNull() {
 		Blog another = null;
 		assertThat(instance, not(equalTo(another)));
 	}
 	
 	@Test
-	public void twoDifferentArticlesAreNotEqual() {
+	public void twoDifferentBlogsAreNotEqual() {
 		Blog another = new BlogEntity(ANOTHER_UUID, API_URL);
 		assertThat(instance, not(equalTo(another)));
 	}

@@ -15,18 +15,19 @@ import com.ft.unifiedContentModel.model.PodcastEntity;
 public class PodcastEntityTest {
 	
 	private static final String UUID = "123";
+	private static final String API_URL = "api-url";
 	private static final String ANOTHER_UUID = "123-456-789";
 	
 	private PodcastEntity instance;
 	
 	@Before
 	public void setUp() {
-		instance = new PodcastEntity(UUID);
+		instance = new PodcastEntity(UUID, API_URL);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void exceptionThrownWhenIdIsNull() {
-		new PodcastEntity(null);
+		new PodcastEntity(null, API_URL);
 	}
 
 	@Test
@@ -49,7 +50,7 @@ public class PodcastEntityTest {
 	
 	@Test
 	public void twoDifferentPodcastsAreNotEqual() {
-		Podcast another = new PodcastEntity(ANOTHER_UUID);
+		Podcast another = new PodcastEntity(ANOTHER_UUID, API_URL);
 		assertThat(instance, not(equalTo(another)));
 	}
 }

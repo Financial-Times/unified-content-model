@@ -12,8 +12,8 @@ public class PodcastEntity extends ContentEntity implements Podcast {
 	
 	public PodcastEntity() {}
 	
-	public PodcastEntity(String id){
-			super(id);
+	public PodcastEntity(String id,String apiUrl){
+		super(id, apiUrl);
 	}
 	
 	@Override

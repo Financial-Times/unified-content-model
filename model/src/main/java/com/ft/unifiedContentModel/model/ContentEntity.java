@@ -26,11 +26,6 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		// required for JAXB
 	}
 	
-	public ContentEntity(String id){
-		notNull(id);
-		setId(id);
-	}
-	
 	public ContentEntity(String id, String apiUrl){
 		notNull(id);
 		notNull(apiUrl);

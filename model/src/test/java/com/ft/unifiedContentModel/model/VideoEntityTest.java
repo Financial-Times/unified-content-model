@@ -15,18 +15,19 @@ import com.ft.unifiedContentModel.model.VideoEntity;
 public class VideoEntityTest {
 	
 	private static final String UUID = "123";
+	private static final String API_URL = "api-url";
 	private static final String ANOTHER_UUID = "123-456-789";
 	
 	private VideoEntity instance;
 	
 	@Before
 	public void setUp() {
-		instance = new VideoEntity(UUID);
+		instance = new VideoEntity(UUID, API_URL);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void exceptionThrownWhenIdIsNull() {
-		new VideoEntity(null);
+		new VideoEntity(null, API_URL);
 	}
 	
 	@Test
@@ -49,7 +50,7 @@ public class VideoEntityTest {
 	
 	@Test
 	public void twoDifferentVideosAreNotEqual() {
-		Video another = new VideoEntity(ANOTHER_UUID);
+		Video another = new VideoEntity(ANOTHER_UUID, API_URL);
 		assertThat(instance, not(equalTo(another)));
 	}
 }
