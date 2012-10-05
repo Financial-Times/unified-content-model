@@ -11,7 +11,7 @@ public class PullQuote implements Asset {
     private PullQuoteFields fields;
 
     public PullQuote() {}
-    
+
     public PullQuote(PullQuoteFields fields) { 
         this.fields = fields;
     }
