@@ -9,7 +9,8 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
            @JsonSubTypes.Type(value=VideoAsset.class, name="video"),
            @JsonSubTypes.Type(value=PullQuote.class, name="pullQuote"),
            @JsonSubTypes.Type(value=InteractiveGraphic.class, name="interactiveGraphic"),
-           @JsonSubTypes.Type(value=BackgroundNews.class, name="backgroundNews")
+           @JsonSubTypes.Type(value=BackgroundNews.class, name="backgroundNews"),
+           @JsonSubTypes.Type(value=DataTable.class, name="webTable")
     })
 public interface Asset {
     String getName();
