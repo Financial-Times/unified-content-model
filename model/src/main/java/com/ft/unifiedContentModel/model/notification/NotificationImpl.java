@@ -1,7 +1,6 @@
 package com.ft.unifiedContentModel.model.notification;
 
-import com.ft.unifiedContentModel.core.datetime.JsonDateTimeWithMillisSerializer;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.joda.time.DateTime;
 
 public class NotificationImpl implements Notification {
@@ -24,7 +23,7 @@ public class NotificationImpl implements Notification {
         return type;
     }
 
-    @JsonSerialize(using=JsonDateTimeWithMillisSerializer.class, include=JsonSerialize.Inclusion.NON_NULL)
+    @JsonIgnore
     @Override
     public DateTime getUpdated() {
         return updated;

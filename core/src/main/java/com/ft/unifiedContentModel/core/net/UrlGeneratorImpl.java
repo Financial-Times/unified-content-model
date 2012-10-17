@@ -4,6 +4,8 @@ import static org.springframework.util.Assert.notNull;
 
 import java.util.Map;
 
+import org.joda.time.DateTime;
+
 import com.google.common.collect.Maps;
 
 public class UrlGeneratorImpl implements UrlGenerator {
@@ -16,6 +18,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
     
     private final PathFactory pathFactory;
 	private final String LAST_MODIFIED_DATE_PREFIX = "lastModified=";
+	private final String HASH_PREFIX = "hash=";
 
 	public UrlGeneratorImpl(PathFactory pathFactory) {
 		notNull(pathFactory);
@@ -36,7 +39,9 @@ public class UrlGeneratorImpl implements UrlGenerator {
 	@Override
 	public Url createUrlForItems() {
 		Path itemListRelativePath = pathFactory.createPath(Paths.ITEM_LIST);
-        return buildItemUrl(itemListRelativePath);
+        return UrlBuilder.basedOn(baseApiUrl)
+        		.withPathInfo(itemListRelativePath.toString())
+        		.build();
 			
 	}
 
@@ -46,10 +51,6 @@ public class UrlGeneratorImpl implements UrlGenerator {
 		vars.put("itemId", itemUuid);
 		Path itemReadRelativePath = pathFactory.createPath(Paths.ITEM_READ, vars);
 		
-		return buildItemUrl(itemReadRelativePath);
-	}
-
-	protected Url buildItemUrl(Path itemReadRelativePath) {
 		return UrlBuilder.basedOn(baseApiUrl)
 				.withPathInfo(itemReadRelativePath.toString())
 				.build();
@@ -59,13 +60,20 @@ public class UrlGeneratorImpl implements UrlGenerator {
     public Url createUrlForContentItemUpdateNotifications() {
         Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
 
-        return buildItemUrl(contentItemNotificationsPath);
+        return UrlBuilder.basedOn(baseApiUrl)
+                .withPathInfo(contentItemNotificationsPath.toString())
+                .build();
     }
 
 	@Override
-	public Url createUrlForItemWithLastModifiedDate(String itemUuid, String lastModifiedDate) {
+	public Url createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate) {
+		return createUrlForItemWithHash(itemUuid, HexHashHelper.hexHash8(lastModifiedDate));
+	}
+	
+	@Override
+	public Url createUrlForItemWithHash(String itemUuid, String hash) {
 		return UrlBuilder.basedOn(createUrlForItem(itemUuid).toString())
-				.withQueryString(LAST_MODIFIED_DATE_PREFIX + lastModifiedDate)
+				.withQueryString(HASH_PREFIX + hash)
 				.build();
 	}
 

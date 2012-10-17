@@ -3,8 +3,10 @@ package com.ft.unifiedContentModel.core.net;
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import com.google.common.collect.Maps;
 import java.util.Map;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.util.UriTemplate;
+
+import com.google.common.collect.Maps;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UrlGeneratorImplTest {
@@ -100,8 +104,11 @@ public class UrlGeneratorImplTest {
 		when(mockpath.toString()).thenReturn(RESOLVED_ITEM_READ_PATH);
 		when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_READ), Mockito.eq(vars))).thenReturn(mockpath);
 
-		String timestamp = "16-07-2012T13.33.56.123Z";
-		String url = generator.createUrlForItemWithLastModifiedDate(UUID, "16-07-2012T13.33.56.123Z").toString();
-		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?lastModified=" + timestamp, url );
+//		String timestamp = "16-07-2012T13.33.56.123Z";
+		DateTime dateTime = new DateTime().withDate(2012, 07, 16).withTime(13, 33, 56, 123).withZoneRetainFields(DateTimeZone.UTC);
+		String expectedHash = "900c4cfe";
+		
+		String url = generator.createUrlForItemWithLastModifiedDate(UUID, dateTime).toString();
+		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?hash=" + expectedHash, url );
 	}
 }
