@@ -18,7 +18,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
     
     private final PathFactory pathFactory;
 	private final String LAST_MODIFIED_DATE_PREFIX = "lastModified=";
-	private final String HASH_PREFIX = "hash=";
+	private final String HASH_PREFIX = "h=";
 
 	public UrlGeneratorImpl(PathFactory pathFactory) {
 		notNull(pathFactory);

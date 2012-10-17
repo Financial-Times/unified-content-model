@@ -109,6 +109,6 @@ public class UrlGeneratorImplTest {
 		String expectedHash = "900c4cfe";
 		
 		String url = generator.createUrlForItemWithLastModifiedDate(UUID, dateTime).toString();
-		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?hash=" + expectedHash, url );
+		assertEquals(API_URL + ITEM_PATH.expand(UUID)+ "?h=" + expectedHash, url );
 	}
 }
