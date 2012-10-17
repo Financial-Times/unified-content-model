@@ -39,10 +39,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
 	@Override
 	public Url createUrlForItems() {
 		Path itemListRelativePath = pathFactory.createPath(Paths.ITEM_LIST);
-        return UrlBuilder.basedOn(baseApiUrl)
-        		.withPathInfo(itemListRelativePath.toString())
-        		.build();
-			
+		return buildItemUrl(itemListRelativePath);
 	}
 
 	@Override
@@ -50,7 +47,10 @@ public class UrlGeneratorImpl implements UrlGenerator {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("itemId", itemUuid);
 		Path itemReadRelativePath = pathFactory.createPath(Paths.ITEM_READ, vars);
-		
+		return buildItemUrl(itemReadRelativePath);
+	}
+	
+	protected Url buildItemUrl(Path itemReadRelativePath) {
 		return UrlBuilder.basedOn(baseApiUrl)
 				.withPathInfo(itemReadRelativePath.toString())
 				.build();
@@ -59,10 +59,7 @@ public class UrlGeneratorImpl implements UrlGenerator {
     @Override
     public Url createUrlForContentItemUpdateNotifications() {
         Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
-
-        return UrlBuilder.basedOn(baseApiUrl)
-                .withPathInfo(contentItemNotificationsPath.toString())
-                .build();
+        return buildItemUrl(contentItemNotificationsPath);
     }
 
 	@Override
