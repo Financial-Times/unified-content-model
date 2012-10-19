@@ -6,6 +6,9 @@ import org.joda.time.DateTime;
 public class NotificationImpl implements Notification {
 
     private String type;
+    /* the updated dateTime should not be serialised but it is needed on this class to calculate the next batch's "since"
+     */
+    @JsonIgnore 
     private DateTime updated;
     private NotificationData data;
 
@@ -23,7 +26,6 @@ public class NotificationImpl implements Notification {
         return type;
     }
 
-    @JsonIgnore
     @Override
     public DateTime getUpdated() {
         return updated;
