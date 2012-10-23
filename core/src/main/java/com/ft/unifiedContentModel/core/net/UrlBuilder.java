@@ -1,19 +1,18 @@
 package com.ft.unifiedContentModel.core.net;
 
-import static org.apache.commons.lang.CharEncoding.UTF_8;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
 import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.springframework.util.Assert.notNull;
-import static org.springframework.web.util.UriUtils.encodeHttpUrl;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.Assert;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 
 /**
@@ -154,12 +153,9 @@ public final class UrlBuilder {
         if (isNotBlank(query)) {
             sb.append(query);
         }
-        try {
-			return new Url(encodeHttpUrl(sb.toString(), UTF_8));
-		} catch (UnsupportedEncodingException ex) {
-			// Should never happen - UTF-8 is always supported
-			throw new IllegalStateException("Could not create HTTP URL from [" + sb.toString() + "]: " + ex, ex);
-		}
+    	UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(sb.toString()).build();
+   	    String encodedUri = uriComponents.encode().toUriString();
+		return new Url(encodedUri);
     }
 	
 	@Override
