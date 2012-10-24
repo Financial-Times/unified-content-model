@@ -1,5 +1,6 @@
 package com.ft.unifiedContentModel.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -31,6 +32,7 @@ public class Slideshow implements Asset {
 		this.name = name;
 	}
 
+	@JsonIgnore
 	public String getUuid() {
 		return uuid;
 	}
