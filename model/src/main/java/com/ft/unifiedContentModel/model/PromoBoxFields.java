@@ -11,11 +11,11 @@ public class PromoBoxFields {
     private String headline;
     private String intro;
     private String link;
-    private PromoBoxImage image;
+    private TypeBasedImage image;
     
     public PromoBoxFields() {}
     
-    public PromoBoxFields(String title, String headline, String intro, String link, PromoBoxImage image) {
+    public PromoBoxFields(String title, String headline, String intro, String link, TypeBasedImage image) {
         this.title = title;
         this.headline = headline;
         this.intro = intro;
@@ -55,11 +55,11 @@ public class PromoBoxFields {
         this.link = link;
     }
 
-    public PromoBoxImage getImage() {
+    public TypeBasedImage getImage() {
         return image;
     }
 
-    public void setImage(PromoBoxImage image) {
+    public void setImage(TypeBasedImage image) {
         this.image = image;
     }
 }
