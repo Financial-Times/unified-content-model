@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.ft.unifiedContentModel</groupId>
 		<artifactId>ft-unifiedContentModel-parent</artifactId>
-		<version>0.16.1-SNAPSHOT</version>
+		<version>0.17.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>ft-unifiedContentModel-core</artifactId>
