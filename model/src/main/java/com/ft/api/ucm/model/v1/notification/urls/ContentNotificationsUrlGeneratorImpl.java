@@ -2,10 +2,10 @@ package com.ft.api.ucm.model.v1.notification.urls;
 
 import static org.springframework.util.Assert.notNull;
 
-import com.ft.unifiedContentModel.core.net.Path;
-import com.ft.unifiedContentModel.core.net.PathFactory;
-import com.ft.unifiedContentModel.core.net.Paths;
-import com.ft.unifiedContentModel.core.net.UrlBuilder;
+import com.ft.api.ucm.core.net.Path;
+import com.ft.api.ucm.core.net.PathFactory;
+import com.ft.api.ucm.core.net.Paths;
+import com.ft.api.ucm.core.net.UrlBuilder;
 
 public class ContentNotificationsUrlGeneratorImpl implements ContentNotificationsUrlGenerator {
 

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.ft.unifiedContentModel.core.log.SupportLogger;
-import com.ft.unifiedContentModel.core.log.SystemSupportLogger;
+import com.ft.api.ucm.core.log.SupportLogger;
+import com.ft.api.ucm.core.log.SystemSupportLogger;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 

@@ -10,9 +10,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ft.unifiedContentModel.core.net.Path;
-import com.ft.unifiedContentModel.core.net.PathFactory;
-import com.ft.unifiedContentModel.core.net.Paths;
+import com.ft.api.ucm.core.net.Path;
+import com.ft.api.ucm.core.net.PathFactory;
+import com.ft.api.ucm.core.net.Paths;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContentNotificationUrlGeneratorImplTest {

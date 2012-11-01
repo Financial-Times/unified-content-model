@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ft.unifiedContentModel.core.datetime.Clock;
+import com.ft.api.ucm.core.datetime.Clock;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LastBuiltResponseHeaderTest {

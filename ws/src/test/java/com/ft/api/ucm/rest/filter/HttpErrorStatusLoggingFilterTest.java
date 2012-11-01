@@ -3,7 +3,7 @@ package com.ft.api.ucm.rest.filter;
 import static junit.framework.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 
-import com.ft.unifiedContentModel.core.log.SupportLogger;
+import com.ft.api.ucm.core.log.SupportLogger;
 import com.ft.api.ucm.rest.filter.HttpErrorStatusLoggingFilter.HttpErrorStatusLoggingResponseWrapper;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;

@@ -3,8 +3,8 @@ package com.ft.api.ucm.rest.http;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ft.unifiedContentModel.core.datetime.Clock;
-import com.ft.unifiedContentModel.core.datetime.SystemClock;
+import com.ft.api.ucm.core.datetime.Clock;
+import com.ft.api.ucm.core.datetime.SystemClock;
 
 /**
  * <p>A ResponseHeader that configures a custom 'X-Last-Built' header to be added

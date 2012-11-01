@@ -3,7 +3,7 @@ package com.ft.api.ucm.rest.http;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.ft.unifiedContentModel.core.net.Host;
+import com.ft.api.ucm.core.net.Host;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.Before;

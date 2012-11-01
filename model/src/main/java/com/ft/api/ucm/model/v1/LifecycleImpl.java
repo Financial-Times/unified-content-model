@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import com.ft.unifiedContentModel.core.datetime.JsonDateTimeSerializer;
+import com.ft.api.ucm.core.datetime.JsonDateTimeSerializer;
 import com.google.common.base.Objects;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;

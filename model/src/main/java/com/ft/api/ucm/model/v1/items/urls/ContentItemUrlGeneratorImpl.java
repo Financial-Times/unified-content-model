@@ -6,12 +6,12 @@ import java.util.Map;
 
 import org.joda.time.DateTime;
 
-import com.ft.unifiedContentModel.core.net.HexHashHelper;
-import com.ft.unifiedContentModel.core.net.Path;
-import com.ft.unifiedContentModel.core.net.PathFactory;
-import com.ft.unifiedContentModel.core.net.Paths;
-import com.ft.unifiedContentModel.core.net.Url;
-import com.ft.unifiedContentModel.core.net.UrlBuilder;
+import com.ft.api.ucm.core.net.HexHashHelper;
+import com.ft.api.ucm.core.net.Path;
+import com.ft.api.ucm.core.net.PathFactory;
+import com.ft.api.ucm.core.net.Paths;
+import com.ft.api.ucm.core.net.Url;
+import com.ft.api.ucm.core.net.UrlBuilder;
 import com.google.common.collect.Maps;
 
 public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {

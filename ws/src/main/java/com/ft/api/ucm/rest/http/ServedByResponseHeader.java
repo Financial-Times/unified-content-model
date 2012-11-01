@@ -3,7 +3,7 @@ package com.ft.api.ucm.rest.http;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ft.unifiedContentModel.core.net.Host;
+import com.ft.api.ucm.core.net.Host;
 
 /**
  * <p>A ResponseHeader that configures a custom 'X-Served-By' header to be added
