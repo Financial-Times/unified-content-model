@@ -1,4 +1,4 @@
-package com.ft.api.ucm.model.v1.urls;
+package com.ft.api.ucm.model.v1.items.urls;
 
 import static org.springframework.util.Assert.notNull;
 
@@ -60,12 +60,6 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 				.build();
 	}
 	
-    @Override
-    public String createUrlForContentItemUpdateNotifications() {
-        Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
-        return buildItemUrl(contentItemNotificationsPath).getUrl();
-    }
-
 	@Override
 	public String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate) {
 		return createUrlForItemWithHash(itemUuid, HexHashHelper.hexHash8(lastModifiedDate));

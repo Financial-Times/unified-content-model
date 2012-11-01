@@ -1,4 +1,4 @@
-package com.ft.api.ucm.model.v1.urls;
+package com.ft.api.ucm.model.v1.items.urls;
 
 import org.joda.time.DateTime;
 
@@ -12,6 +12,5 @@ public interface ContentItemUrlGenerator {
 	
 	String createUrlForItemWithHash(String itemUuid, String hash);
 
-	String createUrlForContentItemUpdateNotifications();
 
 }
