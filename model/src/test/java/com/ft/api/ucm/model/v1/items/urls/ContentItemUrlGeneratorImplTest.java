@@ -1,4 +1,4 @@
-package com.ft.api.ucm.model.v1.urls;
+package com.ft.api.ucm.model.v1.items.urls;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -18,7 +18,6 @@ import org.springframework.web.util.UriTemplate;
 import com.ft.unifiedContentModel.core.net.Path;
 import com.ft.unifiedContentModel.core.net.PathFactory;
 import com.ft.unifiedContentModel.core.net.Paths;
-import com.ft.api.ucm.model.v1.urls.ContentItemUrlGeneratorImpl;
 import com.google.common.collect.Maps;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -65,17 +64,6 @@ public class ContentItemUrlGeneratorImplTest {
 		String url = generator.createUrlForItems().toString();
 		assertEquals(API_URL + Paths.ITEM_LIST, url);
 	}
-
-    @Test
-    public void contentItemNotificationsUrl(){
-        when(mockpath.toString()).thenReturn(Paths.ITEM_NOTIFICATIONS_LIST);
-        when(mockPathFactory.createPath(Mockito.eq(Paths.ITEM_NOTIFICATIONS_LIST))).thenReturn(mockpath);
-
-        String url = generator.createUrlForContentItemUpdateNotifications().toString();
-        assertEquals(API_URL + "/" + Paths.ITEM_NOTIFICATIONS_LIST, url);
-    }
-
-  
 
 	@Test
 	public void shouldCreateItemUrlWithLastModifiedQueryParam() throws Exception {
