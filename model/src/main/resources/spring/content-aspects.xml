@@ -9,129 +9,129 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-	<bean id="unanimousAssignableVoter" class="com.ft.api.ucm.v1.model.aspect.UnanimousAssignableVoter" />
-	<bean id="concreteFieldResolutionPolicy" class="com.ft.api.ucm.v1.model.aspect.ConcreteFieldResolutionPolicy" />
+	<bean id="unanimousAssignableVoter" class="com.ft.api.ucm.model.v1.aspect.UnanimousAssignableVoter" />
+	<bean id="concreteFieldResolutionPolicy" class="com.ft.api.ucm.model.v1.aspect.ConcreteFieldResolutionPolicy" />
 	
 	<!-- Field Definitions -->
 	
-	<bean name="titleField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="titleField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="title" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 	
-	<bean name="initialPublishDateTimeField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="initialPublishDateTimeField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="initialPublishDateTime" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 	
-	<bean name="lastPublishDateTimeField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="lastPublishDateTimeField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="lastPublishDateTime" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="masterSourceField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="masterSourceField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="masterSource" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 	
-	<bean name="masterEntityIdField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="masterEntityIdField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="masterEntityId" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 	
-	<bean name="kickerField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="kickerField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="kicker" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 	
-	<bean name="spHeadlineField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="spHeadlineField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="spHeadline" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 
-	<bean name="packageField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="packageField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="package" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 
-	<bean name="bodyField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="bodyField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="body" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="originatingPartyField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="originatingPartyField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="originatingParty" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="excerptField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="excerptField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="excerpt" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="subheadingField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="subheadingField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="subheading" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="leadBodyField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="leadBodyField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="leadBody" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-	<bean name="standFirstField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="standFirstField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="standFirst" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 	
-	<bean name="bylineField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="bylineField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="byline" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 	
-	<bean name="uriField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="uriField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="uri" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>		
 	
-	<bean name="primarySectionField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="primarySectionField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="primarySection" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 	
-	<bean name="primaryThemeField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="primaryThemeField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="primaryTheme" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 	
-	<bean name="imagesField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+	<bean name="imagesField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="images" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
 
-    <bean name="slidesField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+    <bean name="slidesField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="slides" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
-    <bean name="slideshowHeadingField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+    <bean name="slideshowHeadingField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="slideshowHeading" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
-    <bean name="assetNameField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+    <bean name="assetNameField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="name" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
-    <bean name="assetFieldsField" class="com.ft.api.ucm.v1.model.aspect.ImmutableField" factory-method="valueOf">
+    <bean name="assetFieldsField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="fields" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
 	<!-- Aspect Definitions -->
 	
-	<bean name="titleAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="titleAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="title" />
 		<constructor-arg>
 			<util:set>
@@ -141,7 +141,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean name="lifecycleAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="lifecycleAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="lifecycle" />
 		<constructor-arg>
 			<util:set>
@@ -152,7 +152,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean name="masterAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="masterAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="master" />
 		<constructor-arg>
 			<util:set>
@@ -163,7 +163,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-	<bean name="packagingAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="packagingAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="packaging" />
 		<constructor-arg>
 			<util:set>
@@ -174,7 +174,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean name="packageAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="packageAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="package" />
 		<constructor-arg>
 			<util:set>
@@ -184,7 +184,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-	<bean name="bodyAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="bodyAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="body" />
 		<constructor-arg>
 			<util:set>
@@ -194,7 +194,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean name="provenanceAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="provenanceAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="provenance" />
 		<constructor-arg>
 			<util:set>
@@ -204,7 +204,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>	
 	
-	<bean name="summaryAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="summaryAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="summary" />
 		<constructor-arg>
 			<util:set>
@@ -215,7 +215,7 @@
 	</bean>	
 	
 
-	<bean name="editorialAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="editorialAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="editorial" />
 		<constructor-arg>
 			<util:set>
@@ -227,7 +227,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>	
 
-	<bean name="attributionAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="attributionAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="attribution" />
 		<constructor-arg>
 			<util:set>
@@ -237,7 +237,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean name="locationAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="locationAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="location" />
 		<constructor-arg>
 			<util:set>
@@ -247,7 +247,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>				
 	
-	<bean name="metadataAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="metadataAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="metadata" />
 		<constructor-arg>
 			<util:set>
@@ -258,7 +258,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>	
 	
-	<bean name="imagesAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+	<bean name="imagesAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="images" />
 		<constructor-arg>
 			<util:set>
@@ -268,7 +268,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-    <bean name="mediaAssetsAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+    <bean name="mediaAssetsAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="mediaAssets" />
 		<constructor-arg>
 			<util:set>
@@ -279,7 +279,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-    <bean name="assetsAspect" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspect" factory-method="valueOf">
+    <bean name="assetsAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="assets" />
 		<constructor-arg>
 			<util:set>
@@ -313,7 +313,7 @@
 		<constructor-arg value="podcast" />
 	</bean>
 
-	<bean id="articleAspectSet" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+	<bean id="articleAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="articleAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -336,7 +336,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean id="blogAspectSet" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+	<bean id="blogAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="blogAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -355,7 +355,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-    <bean id="slideshowAspectSet" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+    <bean id="slideshowAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="slideshowAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -376,7 +376,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean id="videoAspectSet" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+	<bean id="videoAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="videoAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -389,7 +389,7 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-		<bean id="podcastAspectSet" class="com.ft.api.ucm.v1.model.aspect.ImmutableAspectSet" factory-method="valueOf">
+		<bean id="podcastAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="podcastAspectSetName" />
 		<constructor-arg>
 			<util:set>
@@ -410,19 +410,19 @@
 		<ref bean="podcastAspectSet" />
 	</util:set>
 	
-	<bean id="policyBasedAspectSetCollection" class="com.ft.api.ucm.v1.model.aspect.PolicyBasedAspectSetCollection">
+	<bean id="policyBasedAspectSetCollection" class="com.ft.api.ucm.model.v1.aspect.PolicyBasedAspectSetCollection">
 		<constructor-arg ref="allAspectSets" />
 		<constructor-arg>
-			<bean class="com.ft.api.ucm.v1.model.aspect.TypeBasedAspectSetSelectionPolicy">
+			<bean class="com.ft.api.ucm.model.v1.aspect.TypeBasedAspectSetSelectionPolicy">
 				<constructor-arg index="0" ref="articleAspectSet"/>
                 <constructor-arg index="1">
                      <map>
                         <entry>
-                            <key><value>com.ft.api.ucm.v1.model.ArticleEntity</value></key>
+                            <key><value>com.ft.api.ucm.model.v1.ArticleEntity</value></key>
                             <ref bean="articleAspectSet" />
                         </entry>
                         <entry>
-                            <key><value>com.ft.api.ucm.v1.model.SlideshowArticleEntity</value></key>
+                            <key><value>com.ft.api.ucm.model.v1.SlideshowArticleEntity</value></key>
                             <ref bean="slideshowAspectSet" />
                         </entry>
                     </map>
