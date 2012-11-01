@@ -1,4 +1,4 @@
-package com.ft.unifiedContentModel.core.net;
+package com.ft.api.ucm.v1.model.urls;
 
 import static org.springframework.util.Assert.notNull;
 
@@ -6,26 +6,30 @@ import java.util.Map;
 
 import org.joda.time.DateTime;
 
+import com.ft.unifiedContentModel.core.net.HexHashHelper;
+import com.ft.unifiedContentModel.core.net.Path;
+import com.ft.unifiedContentModel.core.net.PathFactory;
+import com.ft.unifiedContentModel.core.net.Paths;
+import com.ft.unifiedContentModel.core.net.Url;
+import com.ft.unifiedContentModel.core.net.UrlBuilder;
 import com.google.common.collect.Maps;
 
-public class UrlGeneratorImpl implements UrlGenerator {
+public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 	
     static final String CONTEXT_REGEX = "http[s]*://[A-Za-z0-9-.]+/content/[content|structure]([A-Za-z0-9-/.?=]+)";
     static final String ORIGINAL_REQUEST_HEADER_NAME = "X-Original-Request";
 
     private String baseApiUrl;
     
-    
     private final PathFactory pathFactory;
-	private final String LAST_MODIFIED_DATE_PREFIX = "lastModified=";
 	private final String HASH_PREFIX = "h=";
 
-	public UrlGeneratorImpl(PathFactory pathFactory) {
+	public ContentItemUrlGeneratorImpl(PathFactory pathFactory) {
 		notNull(pathFactory);
 		this.pathFactory = pathFactory;
 	}
 
-    public UrlGeneratorImpl(String baseApiUrl, PathFactory pathFactory) {
+    public ContentItemUrlGeneratorImpl(String baseApiUrl, PathFactory pathFactory) {
 		this(pathFactory);
 		notNull(baseApiUrl);
 		this.baseApiUrl = baseApiUrl;
@@ -37,17 +41,17 @@ public class UrlGeneratorImpl implements UrlGenerator {
 	}
 	
 	@Override
-	public Url createUrlForItems() {
+	public String createUrlForItems() {
 		Path itemListRelativePath = pathFactory.createPath(Paths.ITEM_LIST);
-		return buildItemUrl(itemListRelativePath);
+		return buildItemUrl(itemListRelativePath).getUrl();
 	}
 
 	@Override
-	public Url createUrlForItem(String itemUuid) {
+	public String createUrlForItem(String itemUuid) {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("itemId", itemUuid);
 		Path itemReadRelativePath = pathFactory.createPath(Paths.ITEM_READ, vars);
-		return buildItemUrl(itemReadRelativePath);
+		return buildItemUrl(itemReadRelativePath).getUrl();
 	}
 	
 	protected Url buildItemUrl(Path itemReadRelativePath) {
@@ -57,30 +61,21 @@ public class UrlGeneratorImpl implements UrlGenerator {
 	}
 	
     @Override
-    public Url createUrlForContentItemUpdateNotifications() {
+    public String createUrlForContentItemUpdateNotifications() {
         Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
-        return buildItemUrl(contentItemNotificationsPath);
+        return buildItemUrl(contentItemNotificationsPath).getUrl();
     }
 
 	@Override
-	public Url createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate) {
+	public String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate) {
 		return createUrlForItemWithHash(itemUuid, HexHashHelper.hexHash8(lastModifiedDate));
 	}
 	
 	@Override
-	public Url createUrlForItemWithHash(String itemUuid, String hash) {
+	public String createUrlForItemWithHash(String itemUuid, String hash) {
 		return UrlBuilder.basedOn(createUrlForItem(itemUuid).toString())
 				.withQueryString(HASH_PREFIX + hash)
-				.build();
-	}
-
-	@Override
-	public Url createRequestUrl(String servletPath, String pathInfo, String queryString) {
-		return UrlBuilder.basedOn(baseApiUrl)
-			.withPath(servletPath)
-			.withPathInfo(pathInfo)
-			.withQueryString(queryString)
-			.build();
+				.build().getUrl();
 	}
 
 }
