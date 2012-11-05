@@ -10,7 +10,6 @@ import com.ft.api.ucm.core.net.HexHashHelper;
 import com.ft.api.ucm.core.net.Path;
 import com.ft.api.ucm.core.net.PathFactory;
 import com.ft.api.ucm.core.net.Paths;
-import com.ft.api.ucm.core.net.Url;
 import com.ft.api.ucm.core.net.UrlBuilder;
 import com.google.common.collect.Maps;
 
@@ -43,7 +42,7 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 	@Override
 	public String createUrlForItems() {
 		Path itemListRelativePath = pathFactory.createPath(Paths.ITEM_LIST);
-		return buildItemUrl(itemListRelativePath).getUrl();
+		return buildItemUrl(itemListRelativePath);
 	}
 
 	@Override
@@ -51,10 +50,10 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 		Map<String, Object> vars = Maps.newHashMap();
 		vars.put("itemId", itemUuid);
 		Path itemReadRelativePath = pathFactory.createPath(Paths.ITEM_READ, vars);
-		return buildItemUrl(itemReadRelativePath).getUrl();
+		return buildItemUrl(itemReadRelativePath);
 	}
 	
-	protected Url buildItemUrl(Path itemReadRelativePath) {
+	protected String buildItemUrl(Path itemReadRelativePath) {
 		return UrlBuilder.basedOn(baseApiUrl)
 				.withPathInfo(itemReadRelativePath.toString())
 				.build();
@@ -69,7 +68,8 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 	public String createUrlForItemWithHash(String itemUuid, String hash) {
 		return UrlBuilder.basedOn(createUrlForItem(itemUuid).toString())
 				.withQueryString(HASH_PREFIX + hash)
-				.build().getUrl();
+				.build();
 	}
+	
 
 }

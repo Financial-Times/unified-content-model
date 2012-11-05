@@ -5,7 +5,9 @@ import static org.apache.commons.lang.StringUtils.isNotEmpty;
 import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.springframework.util.Assert.notNull;
 
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -123,9 +125,7 @@ public final class UrlBuilder {
 		return this;
 	}
     
-    
-
-	public Url build() {
+	public String uncheckedBuild() {
     	StringBuilder sb;
     	if (StringUtils.isNotEmpty(scheme) && StringUtils.isNotEmpty(serverName)) {
     		sb = createServerStringBuilder(scheme, serverName);
@@ -155,12 +155,22 @@ public final class UrlBuilder {
         }
     	UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(sb.toString()).build();
    	    String encodedUri = uriComponents.encode().toUriString();
-		return new Url(encodedUri);
+   	    return encodedUri;
+    }
+
+	public String build() {
+   	    String url = uncheckedBuild();
+   	    try {
+			new URL(url);
+			return url;
+		} catch (MalformedURLException e) {
+			throw new IllegalStateException("There was an error building the url", e);
+		}
     }
 	
 	@Override
 	public String toString() {
-		return build().toString();
+		return uncheckedBuild();
 	}
     
     /** Return StringBuffer representing the scheme, server, and port number of the current request.*/

@@ -34,8 +34,7 @@ public class ContentNotificationsUrlGeneratorImpl implements ContentNotification
 	public String createUrlForContentItemUpdateNotifications() {
 		Path contentItemNotificationsPath = pathFactory.createPath(Paths.ITEM_NOTIFICATIONS_LIST);
 		return UrlBuilder.basedOn(baseApiUrl)
-				.withPathInfo(contentItemNotificationsPath.toString()).build()
-				.getUrl();
+				.withPathInfo(contentItemNotificationsPath.toString()).build();
 	}
 
 }

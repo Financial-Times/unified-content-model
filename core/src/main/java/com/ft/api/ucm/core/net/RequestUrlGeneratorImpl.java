@@ -3,7 +3,7 @@ package com.ft.api.ucm.core.net;
 public class RequestUrlGeneratorImpl implements RequestUrlGenerator {
 
 	private String baseApiUrl;
-
+	
 	public RequestUrlGeneratorImpl(String baseApiUrl) {
 		this.baseApiUrl = baseApiUrl;
 	}
@@ -13,7 +13,7 @@ public class RequestUrlGeneratorImpl implements RequestUrlGenerator {
 			.withPath(servletPath)
 			.withPathInfo(pathInfo)
 			.withQueryString(queryString)
-			.build().getUrl();
+			.build();
 	}
 
 
