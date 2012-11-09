@@ -384,6 +384,7 @@
 				<ref bean="lifecycleAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
+				<ref bean="metadataAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -397,6 +398,7 @@
 				<ref bean="lifecycleAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
+				<ref bean="metadataAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
