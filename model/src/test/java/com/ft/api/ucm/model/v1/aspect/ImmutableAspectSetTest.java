@@ -19,20 +19,14 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
-import com.ft.api.ucm.model.v1.aspect.Aspect;
-import com.ft.api.ucm.model.v1.aspect.AspectSet;
-import com.ft.api.ucm.model.v1.aspect.AssignableVoter;
-import com.ft.api.ucm.model.v1.aspect.Field;
-import com.ft.api.ucm.model.v1.aspect.ImmutableAspect;
-import com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ImmutableAspectSetTest {
 	
-	private final static String NAME = "name";
-	private final static String ANOTHER_NAME = "zzz";
+	private final static String NAME = AspectEnum.LIFECYCLE.getName();
+	private final static String ANOTHER_NAME = AspectEnum.TITLE.getName();
 	
 	@Mock private AssignableVoter mockAssignableVoter;
 	@Mock private AspectSetAware mockAspectSetAware;

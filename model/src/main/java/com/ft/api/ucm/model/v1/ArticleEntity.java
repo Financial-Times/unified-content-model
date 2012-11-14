@@ -2,6 +2,7 @@ package com.ft.api.ucm.model.v1;
 
 import static org.springframework.util.Assert.notNull;
 
+import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.collect.Lists;
 import java.util.List;
 
@@ -29,6 +30,18 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 	public ArticleEntity(String id, String apiUrl){
 		super(id, apiUrl);
 		notNull(apiUrl);
+	}
+	
+	@Override
+	public void suppressAspect(String aspect) {
+		super.suppressAspect(aspect);
+		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
+		switch (aspectValue) {
+			case PROVENANCE: setProvenance(null); break;
+			case EDITORIAL: setEditorial(null); break;
+			case MEDIAASSETS: setMediaAssets(null); break;
+			case ASSETS: setAssets(null); break;
+		}
 	}
 	
 	@Override

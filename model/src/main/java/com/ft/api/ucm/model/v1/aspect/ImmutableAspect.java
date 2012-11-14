@@ -11,6 +11,7 @@ public final class ImmutableAspect implements Aspect {
 	
 	private ImmutableAspect(String name, Set<Field> fields, AssignableVoter assignableVoter) {
 		notNull(assignableVoter);
+		notNull(AspectEnum.getByValue(name));
 		namedNode = new NamedNode<Field>(name, fields);
 		this.assignableVoter = assignableVoter;
 	}

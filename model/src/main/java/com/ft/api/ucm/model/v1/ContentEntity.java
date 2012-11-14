@@ -4,8 +4,10 @@ package com.ft.api.ucm.model.v1;
 import static org.springframework.util.Assert.notNull;
 
 import java.util.List;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.base.Objects;
 
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
@@ -48,6 +50,23 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	@Override
 	public void setAspects(List<String> aspects) {
 		this.aspects = aspects;
+	}
+	
+	public void suppressAspect(String aspect) {
+		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
+		notNull(aspectValue, "aspect " + aspect + " is not a valid AspectEnum value");
+		switch (aspectValue) {
+			case TITLE: setTitle(null); break;
+			case LIFECYCLE: setLifecycle(null); break;
+			case MASTER: setMaster(null); break;
+			case PACKAGING: setPackaging(null); break;
+			case PACKAGE: setPackage(null); break;
+			case BODY: setBody(null); break;
+			case SUMMARY: setSummary(null); break;
+			case LOCATION: setLocation(null); break;
+			case METADATA: setMetadata(null); break;
+			case IMAGES: setImages(null); break;
+		}
 	}
 
 	public Location getLocation() {

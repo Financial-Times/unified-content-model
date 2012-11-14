@@ -226,16 +226,6 @@
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>	
-
-	<bean name="attributionAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
-		<constructor-arg value="attribution" />
-		<constructor-arg>
-			<util:set>
-				<ref bean="bylineField" />
-			</util:set>
-		</constructor-arg>
-		<constructor-arg ref="unanimousAssignableVoter" />
-	</bean>
 	
 	<bean name="locationAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="location" />
