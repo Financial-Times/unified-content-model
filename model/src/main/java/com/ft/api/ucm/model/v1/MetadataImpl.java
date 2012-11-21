@@ -34,7 +34,7 @@ public class MetadataImpl implements Metadata {
 	private Set<Tag> topics;
 	
 	public MetadataImpl() {
-		// required for JAXB
+		// required for creating empty metadata so can return this if metadata aspect is requested
 	}
 	
 	public MetadataImpl(Tag primarySection, Tag primaryTheme, Set<Tag> tags) {

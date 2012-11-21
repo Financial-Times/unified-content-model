@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
@@ -16,6 +17,7 @@ import com.google.common.base.Objects.ToStringHelper;
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 	"body", "lifecycle", "location", "packaging", "master", "editorial", "provenance", "metadata", 
 	"images", "package", "assets", "mediaAssets"})
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, AssetAware {
 
 	private Editorial editorial;
@@ -88,9 +90,6 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 
 	@Override
     public List<MediaAsset> getMediaAssets() {
-		if(mediaAssets != null && mediaAssets.size() == 0){
-			return null;
-		}
 		return mediaAssets;
     }
 
@@ -110,9 +109,6 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 
 	@Override
 	public List<Asset> getAssets() {
-		if(assets != null && assets.size() == 0){
-			return null;
-		}
 		return assets;
 	}
 
