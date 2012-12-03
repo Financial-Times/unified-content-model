@@ -19,10 +19,29 @@ public class RequestUrlGeneratorTest {
 	
 
 	@Test
-	public void shouldCreateRequestUrlBasedOnSupplied() throws Exception {
-		String url = generator.createRequestUrl("/servlet", "/path", "param1=foo&param2=bar").toString();
+    public void shouldCreateRequestUrlBasedOnSuppliedDefault() throws Exception {
+        String url = generator.createRequestUrl("/servlet", "/path", "param1=foo&param2=bar").toString();
+        assertEquals("http://api.ft.com/servlet/path?param1=foo&param2=bar", url);
+    }
+	
+    @Test
+    public void shouldCreateRequestUrlBasedOnSuppliedHttpsWithPort() throws Exception {
+        generator = new RequestUrlGeneratorImpl(API_URL + ":8080");
+        String url = generator.createRequestUrl(HttpProtocol.HTTPS, "/servlet", "/path", "param1=foo&param2=bar").toString();
+        assertEquals("https://api.ft.com:8080/servlet/path?param1=foo&param2=bar", url);
+    }
+	
+	@Test
+	public void shouldCreateRequestUrlBasedOnSuppliedHttp() throws Exception {
+		String url = generator.createRequestUrl(HttpProtocol.HTTP, "/servlet", "/path", "param1=foo&param2=bar").toString();
 		assertEquals("http://api.ft.com/servlet/path?param1=foo&param2=bar", url);
 	}
+	
+   @Test
+    public void shouldCreateRequestUrlBasedOnSuppliedHttps() throws Exception {
+        String url = generator.createRequestUrl(HttpProtocol.HTTPS, "/servlet", "/path", "param1=foo&param2=bar").toString();
+        assertEquals("https://api.ft.com/servlet/path?param1=foo&param2=bar", url);
+    }
 
 	@Test
 	public void shouldCreateRequestUrlBasedOnSuppliedWithNullQueryString() throws Exception {

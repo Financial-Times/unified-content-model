@@ -47,6 +47,13 @@ public class UrlBuilderTest {
     	assertEquals(baseUrl, UrlBuilder.basedOn(baseUrl).toString());
 	}
 	
+   @Test
+    public void basedOnStringUrlHttps() {
+        String baseUrl = "https://int.media.ft.com:443/content/images?true=false";
+        String expectedUrl = "https://int.media.ft.com/content/images?true=false";
+        assertEquals(expectedUrl, UrlBuilder.basedOn(baseUrl).toString());
+    }
+	
 	@Test
 	public void withNewPath() {
     	assertEquals(SCHEME + "://" + SERVER_NAME + ":" + NON_STANDARD_PORT + NEW_SERVLET_PATH, 
