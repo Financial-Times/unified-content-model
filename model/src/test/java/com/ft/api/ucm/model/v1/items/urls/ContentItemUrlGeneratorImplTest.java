@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.ft.api.ucm.core.net.ContentApiConfiguration;
+import com.ft.api.ucm.core.net.HttpProtocol;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContentItemUrlGeneratorImplTest {
@@ -25,18 +26,29 @@ public class ContentItemUrlGeneratorImplTest {
 	
     private @Mock ContentApiConfiguration configuration;
 
-
 	@Before
 	public void setup() {
 		when(configuration.getBaseApiUrl()).thenReturn(API_URL);
 		generator = new ContentItemUrlGeneratorImpl(configuration);
 	}
 	
+   @Test
+    public void itemUrl() { 
+        String url = generator.createUrlForItem(UUID).toString();
+        assertEquals("http://api.ft.com/content/items/v1/123", url);
+    }
+	
 	@Test
-	public void itemUrl() {	
-		String url = generator.createUrlForItem(UUID).toString();
+	public void itemUrlHttp() {	
+		String url = generator.createUrlForItem(UUID, HttpProtocol.HTTP).toString();
 		assertEquals("http://api.ft.com/content/items/v1/123", url);
 	}
+	
+   @Test
+    public void itemUrlHttps() { 
+        String url = generator.createUrlForItem(UUID, HttpProtocol.HTTPS).toString();
+        assertEquals("https://api.ft.com/content/items/v1/123", url);
+    }
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void shouldFailCreateUrlWithNullUuid() throws Exception {
