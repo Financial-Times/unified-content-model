@@ -13,7 +13,10 @@ public interface ContentItemUrlGenerator {
 	
 	String createUrlForItem(String uuid, HttpProtocol httpProtocol);
     
+	@Deprecated
 	String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate);
+	
+	String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate, HttpProtocol httpProtocol);
 	
 	String createUrlForItemWithHash(String itemUuid, String hash);
 }

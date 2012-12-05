@@ -69,6 +69,22 @@ public class ContentItemUrlGeneratorImplTest {
 		assertEquals("http://api.ft.com/content/items/v1/123?h="+expectedHash, url );
 	}
 	
+   @Test
+    public void shouldCreateItemUrlWithLastModifiedQueryParamHttp() throws Exception {
+        DateTime dateTime = new DateTime().withDate(2012, 07, 16).withTime(13, 33, 56, 123).withZoneRetainFields(DateTimeZone.UTC);
+        String expectedHash = "900c4cfe";
+        String url = generator.createUrlForItemWithLastModifiedDate(UUID, dateTime, HttpProtocol.HTTP).toString();
+        assertEquals("http://api.ft.com/content/items/v1/123?h="+expectedHash, url );
+    }
+   
+   @Test
+   public void shouldCreateItemUrlWithLastModifiedQueryParamHttps() throws Exception {
+       DateTime dateTime = new DateTime().withDate(2012, 07, 16).withTime(13, 33, 56, 123).withZoneRetainFields(DateTimeZone.UTC);
+       String expectedHash = "900c4cfe";
+       String url = generator.createUrlForItemWithLastModifiedDate(UUID, dateTime, HttpProtocol.HTTPS).toString();
+       assertEquals("https://api.ft.com/content/items/v1/123?h="+expectedHash, url );
+   }
+	
 	@Test
 	public void shouldCreateItemUrlWithHash() throws Exception {
 		String url = generator.createUrlForItemWithHash(UUID, HASH);

@@ -33,7 +33,7 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
 	
 	@Override
 	public String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate) {
-		return contentItemUrlTemplate.generateUrl(itemUuid, hexHash8(lastModifiedDate));
+	    return createUrlForItemWithLastModifiedDate(itemUuid, lastModifiedDate, HttpProtocol.HTTP);
 	}
 	
 	@Override
@@ -45,6 +45,12 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
     public String createUrlForItem(String uuid, HttpProtocol httpProtocol) {
 	    return alignProtocol(contentItemUrlTemplate.generateUrl(uuid), httpProtocol);
     }
+	
+    @Override
+    public String createUrlForItemWithLastModifiedDate(String itemUuid, DateTime lastModifiedDate, HttpProtocol httpProtocol) {
+        String generateUrl = contentItemUrlTemplate.generateUrl(itemUuid, hexHash8(lastModifiedDate));
+        return alignProtocol(generateUrl, httpProtocol);
+    }
 
     private String alignProtocol(String generateUrl, HttpProtocol httpProtocol) {
         switch(httpProtocol) {
@@ -52,6 +58,4 @@ public class ContentItemUrlGeneratorImpl implements ContentItemUrlGenerator {
             default: return generateUrl;
         }
     }
-	
-
 }
