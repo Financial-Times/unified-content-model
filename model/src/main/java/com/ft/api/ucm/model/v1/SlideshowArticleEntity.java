@@ -20,7 +20,6 @@ import com.google.common.base.Objects.ToStringHelper;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, AssetAware {
 
-	private Editorial editorial;
 	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
 	private List<Asset> assets;
@@ -41,19 +40,9 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
 		switch (aspectValue) {
 			case PROVENANCE: setProvenance(null); break;
-			case EDITORIAL: setEditorial(null); break;
 			case MEDIAASSETS: setMediaAssets(null); break;
 			case ASSETS: setAssets(null); break;
 		}
-	}
-	
-	public void setEditorial(Editorial editorial) {
-		this.editorial = editorial;
-	}
-	
-	@Override
-	public Editorial getEditorial() {
-		return editorial;
 	}
 
 	public void setProvenance(Provenance provenance) {
@@ -148,7 +137,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 					.add("metadata", getMetadata())
 					.add("images", getImages())
 					.add("master", getMaster())
-					.add("editorial", editorial)
+					.add("editorial", getEditorial())
 					.add("provenance", provenance)
 					.add("mediaAssets", mediaAssets)
 					.add("assets", assets);

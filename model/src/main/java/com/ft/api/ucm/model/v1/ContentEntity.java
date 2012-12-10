@@ -13,6 +13,7 @@ import com.google.common.base.Objects;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public abstract class ContentEntity extends SimpleEntity implements Package, Images, AspectSetAware {
 	
+	private Editorial editorial;
 	private Location location;
 	private Master master;
 	private Packaging packaging;
@@ -66,6 +67,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 			case LOCATION: setLocation(null); break;
 			case METADATA: setMetadata(null); break;
 			case IMAGES: setImages(null); break;
+			case EDITORIAL :setEditorial(null); break;
 		}
 	}
 
@@ -126,6 +128,14 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	}
 	public void setImages(List<Image> images){
 		this.images = images;
+	}
+	
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
+	}
+
+	public Editorial getEditorial() {
+		return editorial;
 	}
 	
 	

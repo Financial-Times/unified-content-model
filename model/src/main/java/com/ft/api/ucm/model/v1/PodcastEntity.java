@@ -7,7 +7,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 
-@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id",  "title", "lifecycle", "location", "master"})
+@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id",  "title", "lifecycle", "location", "master","editorial"})
 public class PodcastEntity extends ContentEntity implements Podcast {
 	
 	public PodcastEntity() {}
@@ -36,7 +36,8 @@ public class PodcastEntity extends ContentEntity implements Podcast {
 					.add("aspectSet", getAspectSet())
 					.add("aspects", getAspects())
 					.add("location", getLocation())
-					.add("master", getMaster());
+					.add("master", getMaster())
+					.add("editorial",getEditorial());
 	}
 
 

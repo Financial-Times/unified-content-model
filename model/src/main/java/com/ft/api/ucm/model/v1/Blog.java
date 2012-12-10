@@ -26,6 +26,8 @@ public interface Blog {
 	
 	List<Image> getImages();
 	
+	Editorial getEditorial();
+	
 	
 	
 }

@@ -12,5 +12,7 @@ public interface Video {
 	Location getLocation();
 	
 	Master getMaster();	
+	
+	Editorial getEditorial();
 
 }

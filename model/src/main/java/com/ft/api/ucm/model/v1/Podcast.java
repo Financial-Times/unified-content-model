@@ -11,5 +11,7 @@ public interface Podcast {
 	Location getLocation();
 	
 	Master getMaster();
+	
+	Editorial getEditorial();
 
 }

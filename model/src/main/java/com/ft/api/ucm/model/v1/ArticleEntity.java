@@ -20,7 +20,6 @@ import com.google.common.base.Objects.ToStringHelper;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class ArticleEntity extends ContentEntity implements Article, AssetAware {
 	
-	private Editorial editorial;
 	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
 	private Map<String, MediaAsset> mediaAssetMap;
@@ -40,19 +39,9 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
 		switch (aspectValue) {
 			case PROVENANCE: setProvenance(null); break;
-			case EDITORIAL: setEditorial(null); break;
 			case MEDIAASSETS: setMediaAssets(null); break;
 			case ASSETS: setAssets(null); break;
 		}
-	}
-	
-	@Override
-	public Editorial getEditorial() {
-		return editorial;
-	}
-	
-	public void setEditorial(Editorial editorial) {
-		this.editorial = editorial;
 	}
 
 	@Override
@@ -148,7 +137,7 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 					.add("contentPackage", getPackage())
 					.add("images", getImages())
 					.add("master", getMaster())
-					.add("editorial", editorial)
+					.add("editorial", getEditorial())
 					.add("provenance", provenance)
 					.add("mediaAssets", mediaAssets);
 	}
