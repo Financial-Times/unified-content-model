@@ -17,7 +17,7 @@ public enum HttpProtocol {
     public static HttpProtocol fromString(String protocol) {
         if (protocol != null) {
           for (HttpProtocol httpProtocol : HttpProtocol.values()) {
-            if (protocol.equalsIgnoreCase(httpProtocol.protocol)) {
+            if (httpProtocol.protocol.equalsIgnoreCase(protocol)) {
               return httpProtocol;
             }
           }

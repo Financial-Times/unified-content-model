@@ -89,4 +89,46 @@ public class HttpProtocolResolverTest {
         HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
         assertEquals(HttpProtocol.HTTP, httpProtocol);
     }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToNull() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol((String)null);
+        assertEquals(HttpProtocol.HTTP, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToEmtpy() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("");
+        assertEquals(HttpProtocol.HTTP, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToUnknown() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("hello");
+        assertEquals(HttpProtocol.HTTP, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToHttp() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("http");
+        assertEquals(HttpProtocol.HTTP, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToHttpUppercase() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("HTTP");
+        assertEquals(HttpProtocol.HTTP, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToHttps() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("https");
+        assertEquals(HttpProtocol.HTTPS, httpProtocol);
+    }
+    
+    @Test
+    public void x_Forwarded_ProtoHeaderSetToHttpsUppercase() {
+        HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("HTTPS");
+        assertEquals(HttpProtocol.HTTPS, httpProtocol);
+    }
 }
