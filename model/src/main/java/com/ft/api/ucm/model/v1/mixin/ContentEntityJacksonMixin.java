@@ -7,6 +7,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo.Id;
 
 import com.ft.api.ucm.model.v1.ArticleEntity;
 import com.ft.api.ucm.model.v1.BlogEntity;
+import com.ft.api.ucm.model.v1.PageEntity;
 import com.ft.api.ucm.model.v1.PodcastEntity;
 import com.ft.api.ucm.model.v1.SlideshowArticleEntity;
 import com.ft.api.ucm.model.v1.VideoEntity;
@@ -18,7 +19,8 @@ import com.ft.api.ucm.model.v1.VideoEntity;
     @JsonSubTypes.Type(value=SlideshowArticleEntity.class, name="slideshow"),
     @JsonSubTypes.Type(value=BlogEntity.class, name="blog"),
     @JsonSubTypes.Type(value=VideoEntity.class, name="video"),
-    @JsonSubTypes.Type(value=PodcastEntity.class, name="podcast")
+    @JsonSubTypes.Type(value=PodcastEntity.class, name="podcast"),
+    @JsonSubTypes.Type(value=PageEntity.class, name="page")
 }) 
 public abstract class ContentEntityJacksonMixin {
 

@@ -302,6 +302,10 @@
 	<bean id="podcastAspectSetName" class="java.lang.String">
 		<constructor-arg value="podcast" />
 	</bean>
+	
+	<bean id="pageAspectSetName" class="java.lang.String">
+		<constructor-arg value="page" />
+	</bean>
 
 	<bean id="articleAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
 		<constructor-arg ref="articleAspectSetName" />
@@ -371,6 +375,7 @@
 		<constructor-arg>
 			<util:set>
 				<ref bean="titleAspect" />
+				<ref bean="summaryAspect" />
 				<ref bean="lifecycleAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
@@ -385,10 +390,27 @@
 		<constructor-arg>
 			<util:set>
 				<ref bean="titleAspect" />
+				<ref bean="summaryAspect" />
 				<ref bean="lifecycleAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
+	
+	<bean id="pageAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
+		<constructor-arg ref="pageAspectSetName" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="titleAspect" />
+				<ref bean="summaryAspect" />
+				<ref bean="lifecycleAspect" />
+				<ref bean="masterAspect" />
+				<ref bean="locationAspect" />
+				<ref bean="metadataAspect" />
+				<ref bean="imagesAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -400,6 +422,7 @@
 		<ref bean="slideshowAspectSet" />
 		<ref bean="videoAspectSet" />
 		<ref bean="podcastAspectSet" />
+		<ref bean="pageAspectSet" />
 	</util:set>
 	
 	<bean id="policyBasedAspectSetCollection" class="com.ft.api.ucm.model.v1.aspect.PolicyBasedAspectSetCollection">

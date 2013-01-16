@@ -30,7 +30,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	}
 	
 	public ContentEntity(String id, String apiUrl){
-		notNull(id);
+		notNull(id,"Entity id cannot be null");
 		setId(id);
 		setApiUrl(apiUrl);
 	}
