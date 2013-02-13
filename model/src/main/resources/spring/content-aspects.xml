@@ -28,6 +28,10 @@
 		<constructor-arg value="lastPublishDateTime" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>	
+		<bean name="categoryField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="category" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
 
 	<bean name="masterSourceField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="masterSource" />
@@ -147,6 +151,16 @@
 			<util:set>
 				<ref bean="initialPublishDateTimeField" />
 				<ref bean="lastPublishDateTimeField" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
+	
+		<bean name="natureAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="nature" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="categoryField" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -313,6 +327,7 @@
 			<util:set>
 				<ref bean="titleAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="packagingAspect" />
 				<ref bean="packageAspect" />
@@ -336,6 +351,7 @@
 			<util:set>
 				<ref bean="titleAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="packagingAspect" />
 				<ref bean="packageAspect" />
@@ -355,6 +371,7 @@
 			<util:set>
 				<ref bean="titleAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="packagingAspect" />
 				<ref bean="bodyAspect" />
@@ -377,6 +394,7 @@
 				<ref bean="titleAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
@@ -392,6 +410,7 @@
 				<ref bean="titleAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
@@ -407,6 +426,7 @@
 				<ref bean="titleAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="lifecycleAspect" />
+				<ref bean="natureAspect" />
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />

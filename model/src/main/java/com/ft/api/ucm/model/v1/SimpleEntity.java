@@ -8,6 +8,7 @@ public abstract class SimpleEntity extends IdentifiableEntity {
 
 	private Title title;
 	private Lifecycle lifecycle;
+	private Nature nature;
 
 	public Lifecycle getLifecycle() {
 		return lifecycle;
@@ -25,11 +26,20 @@ public abstract class SimpleEntity extends IdentifiableEntity {
 		this.title = title;
 	}
 	
+	public Nature getNature() {
+		return nature;
+	}
+
+	public void setNature(Nature nature) {
+		this.nature = nature;
+	}
+
 	@Override
 	protected ToStringHelper toStringHelper() {
 		ToStringHelper toStringHelper = super.toStringHelper();
 		return toStringHelper
 					.add("title", title)
-					.add("lifecycle", lifecycle);
+					.add("lifecycle", lifecycle)
+					.add("nature", nature);
 	}
 }

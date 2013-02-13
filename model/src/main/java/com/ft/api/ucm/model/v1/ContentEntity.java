@@ -59,6 +59,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		switch (aspectValue) {
 			case TITLE: setTitle(null); break;
 			case LIFECYCLE: setLifecycle(null); break;
+			case NATURE: setNature(null); break;
 			case MASTER: setMaster(null); break;
 			case PACKAGING: setPackaging(null); break;
 			case PACKAGE: setPackage(null); break;

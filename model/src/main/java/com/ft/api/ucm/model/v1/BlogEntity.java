@@ -5,7 +5,7 @@ import com.google.common.base.Objects.ToStringHelper;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-		"body", "lifecycle", "location", "summary", "packaging", "master", "editorial","metadata", 
+		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial","metadata", 
 		"images", "package"})
 public class BlogEntity extends ContentEntity implements Blog{
 	

@@ -21,8 +21,9 @@ public class TypeBasedImage implements com.ft.api.ucm.model.v1.Image {
     private Integer height;
     private Integer width;
     private String mediaType;
+    
 
-    public TypeBasedImage (String url, ImageType type,String source, String alt, String caption) {
+    public TypeBasedImage (String url, ImageType type, String source, String alt, String caption) {
 		this.url = url;
 		this.imageType = type;
 		this.source = source;

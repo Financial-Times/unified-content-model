@@ -4,6 +4,7 @@ package com.ft.api.ucm.model.v1.aspect;
 public enum AspectEnum {
 	TITLE("title"),
 	LIFECYCLE("lifecycle"),
+	NATURE("nature"),
 	MASTER("master"),
 	PACKAGING("packaging"),
 	PACKAGE("package"),

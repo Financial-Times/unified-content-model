@@ -5,7 +5,7 @@ import com.google.common.base.Objects.ToStringHelper;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-		"lifecycle", "location", "summary", "master", "metadata","images"})
+		"lifecycle", "nature","location", "summary", "master", "metadata","images"})
 public class PageEntity extends ContentEntity implements Page{
 	
 	public PageEntity() {}

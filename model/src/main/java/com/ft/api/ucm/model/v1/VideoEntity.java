@@ -7,7 +7,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 
-@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title", "lifecycle", "location", "master","editorial"})
+@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title", "lifecycle", "nature", "location", "master","editorial"})
 public class VideoEntity extends ContentEntity implements Video {
 	
 	public VideoEntity() {}
@@ -36,6 +36,7 @@ public class VideoEntity extends ContentEntity implements Video {
 					.add("aspects", getAspects())
 					.add("location", getLocation())
 					.add("master", getMaster())
+					.add("nature", getNature())
 					.add("editorial",getEditorial());
 	}
 
