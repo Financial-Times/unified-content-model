@@ -10,7 +10,8 @@ public enum Category {
 	BLOGPOST("blogPost"),
 	HOMEPAGE("homePage"),
 	PODCAST("podcast"),
-	SECTIONPAGE ("sectionPage"),  
+	SECTIONPAGE ("sectionPage"),
+	SLIDESHOW("slideshow"),
 	SPECIALREPORT("specialReport"),
 	VIDEO("video");
 	
