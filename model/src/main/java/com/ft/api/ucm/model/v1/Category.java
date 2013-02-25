@@ -10,10 +10,12 @@ public enum Category {
 	BLOGPOST("blogPost"),
 	HOMEPAGE("homePage"),
 	PODCAST("podcast"),
+	OTHERPAGE("otherPage"),
 	SECTIONPAGE ("sectionPage"),
 	SLIDESHOW("slideshow"),
 	SPECIALREPORT("specialReport"),
 	VIDEO("video");
+	
 	
 	
 	 private String displayName;
