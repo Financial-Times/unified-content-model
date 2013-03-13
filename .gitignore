@@ -1,0 +1,4 @@
+*.iml
+/core/target/
+/model/target/
+/ws/target/
