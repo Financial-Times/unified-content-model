@@ -301,8 +301,8 @@
 		<constructor-arg value="article" />
 	</bean>
 	
-	<bean id="blogAspectSetName" class="java.lang.String">
-		<constructor-arg value="blog" />
+	<bean id="blogpostAspectSetName" class="java.lang.String">
+		<constructor-arg value="blogpost" />
 	</bean>
 
     <bean id="slideshowAspectSetName" class="java.lang.String">
@@ -345,8 +345,8 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 	
-	<bean id="blogAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
-		<constructor-arg ref="blogAspectSetName" />
+	<bean id="blogpostAspectSet" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspectSet" factory-method="valueOf">
+		<constructor-arg ref="blogpostAspectSetName" />
 		<constructor-arg>
 			<util:set>
 				<ref bean="titleAspect" />
@@ -438,7 +438,7 @@
 	
 	<util:set id="allAspectSets">
 		<ref bean="articleAspectSet" />
-		<ref bean="blogAspectSet" />
+		<ref bean="blogpostAspectSet" />
 		<ref bean="slideshowAspectSet" />
 		<ref bean="videoAspectSet" />
 		<ref bean="podcastAspectSet" />

@@ -9,30 +9,30 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ft.api.ucm.model.v1.Blog;
-import com.ft.api.ucm.model.v1.BlogEntity;
+import com.ft.api.ucm.model.v1.BlogPost;
+import com.ft.api.ucm.model.v1.BlogPostEntity;
 
-public class BlogEntityTest {
+public class BlogPostEntityTest {
 	
 	private static final String API_URL = "http://apiUrl.com/example";
 	private static final String UUID = "123";
 	private static final String ANOTHER_UUID = "123-456-789";
 	
-	private BlogEntity instance;
+	private BlogPostEntity instance;
 	
 	@Before
 	public void setUp() {
-		instance = new BlogEntity(UUID, API_URL);
+		instance = new BlogPostEntity(UUID, API_URL);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void exceptionThrownWhenIdIsNull() {
-		new BlogEntity(null, API_URL);
+		new BlogPostEntity(null, API_URL);
 	}
 	
 	@Test
 	public void exceptionNOThrownWhenApiUrlIsNull() {
-		new BlogEntity(UUID, null);
+		new BlogPostEntity(UUID, null);
 	}
 
 	@Test
@@ -43,20 +43,20 @@ public class BlogEntityTest {
 	
 	@Test
 	public void twoBlogsAreEqualIfTheyAreTheSame() {
-		Blog another = instance;
+		BlogPost another = instance;
 		assertThat(instance, equalTo(another));
 		assertThat(instance.hashCode(), is(another.hashCode()));
 	}
 	
 	@Test
 	public void twoBlogsAreNotEqualIfOneIsNull() {
-		Blog another = null;
+		BlogPost another = null;
 		assertThat(instance, not(equalTo(another)));
 	}
 	
 	@Test
 	public void twoDifferentBlogsAreNotEqual() {
-		Blog another = new BlogEntity(ANOTHER_UUID, API_URL);
+		BlogPost another = new BlogPostEntity(ANOTHER_UUID, API_URL);
 		assertThat(instance, not(equalTo(another)));
 	}
 }

@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.ft.api.ucm.model.v1.ArticleEntity;
+import com.ft.api.ucm.model.v1.BlogPostEntity;
 import com.ft.api.ucm.model.v1.ContentEntity;
 import com.ft.api.ucm.model.v1.SlideshowArticleEntity;
 
@@ -26,18 +27,21 @@ public class TypeBasedAspectSetSelectionPolicyTest {
     @Mock private Set<AspectSet> mockAspectSets;
 	@Mock private AspectSet article;
 	@Mock private AspectSet slideshow;
+	@Mock private AspectSet blogpost;
 	@Mock private AspectSet defaultSet;
 
     private static final String ARTICLE_CLASS_NAME = "com.ft.api.ucm.model.v1.ArticleEntity";
     private static final String SS_ARTICLE_CLASS_NAME = "com.ft.api.ucm.model.v1.SlideshowArticleEntity";
-    private Map aspectSetMap;
+    private static final String BLOGPOST_CLASS_NAME = "com.ft.api.ucm.model.v1.BlogPostEntity";
+    private Map<String,AspectSet> aspectSetMap;
 	private TypeBasedAspectSetSelectionPolicy instance;
 
     @Before
     public void setUp() throws Exception {
-        aspectSetMap = new HashMap();
+        aspectSetMap = new HashMap<String,AspectSet>();
         aspectSetMap.put(ARTICLE_CLASS_NAME, article);
         aspectSetMap.put(SS_ARTICLE_CLASS_NAME , slideshow);
+        aspectSetMap.put(BLOGPOST_CLASS_NAME , blogpost);
         aspectSetMap.put("default", defaultSet);
         instance = new TypeBasedAspectSetSelectionPolicy(defaultSet,aspectSetMap);
     }
@@ -75,6 +79,12 @@ public class TypeBasedAspectSetSelectionPolicyTest {
     public void shouldFindSlideshowAspectSet() throws Exception {
         AspectSet aspectSet = instance.match(mockAspectSets, SlideshowArticleEntity.class);
         assertThat("aspectSet is not Slideshow", aspectSet, sameInstance(slideshow));
+    }
+
+    @Test
+    public void shouldFindBlogpostAspectSet() throws Exception {
+        AspectSet aspectSet = instance.match(mockAspectSets, BlogPostEntity.class);
+        assertThat("aspectSet is not Blogpost", aspectSet, sameInstance(blogpost));
     }
 
     @Test

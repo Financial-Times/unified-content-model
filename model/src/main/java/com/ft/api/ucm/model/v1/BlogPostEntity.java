@@ -7,11 +7,11 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial","metadata", 
 		"images", "package"})
-public class BlogEntity extends ContentEntity implements Blog{
+public class BlogPostEntity extends ContentEntity implements BlogPost{
 	
-	public BlogEntity() {}
+	public BlogPostEntity() {}
 	
-	public BlogEntity(String id, String apiUrl){
+	public BlogPostEntity(String id, String apiUrl){
 		super(id, apiUrl);
 	}
 
@@ -20,8 +20,8 @@ public class BlogEntity extends ContentEntity implements Blog{
 		if(o == this){
 			return true;
 		}
-		if(o instanceof BlogEntity) {
-			BlogEntity a = (BlogEntity)o;
+		if(o instanceof BlogPostEntity) {
+			BlogPostEntity a = (BlogPostEntity)o;
 			return Objects.equal(this.getId(), a.getId());
 		}
 		return false;
