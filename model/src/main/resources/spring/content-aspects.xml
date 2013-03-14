@@ -460,6 +460,10 @@
                             <key><value>com.ft.api.ucm.model.v1.SlideshowArticleEntity</value></key>
                             <ref bean="slideshowAspectSet" />
                         </entry>
+                        <entry>
+                            <key><value>com.ft.api.ucm.model.v1.BlogPostEntity</value></key>
+                            <ref bean="blogpostAspectSet" />
+                        </entry>
                     </map>
 				</constructor-arg>
 			</bean>
