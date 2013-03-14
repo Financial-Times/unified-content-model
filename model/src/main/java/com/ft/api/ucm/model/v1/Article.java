@@ -21,8 +21,6 @@ public interface Article {
 	Metadata getMetadata();
 
 	List<ContentPackageEntry> getPackage();
-	
-	List<Image> getImages();
 
     Title getTitle();
 
