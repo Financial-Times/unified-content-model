@@ -43,7 +43,7 @@
 	<name>${project.artifactId}</name>
 
 	<scm>
-		<connection>scm:svn:svn://anthill.svc.ft.com/repo/online/website/ft-api-unifiedContentModel/tags/ft-unifiedContentModel-parent-0.22.0</connection>
+		<connection>scm:svn:svn://anthill.svc.ft.com/repo/online/website/ft-api-unifiedContentModel/trunk</connection>
 	</scm>
 
 	<modules>
