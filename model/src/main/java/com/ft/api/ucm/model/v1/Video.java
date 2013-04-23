@@ -14,5 +14,7 @@ public interface Video {
 	Master getMaster();	
 	
 	Editorial getEditorial();
+	
+	AudioVisual getAudioVisual();
 
 }

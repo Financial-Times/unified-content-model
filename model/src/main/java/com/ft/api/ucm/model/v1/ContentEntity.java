@@ -69,6 +69,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 			case METADATA: setMetadata(null); break;
 			case IMAGES: setImages(null); break;
 			case EDITORIAL :setEditorial(null); break;
+			default: break;
 		}
 	}
 

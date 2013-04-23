@@ -16,7 +16,8 @@ public enum AspectEnum {
 	METADATA("metadata"),
 	IMAGES("images"),
 	MEDIAASSETS("mediaAssets"),
-	ASSETS("assets");
+	ASSETS("assets"),
+	AUDIOVISUAL("audioVisual");
 	
 	private final String name;
 	

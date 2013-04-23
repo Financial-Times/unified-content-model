@@ -132,6 +132,11 @@
 		<constructor-arg value="fields" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
+	
+	<bean name="runtimeMillisecondsField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="runtimeMilliseconds" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>	
 
 	<!-- Aspect Definitions -->
 	
@@ -293,6 +298,16 @@
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
+	
+	<bean name="audioVisualAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="audioVisual" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="runtimeMillisecondsField" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
 
 	
 	<!-- AspectSet Definitions -->
@@ -398,6 +413,7 @@
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
+				<ref bean="audioVisualAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
@@ -414,6 +430,7 @@
 				<ref bean="masterAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
+				<ref bean="audioVisualAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />

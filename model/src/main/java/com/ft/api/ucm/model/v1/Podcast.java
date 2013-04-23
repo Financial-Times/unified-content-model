@@ -13,5 +13,7 @@ public interface Podcast {
 	Master getMaster();
 	
 	Editorial getEditorial();
+	
+	AudioVisual getAudioVisual();
 
 }
