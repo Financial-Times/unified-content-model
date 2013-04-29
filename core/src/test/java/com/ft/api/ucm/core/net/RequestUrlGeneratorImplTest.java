@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class RequestUrlGeneratorTest {
+public class RequestUrlGeneratorImplTest {
 	
 	private RequestUrlGeneratorImpl generator;
 	
@@ -17,7 +17,6 @@ public class RequestUrlGeneratorTest {
 		generator = new RequestUrlGeneratorImpl(API_URL);
 	}
 	
-
 	@Test
     public void shouldCreateRequestUrlBasedOnSuppliedDefault() throws Exception {
         String url = generator.createRequestUrl("/servlet", "/path", "param1=foo&param2=bar").toString();
@@ -60,6 +59,42 @@ public class RequestUrlGeneratorTest {
 	public void shouldCreateRequestUrlBasedOnSuppliedWithdNullPathInfo() throws Exception {
 		String url = generator.createRequestUrl("/servlet", null, "param1=foo&param2=bar").toString();
 		assertEquals("http://api.ft.com/servlet?param1=foo&param2=bar", url);
+	}
+
+	@Test
+	public void shouldStripApiKeyParameterByDefault() throws Exception {
+		String url = generator.createRequestUrl("/servlet", null, "foo=bar&apiKey=12345").toString();
+		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet?foo=bar", url);
+	}
+	
+	@Test
+	public void shouldStripBlacklistedParameter() throws Exception {
+		generator.addBlacklistedParameter("blacklistedparam");
+		String url = generator.createRequestUrl("/servlet", null, "foo=bar&blacklistedparam=danger&foo=bar").toString();
+		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet?foo=bar&foo=bar", url);
+	}
+
+	@Test
+	public void shouldStripMultipleBlacklistedParameters() throws Exception {
+		generator.addBlacklistedParameter("blacklistedparam");
+		String url = generator.createRequestUrl("/servlet", null, "blacklistedparam=danger&blacklistedparam=moredanger").toString();
+		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", url);
+	}
+
+	@Test
+	public void shouldStripMultipleBlacklistedParameterNames() throws Exception {
+		generator.addBlacklistedParameter("blacklistedparam1");
+		generator.addBlacklistedParameter("blacklistedparam2");
+		String url = generator.createRequestUrl("/servlet", null, "blacklistedparam1=danger&blacklistedparam2=moredanger").toString();
+		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", url);
+	}
+
+	@Test
+	public void shouldStripMultipleBlacklistedParameterNamesWithWhitespace() throws Exception {
+		generator.addBlacklistedParameter("blacklistedparam1");
+		generator.addBlacklistedParameter("blacklistedparam2");
+		String url = generator.createRequestUrl("/servlet", null, "blacklistedparam1=danger&blacklistedparam2=moredanger").toString();
+		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", url);
 	}
 
 }
