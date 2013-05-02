@@ -42,6 +42,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 			case PROVENANCE: setProvenance(null); break;
 			case MEDIAASSETS: setMediaAssets(null); break;
 			case ASSETS: setAssets(null); break;
+			default: break;
 		}
 	}
 

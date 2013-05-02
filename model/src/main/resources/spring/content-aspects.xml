@@ -371,10 +371,13 @@
 				<ref bean="packagingAspect" />
 				<ref bean="packageAspect" />
 				<ref bean="bodyAspect" />
+				<ref bean="editorialAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
 				<ref bean="imagesAspect" />
+                <ref bean="mediaAssetsAspect" />
+                <ref bean="assetsAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />

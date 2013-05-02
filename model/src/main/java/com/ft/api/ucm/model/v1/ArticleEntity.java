@@ -41,6 +41,7 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 			case PROVENANCE: setProvenance(null); break;
 			case MEDIAASSETS: setMediaAssets(null); break;
 			case ASSETS: setAssets(null); break;
+			default: break;
 		}
 	}
 

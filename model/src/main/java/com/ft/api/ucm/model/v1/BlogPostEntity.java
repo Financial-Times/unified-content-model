@@ -1,18 +1,43 @@
 package com.ft.api.ucm.model.v1;
 
+import java.util.List;
+import java.util.Map;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import com.google.common.collect.Lists;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
 		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial","metadata", 
-		"images", "package"})
-public class BlogPostEntity extends ContentEntity implements BlogPost{
+		"images", "package", "assets", "mediaAssets"})
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+public class BlogPostEntity extends ContentEntity implements BlogPost, AssetAware {
+	
+	private List<MediaAsset> mediaAssets;
+	private Map<String, MediaAsset> mediaAssetMap;
+	private List<Asset> assets;
+	private Map<String, Asset> assetMap;
 	
 	public BlogPostEntity() {}
 	
 	public BlogPostEntity(String id, String apiUrl){
 		super(id, apiUrl);
+	}
+	
+	@Override
+	public void suppressAspect(String aspect) {
+		super.suppressAspect(aspect);
+		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
+		switch (aspectValue) {
+			case MEDIAASSETS: setMediaAssets(null); break;
+			case ASSETS: setAssets(null); break;
+			default: break;
+		}
 	}
 
 	@Override
@@ -45,6 +70,64 @@ public class BlogPostEntity extends ContentEntity implements BlogPost{
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial",getEditorial());
+	}
+
+	@Override
+	@JsonIgnore
+	public Map<String, Asset> getAssetMap() {
+		return assetMap;
+	}
+
+	@Override
+	@JsonIgnore
+	public Map<String, MediaAsset> getMediaAssetMap() {
+		return mediaAssetMap;
+	}
+
+	@JsonIgnore
+	public void setAssetMap(Map<String, Asset> assetMap) {
+		this.assetMap = assetMap;
+	}
+
+	@JsonIgnore
+	public void setMediaAssetMap(Map<String, MediaAsset> mediaAssetMap) {
+		this.mediaAssetMap = mediaAssetMap;
+	}
+
+	@Override
+	public List<MediaAsset> getMediaAssets() {
+		return mediaAssets;
+	}
+
+	@Override
+	public void setMediaAssets(List<MediaAsset> mediaAssets) {
+		this.mediaAssets = mediaAssets;
+	}
+
+	@Override
+	public void add(MediaAsset asset) {
+		if(mediaAssets == null){
+			mediaAssets = Lists.newArrayList();
+		}
+		mediaAssets.add(asset);
+	}
+
+	@Override
+	public List<Asset> getAssets() {
+		return assets;
+	}
+
+	@Override
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
+	}
+
+	@Override
+	public void add(Asset asset) {
+		if(assets == null){
+			assets = Lists.newArrayList();
+		}
+		assets.add(asset);
 	}
 
 }
