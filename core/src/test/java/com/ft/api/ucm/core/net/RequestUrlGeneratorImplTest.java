@@ -93,7 +93,7 @@ public class RequestUrlGeneratorImplTest {
 	public void shouldStripMultipleBlacklistedParameterNamesWithWhitespace() throws Exception {
 		generator.addBlacklistedParameter("blacklistedparam1");
 		generator.addBlacklistedParameter("blacklistedparam2");
-		String url = generator.createRequestUrl("/servlet", null, "blacklistedparam1=danger&blacklistedparam2=moredanger").toString();
+		String url = generator.createRequestUrl("/servlet", null, "blacklistedparam1=danger&blacklistedparam2=more%20danger").toString();
 		assertEquals("Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", url);
 	}
 
