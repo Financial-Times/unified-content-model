@@ -161,7 +161,19 @@ public class TypeBasedImage implements com.ft.api.ucm.model.v1.Image {
 
 	public static enum ImageType {
 
-		PRIMARY("primary"),SECONDARY("secondary"),ALTERNATIVE("alternative"),ARTICLE("article"),POPUP("pop-up"),POPUP_PREVIEW("pop-up-promo"),INLINE("inline"),INLINE_EXT("inline-external"),NULL(null),NONE(EMPTY), WIDE_FORMAT("wide-format"),PROMO("promo");
+		PRIMARY("primary"),
+        SECONDARY("secondary"),
+        ALTERNATIVE("alternative"),
+        ARTICLE("article"),
+        LEADER("leader"),
+        POPUP("pop-up"),
+        POPUP_PREVIEW("pop-up-promo"),
+        INLINE("inline"),
+        INLINE_EXT("inline-external"),
+        WIDE_FORMAT("wide-format"),
+        PROMO("promo"),
+        NULL(null),
+        NONE(EMPTY),;
 
 		private String displayName;
 		
