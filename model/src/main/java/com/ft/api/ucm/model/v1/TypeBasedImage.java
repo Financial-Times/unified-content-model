@@ -172,6 +172,7 @@ public class TypeBasedImage implements com.ft.api.ucm.model.v1.Image {
         INLINE_EXT("inline-external"),
         WIDE_FORMAT("wide-format"),
         PROMO("promo"),
+        SKYBOX("skybox"),
         NULL(null),
         NONE(EMPTY),;
 
