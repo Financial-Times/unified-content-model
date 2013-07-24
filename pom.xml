@@ -8,6 +8,7 @@
         <version>2.12</version>
     </parent>
     
+    
     <!-- This project -->
 	<groupId>com.ft.unifiedContentModel</groupId>
 	<artifactId>ft-unifiedContentModel-parent</artifactId>
