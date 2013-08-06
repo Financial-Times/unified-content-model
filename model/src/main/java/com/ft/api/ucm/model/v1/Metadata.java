@@ -24,5 +24,5 @@ public interface Metadata {
 	Set<Tag> getSpecialReports();
 	Set<Tag> getSubjects();
 	Set<Tag> getTopics();
-
+	Set<Tag> getAuthors();
 }

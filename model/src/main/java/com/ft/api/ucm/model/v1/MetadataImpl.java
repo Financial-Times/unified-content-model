@@ -14,9 +14,6 @@ import com.google.common.base.Objects;
 	"mediaType", "organisations", "people", "regions", "sections", "specialReports", "subjects", "topics"})
 public class MetadataImpl implements Metadata {
 
-	
-	
-	
 	private Tag primarySection;
 	private Tag primaryTheme;
 	private Set<Tag> tags;
@@ -32,7 +29,8 @@ public class MetadataImpl implements Metadata {
 	private Set<Tag> specialReports;
 	private Set<Tag> subjects;
 	private Set<Tag> topics;
-	
+	private Set<Tag> authors;
+
 	public MetadataImpl() {
 		// required for creating empty metadata so can return this if metadata aspect is requested
 	}
@@ -48,7 +46,7 @@ public class MetadataImpl implements Metadata {
 			Set<Tag> brand, Set<Tag> genre, Set<Tag> icb, Set<Tag> iptc,
 			Set<Tag> mediaType, Set<Tag> organisations, Set<Tag> people,
 			Set<Tag> regions, Set<Tag> sections, Set<Tag> specialReports,
-			Set<Tag> subjects, Set<Tag> topics) {
+			Set<Tag> subjects, Set<Tag> topics, Set<Tag> authors) {
 		super();
 		this.primarySection = primarySection;
 		this.primaryTheme = primaryTheme;
@@ -65,6 +63,7 @@ public class MetadataImpl implements Metadata {
 		this.specialReports = specialReports;
 		this.subjects = subjects;
 		this.topics = topics;
+		this.authors = authors;
 	}
 
 	@Override
@@ -189,7 +188,15 @@ public class MetadataImpl implements Metadata {
 	public void setTopics(Set<Tag> topics) {
 		this.topics = topics;
 	}
-	
+
+    public Set<Tag> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(final Set<Tag> authors) {
+        this.authors = authors;
+    }
+
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this)
@@ -208,8 +215,7 @@ public class MetadataImpl implements Metadata {
 						.add("specialReports", specialReports)
 						.add("subjects", subjects)
 						.add("topics", topics)
+						.add("authors", authors)
 						.toString();
 	}
-	
-	
 }
