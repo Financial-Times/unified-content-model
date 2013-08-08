@@ -11,11 +11,8 @@ import com.google.common.base.Objects;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonPropertyOrder({"primarySection", "primaryTheme", "tags", "brand", "genre", "icb", "iptc", 
-	"mediaType", "organisations", "people", "regions", "sections", "specialReports", "subjects", "topics"})
+	"mediaType", "organisations", "people", "regions", "sections", "specialReports", "subjects", "topics", "authors"})
 public class MetadataImpl implements Metadata {
-
-	
-	
 	
 	private Tag primarySection;
 	private Tag primaryTheme;
@@ -32,6 +29,7 @@ public class MetadataImpl implements Metadata {
 	private Set<Tag> specialReports;
 	private Set<Tag> subjects;
 	private Set<Tag> topics;
+    private Set<Tag> authors;
 	
 	public MetadataImpl() {
 		// required for creating empty metadata so can return this if metadata aspect is requested
@@ -43,13 +41,11 @@ public class MetadataImpl implements Metadata {
 		this.tags = tags;
 	}
 	
-
 	public MetadataImpl(Tag primarySection, Tag primaryTheme, Set<Tag> tags,
 			Set<Tag> brand, Set<Tag> genre, Set<Tag> icb, Set<Tag> iptc,
 			Set<Tag> mediaType, Set<Tag> organisations, Set<Tag> people,
 			Set<Tag> regions, Set<Tag> sections, Set<Tag> specialReports,
-			Set<Tag> subjects, Set<Tag> topics) {
-		super();
+			Set<Tag> subjects, Set<Tag> topics, Set<Tag> authors) {
 		this.primarySection = primarySection;
 		this.primaryTheme = primaryTheme;
 		this.tags = tags;
@@ -65,6 +61,7 @@ public class MetadataImpl implements Metadata {
 		this.specialReports = specialReports;
 		this.subjects = subjects;
 		this.topics = topics;
+        this.authors = authors;
 	}
 
 	@Override
@@ -189,8 +186,17 @@ public class MetadataImpl implements Metadata {
 	public void setTopics(Set<Tag> topics) {
 		this.topics = topics;
 	}
-	
-	@Override
+
+    @Override
+    public Set<Tag> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Tag> authors) {
+        this.authors = authors;
+    }
+
+    @Override
 	public String toString() {
 		return Objects.toStringHelper(this)
 						.add("primarySection", primarySection)
@@ -208,6 +214,7 @@ public class MetadataImpl implements Metadata {
 						.add("specialReports", specialReports)
 						.add("subjects", subjects)
 						.add("topics", topics)
+                        .add("authors", authors)
 						.toString();
 	}
 	
