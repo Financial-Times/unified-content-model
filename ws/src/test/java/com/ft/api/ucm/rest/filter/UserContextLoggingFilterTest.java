@@ -33,10 +33,14 @@ public class UserContextLoggingFilterTest {
 
         when(request.getHeader(UserContextLoggingFilter.API_KEY_HEADER)).thenReturn("apiKeyHeader");
         when(request.getHeader(UserContextLoggingFilter.USER_IP_HEADER)).thenReturn("userIpHeader");
+        when(request.getHeader(UserContextLoggingFilter.CONTENT_CONTROL_POLICY_HEADER)).thenReturn("contentControlHeader");
         String s = userContextLoggingFilter.createMessage(request, prefix, suffix);
 
-        assertEquals(s, prefix + UserContextLoggingFilter.API_KEY_LABEL + "=" + apiKeyHeader + " "
-                + UserContextLoggingFilter.USER_IP_LABEL  + "=" + userIpHeader+ suffix);
+        assertEquals(s, prefix
+                + UserContextLoggingFilter.API_KEY_LABEL + "=" + apiKeyHeader + " "
+                + UserContextLoggingFilter.USER_IP_LABEL  + "=" + userIpHeader + " "
+                + UserContextLoggingFilter.CONTENT_CONTROL_POLCIY_LABEL + "=" + "contentControlHeader"
+                + suffix);
 
     }
 
