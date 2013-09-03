@@ -10,8 +10,8 @@ import com.google.common.base.Objects;
 
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@JsonPropertyOrder({"primarySection", "primaryTheme", "tags", "brand", "genre", "icb", "iptc", 
-	"mediaType", "organisations", "people", "regions", "sections", "specialReports", "subjects", "topics", "authors"})
+@JsonPropertyOrder({"primarySection", "primaryTheme", "tags", "authors", "brand", "genre", "icb", "iptc", 
+	"mediaType", "organisations", "people", "regions", "sections", "specialReports", "subjects", "topics"})
 public class MetadataImpl implements Metadata {
 	
 	private Tag primarySection;
