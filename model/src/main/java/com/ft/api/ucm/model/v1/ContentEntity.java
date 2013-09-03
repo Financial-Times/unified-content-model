@@ -24,6 +24,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	private List<Image> images;
 	private String aspectSet;
 	private List<String> aspects;
+	private Provenance provenance;
 	
 	public ContentEntity(){
 		// required for JAXB
@@ -69,6 +70,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 			case METADATA: setMetadata(null); break;
 			case IMAGES: setImages(null); break;
 			case EDITORIAL :setEditorial(null); break;
+			case PROVENANCE :setProvenance(null); break;
 			default: break;
 		}
 	}
@@ -140,6 +142,13 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 		return editorial;
 	}
 	
+	public void setProvenance(Provenance provenance) {
+	    this.provenance = provenance;
+	}
+	
+	public Provenance getProvenance(){
+	    return provenance;
+	}
 	
 	@Override
 	public int hashCode() {
