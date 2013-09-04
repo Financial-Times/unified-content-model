@@ -20,7 +20,6 @@ import com.google.common.base.Objects.ToStringHelper;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, AssetAware {
 
-	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
 	private List<Asset> assets;
 	private Map<String, Asset> assetMap;
@@ -44,15 +43,6 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 			case ASSETS: setAssets(null); break;
 			default: break;
 		}
-	}
-
-	public void setProvenance(Provenance provenance) {
-		this.provenance = provenance;
-	}
-	
-	@Override
-	public Provenance getProvenance() {
-		return provenance;
 	}
 
 	@Override
@@ -139,7 +129,7 @@ public class SlideshowArticleEntity extends ContentEntity implements SlideshowAr
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial", getEditorial())
-					.add("provenance", provenance)
+					.add("provenance", getProvenance())
 					.add("mediaAssets", mediaAssets)
 					.add("assets", assets);
 	}

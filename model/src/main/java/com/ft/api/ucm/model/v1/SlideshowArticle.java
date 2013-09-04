@@ -5,8 +5,6 @@ public interface SlideshowArticle {
 	
 	Editorial getEditorial();
 
-	Provenance getProvenance();
-	
 	Location getLocation();
 	
 	Master getMaster();

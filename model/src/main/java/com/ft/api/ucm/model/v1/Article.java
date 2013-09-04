@@ -6,8 +6,6 @@ public interface Article {
 
 	Editorial getEditorial();
 
-	Provenance getProvenance();
-	
 	Location getLocation();
 	
 	Master getMaster();

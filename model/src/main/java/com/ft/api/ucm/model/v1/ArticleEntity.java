@@ -20,7 +20,6 @@ import com.google.common.base.Objects.ToStringHelper;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class ArticleEntity extends ContentEntity implements Article, AssetAware {
 	
-	private Provenance provenance;
 	private List<MediaAsset> mediaAssets;
 	private Map<String, MediaAsset> mediaAssetMap;
 	private List<Asset> assets;
@@ -43,15 +42,6 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 			case ASSETS: setAssets(null); break;
 			default: break;
 		}
-	}
-
-	@Override
-	public Provenance getProvenance() {
-		return provenance;
-	}
-
-	public void setProvenance(Provenance provenance) {
-		this.provenance = provenance;
 	}
 
 	@Override
@@ -139,7 +129,7 @@ public class ArticleEntity extends ContentEntity implements Article, AssetAware 
 					.add("images", getImages())
 					.add("master", getMaster())
 					.add("editorial", getEditorial())
-					.add("provenance", provenance)
+					.add("provenance", getProvenance())
 					.add("mediaAssets", mediaAssets);
 	}
 
