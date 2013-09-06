@@ -12,7 +12,7 @@
     <!-- This project -->
 	<groupId>com.ft.unifiedContentModel</groupId>
 	<artifactId>ft-unifiedContentModel-parent</artifactId>
-	<version>0.31.0-SNAPSHOT</version>
+	<version>0.31.0</version>
   	<properties>
   		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.1.1.RELEASE</spring.version>
@@ -45,7 +45,7 @@
 
 	<scm>
 		<connection>scm:git:http://MVN-Release:mTRSZkG5E@git.svc.ft.com:9080/git/content-api/unified-content-model.git</connection>
-	  <tag>HEAD</tag>
+	  <tag>ft-unifiedContentModel-parent-0.31.0</tag>
   </scm>
 
 	<modules>
