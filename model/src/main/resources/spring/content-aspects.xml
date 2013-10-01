@@ -378,6 +378,7 @@
 				<ref bean="imagesAspect" />
                 <ref bean="mediaAssetsAspect" />
                 <ref bean="assetsAspect" />
+                <ref bean="provenanceAspect" />
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
