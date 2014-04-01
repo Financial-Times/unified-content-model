@@ -17,7 +17,8 @@ public enum AspectEnum {
 	IMAGES("images"),
 	MEDIAASSETS("mediaAssets"),
 	ASSETS("assets"),
-	AUDIOVISUAL("audioVisual");
+	AUDIOVISUAL("audioVisual"),
+    USAGE("usage");
 	
 	private final String name;
 	
