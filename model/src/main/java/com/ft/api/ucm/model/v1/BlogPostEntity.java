@@ -13,8 +13,8 @@ import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.Lists;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial","metadata", 
-		"images", "package", "assets", "mediaAssets"})
+		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial", "usage",
+        "metadata", "images", "package", "assets", "mediaAssets"})
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class BlogPostEntity extends ContentEntity implements BlogPost, AssetAware {
 	

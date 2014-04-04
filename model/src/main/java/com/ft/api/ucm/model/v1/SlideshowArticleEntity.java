@@ -15,8 +15,8 @@ import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-	"body", "lifecycle", "nature","location", "packaging", "master", "editorial", "provenance", "metadata", 
-	"images", "package", "assets", "mediaAssets"})
+	"body", "lifecycle", "nature","location", "packaging", "master", "editorial", "provenance", "usage",
+    "metadata", "images", "package", "assets", "mediaAssets"})
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class SlideshowArticleEntity extends ContentEntity implements SlideshowArticle, AssetAware {
 
