@@ -138,8 +138,8 @@
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
-    <bean name="usageField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
-        <constructor-arg value="usage" />
+    <bean name="publicationField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
+        <constructor-arg value="publication" />
         <constructor-arg ref="concreteFieldResolutionPolicy" />
     </bean>
 
@@ -318,7 +318,7 @@
         <constructor-arg value="usage" />
         <constructor-arg>
             <util:set>
-                <ref bean="usageField" />
+                <ref bean="publicationField" />
             </util:set>
         </constructor-arg>
         <constructor-arg ref="unanimousAssignableVoter" />
