@@ -15,10 +15,14 @@ public class TermImpl implements Term {
 	
 	public TermImpl() {
 	}
-	
+
+    public TermImpl(String id, String name){
+        this.id = StringUtils.isNotBlank(id) ? id : null;
+        this.name = StringUtils.isNotBlank(name) ? name : null;
+    }
+
 	public TermImpl(String id, String name, String taxonomy, Set<Attribute> attributes){
-		this.id = StringUtils.isNotBlank(id) ? id : null;
-		this.name = StringUtils.isNotBlank(name) ? name : null;
+		this(id, name);
 		this.taxonomy = StringUtils.isNotBlank(taxonomy) ? taxonomy : null;
 		this.attributes = attributes;
 	}

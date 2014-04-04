@@ -25,6 +25,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	private String aspectSet;
 	private List<String> aspects;
 	private Provenance provenance;
+    private Usage usage;
 	
 	public ContentEntity(){
 		// required for JAXB
@@ -71,6 +72,7 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 			case IMAGES: setImages(null); break;
 			case EDITORIAL :setEditorial(null); break;
 			case PROVENANCE :setProvenance(null); break;
+            case USAGE: setUsage(null); break;
 			default: break;
 		}
 	}
@@ -149,8 +151,16 @@ public abstract class ContentEntity extends SimpleEntity implements Package, Ima
 	public Provenance getProvenance(){
 	    return provenance;
 	}
-	
-	@Override
+
+    public Usage getUsage() {
+        return usage;
+    }
+
+    public void setUsage(Usage usage) {
+        this.usage = usage;
+    }
+
+    @Override
 	public int hashCode() {
 		return Objects.hashCode(this.getId());
 	}
