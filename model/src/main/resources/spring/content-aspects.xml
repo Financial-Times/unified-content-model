@@ -136,9 +136,14 @@
 	<bean name="runtimeMillisecondsField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="runtimeMilliseconds" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
-	</bean>	
+	</bean>
 
-	<!-- Aspect Definitions -->
+    <bean name="publicationField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
+        <constructor-arg value="publication" />
+        <constructor-arg ref="concreteFieldResolutionPolicy" />
+    </bean>
+
+    <!-- Aspect Definitions -->
 	
 	<bean name="titleAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="title" />
@@ -309,8 +314,17 @@
 		<constructor-arg ref="unanimousAssignableVoter" />
 	</bean>
 
-	
-	<!-- AspectSet Definitions -->
+    <bean name="usageAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
+        <constructor-arg value="usage" />
+        <constructor-arg>
+            <util:set>
+                <ref bean="publicationField" />
+            </util:set>
+        </constructor-arg>
+        <constructor-arg ref="unanimousAssignableVoter" />
+    </bean>
+
+    <!-- AspectSet Definitions -->
 	
 	<bean id="articleAspectSetName" class="java.lang.String">
 		<constructor-arg value="article" />
@@ -348,6 +362,7 @@
 				<ref bean="packageAspect" />
 				<ref bean="bodyAspect" />
 				<ref bean="provenanceAspect" />
+				<ref bean="usageAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="editorialAspect" />
 				<ref bean="locationAspect" />
@@ -372,6 +387,7 @@
 				<ref bean="packageAspect" />
 				<ref bean="bodyAspect" />
                 <ref bean="provenanceAspect" />
+                <ref bean="usageAspect" />
 				<ref bean="editorialAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="locationAspect" />
@@ -395,6 +411,7 @@
 				<ref bean="packagingAspect" />
 				<ref bean="bodyAspect" />
 				<ref bean="provenanceAspect" />
+                <ref bean="usageAspect" />
 				<ref bean="editorialAspect" />
 				<ref bean="locationAspect" />
 				<ref bean="metadataAspect" />
