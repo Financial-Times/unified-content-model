@@ -20,7 +20,7 @@ public class UsageImpl implements Usage {
         return publication;
     }
 
-    public void setPublication(SortedSet<Term> publication) {
+    public void setPublication(Set<Term> publication) {
         this.publication = publication;
     }
 
