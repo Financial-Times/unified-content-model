@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import com.ft.api.ucm.model.v1.metadata.Tag;
+import com.ft.api.ucm.model.v1.metadata.Term;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -10,5 +10,5 @@ import java.util.Set;
 @JsonDeserialize(as = UsageImpl.class)
 public interface Usage {
 
-    Set<Tag> getPublication();
+    Set<Term> getPublications();
 }
