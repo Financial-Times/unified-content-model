@@ -1,26 +1,26 @@
 package com.ft.api.ucm.model.v1;
 
-import com.ft.api.ucm.model.v1.metadata.Tag;
+import com.ft.api.ucm.model.v1.metadata.Term;
 
 import java.util.Set;
 
 public class UsageImpl implements Usage {
 
-    private Set<Tag> publication;
+    private Set<Term> publications;
 
     public UsageImpl() { }
 
-    public UsageImpl(Set<Tag> publication) {
-        this.publication = publication;
+    public UsageImpl(Set<Term> publications) {
+        this.publications = publications;
     }
 
     @Override
-    public Set<Tag> getPublication() {
-        return publication;
+    public Set<Term> getPublications() {
+        return publications;
     }
 
-    public void setPublication(Set<Tag> publication) {
-        this.publication = publication;
+    public void setPublication(Set<Term> publications) {
+        this.publications = publications;
     }
 
 }
