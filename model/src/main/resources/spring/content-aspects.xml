@@ -64,9 +64,14 @@
 	</bean>	
 
 	<bean name="originatingPartyField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
+		<constructor-arg value="imageLed" />
+		<constructor-arg ref="concreteFieldResolutionPolicy" />
+	</bean>
+
+	<bean name="imageLedField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="originatingParty" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
-	</bean>	
+	</bean>
 
 	<bean name="excerptField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
 		<constructor-arg value="excerpt" />
@@ -226,7 +231,17 @@
 			</util:set>
 		</constructor-arg>
 		<constructor-arg ref="unanimousAssignableVoter" />
-	</bean>	
+	</bean>
+
+	<bean name="textualBodyAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
+		<constructor-arg value="textualBody" />
+		<constructor-arg>
+			<util:set>
+				<ref bean="imageLedField" />
+			</util:set>
+		</constructor-arg>
+		<constructor-arg ref="unanimousAssignableVoter" />
+	</bean>
 	
 	<bean name="summaryAspect" class="com.ft.api.ucm.model.v1.aspect.ImmutableAspect" factory-method="valueOf">
 		<constructor-arg value="summary" />
@@ -362,6 +377,7 @@
 				<ref bean="packageAspect" />
 				<ref bean="bodyAspect" />
 				<ref bean="provenanceAspect" />
+				<ref bean="textualBodyAspect" />
 				<ref bean="usageAspect" />
 				<ref bean="summaryAspect" />
 				<ref bean="editorialAspect" />
@@ -387,6 +403,7 @@
 				<ref bean="packageAspect" />
 				<ref bean="bodyAspect" />
                 <ref bean="provenanceAspect" />
+                <ref bean="textualBodyAspect" />
                 <ref bean="usageAspect" />
 				<ref bean="editorialAspect" />
 				<ref bean="summaryAspect" />
@@ -411,6 +428,7 @@
 				<ref bean="packagingAspect" />
 				<ref bean="bodyAspect" />
 				<ref bean="provenanceAspect" />
+                <ref bean="textualBodyAspect" />
                 <ref bean="usageAspect" />
 				<ref bean="editorialAspect" />
 				<ref bean="locationAspect" />
