@@ -64,12 +64,12 @@
 	</bean>	
 
 	<bean name="originatingPartyField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
-		<constructor-arg value="imageLed" />
+		<constructor-arg value="originatingParty" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
 	<bean name="imageLedField" class="com.ft.api.ucm.model.v1.aspect.ImmutableField" factory-method="valueOf">
-		<constructor-arg value="originatingParty" />
+		<constructor-arg value="imageLed" />
 		<constructor-arg ref="concreteFieldResolutionPolicy" />
 	</bean>
 
