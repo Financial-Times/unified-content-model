@@ -45,7 +45,7 @@
 
 	<scm>
 		<connection>scm:git:http://MVN-Release:mTRSZkG5E@git.svc.ft.com:8080/scm/ftfal/unified-content-model.git</connection>
-	  <tag>RELEASE-0.33.0</tag>
+	  <tag>RELEASE-0.36.0</tag>
   </scm>
 
 	<modules>
