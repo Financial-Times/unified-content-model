@@ -15,10 +15,10 @@ import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 @JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-		"body", "lifecycle", "nature", "location", "summary", "packaging", "master", "editorial", "provenance", "usage",
+		"body", "lifecycle", "nature", "location", "summary", "packaging", "master", "editorial", "provenance", "textualBody", "usage",
         "metadata", "images", "package", "assets", "mediaAssets"})
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-public class ArticleEntity extends ContentEntity implements Article, AssetAware {
+public class ArticleEntity extends TextualEntity implements Article, AssetAware {
 	
 	private List<MediaAsset> mediaAssets;
 	private Map<String, MediaAsset> mediaAssetMap;
