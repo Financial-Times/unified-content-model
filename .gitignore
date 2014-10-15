@@ -3,3 +3,12 @@
 /model/target/
 /ws/target/
 /.idea/
+/core/.classpath
+/core/.project
+/core/.settings/org.eclipse.jdt.core.prefs
+/model/.classpath
+/model/.project
+/model/.settings/org.eclipse.jdt.core.prefs
+/ws/.classpath
+/ws/.project
+/ws/.settings/org.eclipse.jdt.core.prefs
