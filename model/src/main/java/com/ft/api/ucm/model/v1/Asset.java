@@ -12,7 +12,8 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
            @JsonSubTypes.Type(value=InteractiveGraphic.class, name="interactiveGraphic"),
            @JsonSubTypes.Type(value=BackgroundNews.class, name="backgroundNews"),
            @JsonSubTypes.Type(value=DataTable.class, name="dataTable"),
-           @JsonSubTypes.Type(value=PromoBox.class, name="promoBox")
+           @JsonSubTypes.Type(value=PromoBox.class, name="promoBox"),
+           @JsonSubTypes.Type(value=NumbersComponent.class, name="promoteNumber")
     })
 public interface Asset {
     String getName();
