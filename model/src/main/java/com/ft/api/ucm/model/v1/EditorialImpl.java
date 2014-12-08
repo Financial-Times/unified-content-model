@@ -4,9 +4,10 @@ import com.google.common.base.Objects;
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-@JsonPropertyOrder({"subheading", "leadBody", "standFirst"})
+@JsonPropertyOrder({"webIndexHeadline", "subheading", "leadBody", "standFirst"})
 public class EditorialImpl extends AttributionImpl implements Editorial  {
 	
+    private String webIndexHeadline;
 	private String subheading;
 	private String leadBody;
 	private String standFirst;
@@ -20,7 +21,7 @@ public class EditorialImpl extends AttributionImpl implements Editorial  {
 		this.standFirst = StringUtils.isNotBlank(standFirst) ? standFirst : null;
 	}
 	
-	@Override
+    @Override
 	public String getSubheading() {
 		return subheading;
 	}
@@ -47,9 +48,18 @@ public class EditorialImpl extends AttributionImpl implements Editorial  {
 		this.standFirst = standFirst;
 	}
 	
+    public String getWebIndexHeadline() {
+        return webIndexHeadline;
+    }
+
+    public void setWebIndexHeadline(String webIndexHeadline) {
+        this.webIndexHeadline = webIndexHeadline;
+    }
+	
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this)
+		            .add("webIndexHeadline", webIndexHeadline)
 					.add("byline", getByline())
 					.add("subheading", subheading)
 					.add("leadBody", leadBody)

@@ -10,5 +10,6 @@ public interface Editorial extends Attributed {
 	String getSubheading();
 	String getLeadBody();
 	String getStandFirst();
+	String getWebIndexHeadline();
 	
 }
