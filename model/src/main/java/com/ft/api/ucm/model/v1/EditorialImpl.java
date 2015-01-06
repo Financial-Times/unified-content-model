@@ -23,7 +23,6 @@ public class EditorialImpl extends AttributionImpl implements Editorial  {
 		this.subheading = StringUtils.isNotBlank(subheading) ? subheading : null;
 		this.leadBody = StringUtils.isNotBlank(leadBody) ? leadBody : null;
 		this.standFirst = StringUtils.isNotBlank(standFirst) ? standFirst : null;
-		this.otherTitles = new HashSet<String>();
 	}
 	
     @Override
