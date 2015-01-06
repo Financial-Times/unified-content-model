@@ -1,5 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
+import java.util.Set;
+
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -10,5 +12,6 @@ public interface Editorial extends Attributed {
 	String getSubheading();
 	String getLeadBody();
 	String getStandFirst();
+	Set<String> getOtherTitles();
 	
 }
