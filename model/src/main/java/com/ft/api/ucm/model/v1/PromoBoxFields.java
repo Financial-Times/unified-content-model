@@ -1,26 +1,28 @@
 package com.ft.api.ucm.model.v1;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@JsonPropertyOrder({"title", "headline", "intro", "link", "image"})
+@JsonPropertyOrder({"title", "headline", "intro", "link", "images"})
 public class PromoBoxFields {
 
     private String title;
     private String headline;
     private String intro;
     private String link;
-    private TypeBasedImage image;
+    private List<TypeBasedImage> images;
     
     public PromoBoxFields() {}
     
-    public PromoBoxFields(String title, String headline, String intro, String link, TypeBasedImage image) {
+    public PromoBoxFields(String title, String headline, String intro, String link, List<TypeBasedImage> images) {
         this.title = title;
         this.headline = headline;
         this.intro = intro;
         this.link = link;
-        this.image = image;
+        this.images = images;
     }
     
     public String getTitle() {
@@ -55,11 +57,11 @@ public class PromoBoxFields {
         this.link = link;
     }
 
-    public TypeBasedImage getImage() {
-        return image;
+    public List<TypeBasedImage> getImages() {
+        return images;
     }
 
-    public void setImage(TypeBasedImage image) {
-        this.image = image;
+    public void setImage(List<TypeBasedImage> images) {
+        this.images = images;
     }
 }
