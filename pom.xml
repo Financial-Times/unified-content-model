@@ -11,7 +11,7 @@
 		<spring.ws.version>2.0.2.RELEASE</spring.ws.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<java.version>1.6</java.version>
-		<jackson.version>1.9.7</jackson.version>
+		<jackson.version>1.9.13</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<joda-time.version>1.6.2</joda-time.version>
 		<guava.version>r09</guava.version>
