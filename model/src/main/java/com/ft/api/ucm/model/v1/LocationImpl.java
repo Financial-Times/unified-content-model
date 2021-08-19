@@ -1,31 +1,29 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.StringUtils;
 
 public class LocationImpl implements Location {
 
-	private String uri;
-	
-	public LocationImpl(){
-	}
+  private String uri;
 
-	public LocationImpl(String uri) {
-		this.uri = StringUtils.isNotBlank(uri) ? uri : null;
-	}
+  public LocationImpl() {}
 
-	@Override
-	public String getUri() {
-		return uri;
-	}
+  public LocationImpl(String uri) {
+    this.uri = StringUtils.isNotBlank(uri) ? uri : null;
+  }
 
-	public void setUri(String uri) {
-		this.uri = uri.trim();
-	}
+  @Override
+  public String getUri() {
+    return uri;
+  }
 
-    @Override
-	public String toString() {
-		return Objects.toStringHelper(this).add("uri", uri).toString();
-	}
-	
+  public void setUri(String uri) {
+    this.uri = uri.trim();
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this).add("uri", uri).toString();
+  }
 }

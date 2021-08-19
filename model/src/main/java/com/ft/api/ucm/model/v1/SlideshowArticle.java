@@ -1,22 +1,20 @@
 package com.ft.api.ucm.model.v1;
 
-
 public interface SlideshowArticle {
-	
-	Editorial getEditorial();
 
-	Location getLocation();
-	
-	Master getMaster();
+  Editorial getEditorial();
 
-	Packaging getPackaging();
+  Location getLocation();
 
-	Body getBody();
+  Master getMaster();
 
-	Metadata getMetadata();
+  Packaging getPackaging();
 
-    Title getTitle();
+  Body getBody();
 
-    Lifecycle getLifecycle();
+  Metadata getMetadata();
 
+  Title getTitle();
+
+  Lifecycle getLifecycle();
 }

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonDateTimeWithMillisSerializer extends BaseJsonDateTimeSerializer {
 
-	public JsonDateTimeWithMillisSerializer() {
-		this(new ISODateTimeWithMillisFormatter());
-	}
+  public JsonDateTimeWithMillisSerializer() {
+    this(new ISODateTimeWithMillisFormatter());
+  }
 
-	JsonDateTimeWithMillisSerializer(DateTimeFormatter dateTimeFormatter) {
-		notNull(dateTimeFormatter);
-		super.dateTimeFormatter = dateTimeFormatter;
-	}
+  JsonDateTimeWithMillisSerializer(DateTimeFormatter dateTimeFormatter) {
+    notNull(dateTimeFormatter);
+    super.dateTimeFormatter = dateTimeFormatter;
+  }
 }

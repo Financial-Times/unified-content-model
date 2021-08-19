@@ -7,14 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonDateTimeSerializer extends BaseJsonDateTimeSerializer {
 
-    public JsonDateTimeSerializer() {
-		this(new ISODateTimeFormatter());
-	}
+  public JsonDateTimeSerializer() {
+    this(new ISODateTimeFormatter());
+  }
 
-	JsonDateTimeSerializer (DateTimeFormatter dateTimeFormatter) {
-		notNull(dateTimeFormatter);
-		super.dateTimeFormatter = dateTimeFormatter;
-	}
+  JsonDateTimeSerializer(DateTimeFormatter dateTimeFormatter) {
+    notNull(dateTimeFormatter);
+    super.dateTimeFormatter = dateTimeFormatter;
+  }
 }
-
-
