@@ -2,23 +2,22 @@ package com.ft.api.ucm.model.v1;
 
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
-@JsonDeserialize(as=TypeBasedImage.class)
+@JsonDeserialize(as = TypeBasedImage.class)
 public interface Image {
-	
-	String getUrl();
 
-	String getType();
+  String getUrl();
 
-	String getSource();
+  String getType();
 
-	String getAlt();
+  String getSource();
 
-	String getCaption();
+  String getAlt();
 
-    Integer getHeight();
+  String getCaption();
 
-    Integer getWidth();
+  Integer getHeight();
 
-    String getMediaType();
+  Integer getWidth();
 
+  String getMediaType();
 }

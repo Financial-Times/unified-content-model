@@ -1,6 +1,5 @@
 package com.ft.api.ucm.model.v1;
 
-
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -8,30 +7,29 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"name", "type", "fields"})
 public class DataTable implements Asset {
 
-	private String name;
-	private DataTableFields fields;
+  private String name;
+  private DataTableFields fields;
 
-	public DataTable() {
-	}
+  public DataTable() {}
 
-	public DataTable(String name, DataTableFields fields) {
-		this.name = name;
-		this.fields = fields;
-	}
+  public DataTable(String name, DataTableFields fields) {
+    this.name = name;
+    this.fields = fields;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public DataTableFields getFields() {
-		return fields;
-	}
+  public DataTableFields getFields() {
+    return fields;
+  }
 
-	public void setFields(DataTableFields fields) {
-		this.fields = fields;
-	}
+  public void setFields(DataTableFields fields) {
+    this.fields = fields;
+  }
 }

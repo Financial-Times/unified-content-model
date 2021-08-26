@@ -4,12 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p>A simple interface to a class representing an HttpServletResponse header</p>
- * 
+ * A simple interface to a class representing an HttpServletResponse header
+ *
  * @author andrew.winter
  */
 public interface ResponseHeader {
-	
-	void setOn(HttpServletResponse response, HttpServletRequest request);
 
+  void setOn(HttpServletResponse response, HttpServletRequest request);
 }

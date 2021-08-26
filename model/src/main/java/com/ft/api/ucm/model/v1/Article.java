@@ -4,23 +4,23 @@ import java.util.List;
 
 public interface Article {
 
-	Editorial getEditorial();
+  Editorial getEditorial();
 
-	Location getLocation();
-	
-	Master getMaster();
+  Location getLocation();
 
-	Packaging getPackaging();
+  Master getMaster();
 
-	Body getBody();
+  Packaging getPackaging();
 
-	Summary getSummary();
+  Body getBody();
 
-	Metadata getMetadata();
+  Summary getSummary();
 
-	List<ContentPackageEntry> getPackage();
+  Metadata getMetadata();
 
-    Title getTitle();
+  List<ContentPackageEntry> getPackage();
 
-    Lifecycle getLifecycle();
+  Title getTitle();
+
+  Lifecycle getLifecycle();
 }

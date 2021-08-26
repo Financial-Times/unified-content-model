@@ -5,6 +5,5 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 public interface Versionable {
 
-	String getModelVersion();
-	
+  String getModelVersion();
 }
