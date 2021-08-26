@@ -12,38 +12,36 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ft.api.ucm.model.v1.aspect.ConcreteFieldResolutionPolicy;
-import com.ft.api.ucm.model.v1.aspect.Field;
-
 @RunWith(MockitoJUnitRunner.class)
 public class ConcreteFieldResolutionPolicyTest {
-	
-	private static final String NAME = "name";
-	private static final String NON_EXISTENT = "foo";
-	private static final Object TEST_OBJ = new Object() {
-		@SuppressWarnings("unused")
-		public String getName() {
-			return NAME;
-		}
-	};
-	
-	@Mock private Field mockField;
-	private ConcreteFieldResolutionPolicy instance;
 
-	@Before
-	public void setUp() throws Exception {
-		instance = new ConcreteFieldResolutionPolicy();
-	}
-	
-	@Test
-	public void existingPropertyIsFound() {
-		when(mockField.toString()).thenReturn(NAME);
-		assertThat(instance.hasField(mockField, TEST_OBJ), is(TRUE));
-	}
-	
-	@Test
-	public void nonExistantPropertyIsNotFound() {
-		when(mockField.toString()).thenReturn(NON_EXISTENT);
-		assertThat(instance.hasField(mockField, TEST_OBJ), is(FALSE));
-	}
+  private static final String NAME = "name";
+  private static final String NON_EXISTENT = "foo";
+  private static final Object TEST_OBJ =
+      new Object() {
+        @SuppressWarnings("unused")
+        public String getName() {
+          return NAME;
+        }
+      };
+
+  @Mock private Field mockField;
+  private ConcreteFieldResolutionPolicy instance;
+
+  @Before
+  public void setUp() throws Exception {
+    instance = new ConcreteFieldResolutionPolicy();
+  }
+
+  @Test
+  public void existingPropertyIsFound() {
+    when(mockField.toString()).thenReturn(NAME);
+    assertThat(instance.hasField(mockField, TEST_OBJ), is(TRUE));
+  }
+
+  @Test
+  public void nonExistantPropertyIsNotFound() {
+    when(mockField.toString()).thenReturn(NON_EXISTENT);
+    assertThat(instance.hasField(mockField, TEST_OBJ), is(FALSE));
+  }
 }

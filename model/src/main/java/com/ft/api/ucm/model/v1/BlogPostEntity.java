@@ -1,133 +1,155 @@
 package com.ft.api.ucm.model.v1;
 
-import java.util.List;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Map;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonPropertyOrder({"aspectSet", "aspects", "modelVersion", "id", "apiUrl", "title",
-		"body", "lifecycle", "nature","location", "summary", "packaging", "master", "editorial", "textualBody", "usage",
-        "metadata", "images", "package", "assets", "mediaAssets"})
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonPropertyOrder({
+  "aspectSet",
+  "aspects",
+  "modelVersion",
+  "id",
+  "apiUrl",
+  "title",
+  "body",
+  "lifecycle",
+  "nature",
+  "location",
+  "summary",
+  "packaging",
+  "master",
+  "editorial",
+  "textualBody",
+  "usage",
+  "metadata",
+  "images",
+  "package",
+  "assets",
+  "mediaAssets"
+})
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class BlogPostEntity extends TextualEntity implements BlogPost, AssetAware {
-	
-	private List<MediaAsset> mediaAssets;
-	private Map<String, MediaAsset> mediaAssetMap;
-	private List<Asset> assets;
-	private Map<String, Asset> assetMap;
-	
-	public BlogPostEntity() {}
-	
-	public BlogPostEntity(String id, String apiUrl){
-		super(id, apiUrl);
-	}
-	
-	@Override
-	public void suppressAspect(String aspect) {
-		super.suppressAspect(aspect);
-		AspectEnum aspectValue = AspectEnum.getByValue(aspect); 
-		switch (aspectValue) {
-			case MEDIAASSETS: setMediaAssets(null); break;
-			case ASSETS: setAssets(null); break;
-			default: break;
-		}
-	}
 
-	@Override
-	public boolean equals(Object o) {
-		if(o == this){
-			return true;
-		}
-		if(o instanceof BlogPostEntity) {
-			BlogPostEntity a = (BlogPostEntity)o;
-			return Objects.equal(this.getId(), a.getId());
-		}
-		return false;
-	}
-	
-	@Override
-	protected ToStringHelper toStringHelper() {
-		ToStringHelper toStringHelper = super.toStringHelper();
-		return toStringHelper
-					.add("aspectSet", getAspectSet())
-					.add("aspects", getAspects())
-					.add("location", getLocation())
-					.add("title", getTitle())
-					.add("nature", getNature())
-					.add("body", getBody())
-					.add("lifecycle", getLifecycle())
-					.add("packaging", getPackaging())
-					.add("summary", getSummary())
-					.add("metadata", getMetadata())
-					.add("contentPackage", getPackage())
-					.add("images", getImages())
-					.add("master", getMaster())
-					.add("editorial",getEditorial());
-	}
+  private List<MediaAsset> mediaAssets;
+  private Map<String, MediaAsset> mediaAssetMap;
+  private List<Asset> assets;
+  private Map<String, Asset> assetMap;
 
-	@Override
-	@JsonIgnore
-	public Map<String, Asset> getAssetMap() {
-		return assetMap;
-	}
+  public BlogPostEntity() {}
 
-	@Override
-	@JsonIgnore
-	public Map<String, MediaAsset> getMediaAssetMap() {
-		return mediaAssetMap;
-	}
+  public BlogPostEntity(String id, String apiUrl) {
+    super(id, apiUrl);
+  }
 
-	@JsonIgnore
-	public void setAssetMap(Map<String, Asset> assetMap) {
-		this.assetMap = assetMap;
-	}
+  @Override
+  public void suppressAspect(String aspect) {
+    super.suppressAspect(aspect);
+    AspectEnum aspectValue = AspectEnum.getByValue(aspect);
+    switch (aspectValue) {
+      case MEDIAASSETS:
+        setMediaAssets(null);
+        break;
+      case ASSETS:
+        setAssets(null);
+        break;
+      default:
+        break;
+    }
+  }
 
-	@JsonIgnore
-	public void setMediaAssetMap(Map<String, MediaAsset> mediaAssetMap) {
-		this.mediaAssetMap = mediaAssetMap;
-	}
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (o instanceof BlogPostEntity) {
+      BlogPostEntity a = (BlogPostEntity) o;
+      return Objects.equal(this.getId(), a.getId());
+    }
+    return false;
+  }
 
-	@Override
-	public List<MediaAsset> getMediaAssets() {
-		return mediaAssets;
-	}
+  @Override
+  protected ToStringHelper toStringHelper() {
+    ToStringHelper toStringHelper = super.toStringHelper();
+    return toStringHelper
+        .add("aspectSet", getAspectSet())
+        .add("aspects", getAspects())
+        .add("location", getLocation())
+        .add("title", getTitle())
+        .add("nature", getNature())
+        .add("body", getBody())
+        .add("lifecycle", getLifecycle())
+        .add("packaging", getPackaging())
+        .add("summary", getSummary())
+        .add("metadata", getMetadata())
+        .add("contentPackage", getPackage())
+        .add("images", getImages())
+        .add("master", getMaster())
+        .add("editorial", getEditorial());
+  }
 
-	@Override
-	public void setMediaAssets(List<MediaAsset> mediaAssets) {
-		this.mediaAssets = mediaAssets;
-	}
+  @Override
+  @JsonIgnore
+  public Map<String, Asset> getAssetMap() {
+    return assetMap;
+  }
 
-	@Override
-	public void add(MediaAsset asset) {
-		if(mediaAssets == null){
-			mediaAssets = Lists.newArrayList();
-		}
-		mediaAssets.add(asset);
-	}
+  @Override
+  @JsonIgnore
+  public Map<String, MediaAsset> getMediaAssetMap() {
+    return mediaAssetMap;
+  }
 
-	@Override
-	public List<Asset> getAssets() {
-		return assets;
-	}
+  @JsonIgnore
+  public void setAssetMap(Map<String, Asset> assetMap) {
+    this.assetMap = assetMap;
+  }
 
-	@Override
-	public void setAssets(List<Asset> assets) {
-		this.assets = assets;
-	}
+  @JsonIgnore
+  public void setMediaAssetMap(Map<String, MediaAsset> mediaAssetMap) {
+    this.mediaAssetMap = mediaAssetMap;
+  }
 
-	@Override
-	public void add(Asset asset) {
-		if(assets == null){
-			assets = Lists.newArrayList();
-		}
-		assets.add(asset);
-	}
+  @Override
+  public List<MediaAsset> getMediaAssets() {
+    return mediaAssets;
+  }
 
+  @Override
+  public void setMediaAssets(List<MediaAsset> mediaAssets) {
+    this.mediaAssets = mediaAssets;
+  }
+
+  @Override
+  public void add(MediaAsset asset) {
+    if (mediaAssets == null) {
+      mediaAssets = Lists.newArrayList();
+    }
+    mediaAssets.add(asset);
+  }
+
+  @Override
+  public List<Asset> getAssets() {
+    return assets;
+  }
+
+  @Override
+  public void setAssets(List<Asset> assets) {
+    this.assets = assets;
+  }
+
+  @Override
+  public void add(Asset asset) {
+    if (assets == null) {
+      assets = Lists.newArrayList();
+    }
+    assets.add(asset);
+  }
 }

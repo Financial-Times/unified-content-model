@@ -7,24 +7,24 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"name", "type", "fields"})
 public class NumbersComponent implements Asset {
 
-    private String name;
-    private NumbersComponentFields fields;
-    
-    public NumbersComponentFields getFields() {
-        return fields;
-    }
+  private String name;
+  private NumbersComponentFields fields;
 
-    public void setFields(NumbersComponentFields fields) {
-        this.fields = fields;
-    }
+  public NumbersComponentFields getFields() {
+    return fields;
+  }
 
-    @Override
-    public String getName() {
-       return name;
-    }
+  public void setFields(NumbersComponentFields fields) {
+    this.fields = fields;
+  }
 
-    @Override
-    public void setName(String name) {
-       this.name = name;
-    }
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 }

@@ -7,30 +7,30 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"name", "type", "fields"})
 public class PullQuote implements Asset {
 
-    private String name;
-    private PullQuoteFields fields;
+  private String name;
+  private PullQuoteFields fields;
 
-    public PullQuote() {}
+  public PullQuote() {}
 
-    public PullQuote(PullQuoteFields fields) { 
-        this.fields = fields;
-    }
-    
-    public PullQuoteFields getFields() {
-        return fields;
-    }
+  public PullQuote(PullQuoteFields fields) {
+    this.fields = fields;
+  }
 
-    public void setFields(PullQuoteFields fields) {
-        this.fields = fields;
-    }
+  public PullQuoteFields getFields() {
+    return fields;
+  }
 
-    @Override
-    public String getName() {
-       return this.name;
-    }
+  public void setFields(PullQuoteFields fields) {
+    this.fields = fields;
+  }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 }

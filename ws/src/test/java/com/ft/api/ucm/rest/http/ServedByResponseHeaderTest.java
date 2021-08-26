@@ -14,25 +14,24 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServedByResponseHeaderTest {
-	
-	private static final String HOST_NAME = "hostname";
-	
-	@Mock private Host mockHost;
-	@Mock private HttpServletResponse mockResponse;
-	@Mock private HttpServletRequest mockRequest;
 
-	private ServedByResponseHeader instance;
-	
-	@Before
-	public void setUp() throws Exception {
-		instance = new ServedByResponseHeader(mockHost);
-	}
+  private static final String HOST_NAME = "hostname";
 
-	@Test
-	public void hostNameSetOnResponse() {
-		when(mockHost.getHostName()).thenReturn(HOST_NAME);
-		instance.setOn(mockResponse, mockRequest);
-		verify(mockResponse).addHeader(ServedByResponseHeader.SERVED_BY_HEADER_NAME, HOST_NAME);
-	}
-	
+  @Mock private Host mockHost;
+  @Mock private HttpServletResponse mockResponse;
+  @Mock private HttpServletRequest mockRequest;
+
+  private ServedByResponseHeader instance;
+
+  @Before
+  public void setUp() throws Exception {
+    instance = new ServedByResponseHeader(mockHost);
+  }
+
+  @Test
+  public void hostNameSetOnResponse() {
+    when(mockHost.getHostName()).thenReturn(HOST_NAME);
+    instance.setOn(mockResponse, mockRequest);
+    verify(mockResponse).addHeader(ServedByResponseHeader.SERVED_BY_HEADER_NAME, HOST_NAME);
+  }
 }

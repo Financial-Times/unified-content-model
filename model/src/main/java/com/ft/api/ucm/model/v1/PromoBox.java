@@ -7,25 +7,24 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"name", "type", "fields"})
 public class PromoBox implements Asset {
 
-    private String name;
-    private PromoBoxFields fields;
-    
-    public PromoBoxFields getFields() {
-        return fields;
-    }
+  private String name;
+  private PromoBoxFields fields;
 
-    public void setFields(PromoBoxFields fields) {
-        this.fields = fields;
-    }
+  public PromoBoxFields getFields() {
+    return fields;
+  }
 
-    @Override
-    public String getName() {
-       return name;
-    }
+  public void setFields(PromoBoxFields fields) {
+    this.fields = fields;
+  }
 
-    @Override
-    public void setName(String name) {
-       this.name = name;
-    }
+  @Override
+  public String getName() {
+    return name;
+  }
 
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 }

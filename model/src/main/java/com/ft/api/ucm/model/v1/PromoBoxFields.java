@@ -1,7 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
 import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -9,59 +8,60 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"title", "headline", "intro", "link", "images"})
 public class PromoBoxFields {
 
-    private String title;
-    private String headline;
-    private String intro;
-    private String link;
-    private List<TypeBasedImage> images;
-    
-    public PromoBoxFields() {}
-    
-    public PromoBoxFields(String title, String headline, String intro, String link, List<TypeBasedImage> images) {
-        this.title = title;
-        this.headline = headline;
-        this.intro = intro;
-        this.link = link;
-        this.images = images;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
+  private String title;
+  private String headline;
+  private String intro;
+  private String link;
+  private List<TypeBasedImage> images;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public PromoBoxFields() {}
 
-    public String getHeadline() {
-        return headline;
-    }
+  public PromoBoxFields(
+      String title, String headline, String intro, String link, List<TypeBasedImage> images) {
+    this.title = title;
+    this.headline = headline;
+    this.intro = intro;
+    this.link = link;
+    this.images = images;
+  }
 
-    public void setHeadline(String headline) {
-        this.headline = headline;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public String getIntro() {
-        return intro;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setIntro(String intro) {
-        this.intro = intro;
-    }
+  public String getHeadline() {
+    return headline;
+  }
 
-    public String getLink() {
-        return link;
-    }
+  public void setHeadline(String headline) {
+    this.headline = headline;
+  }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
+  public String getIntro() {
+    return intro;
+  }
 
-    public List<TypeBasedImage> getImages() {
-        return images;
-    }
+  public void setIntro(String intro) {
+    this.intro = intro;
+  }
 
-    public void setImage(List<TypeBasedImage> images) {
-        this.images = images;
-    }
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  public List<TypeBasedImage> getImages() {
+    return images;
+  }
+
+  public void setImage(List<TypeBasedImage> images) {
+    this.images = images;
+  }
 }

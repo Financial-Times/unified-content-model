@@ -1,12 +1,11 @@
 package com.ft.api.ucm.core.net;
 
 /**
- * <p>An interface to a class that represents an application server in the cluster.</p>
- * 
+ * An interface to a class that represents an application server in the cluster.
+ *
  * @author andrew.winter
  */
 public interface Host {
-	
-	String getHostName();
 
+  String getHostName();
 }

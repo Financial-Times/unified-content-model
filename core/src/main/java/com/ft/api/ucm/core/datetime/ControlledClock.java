@@ -4,36 +4,35 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public class ControlledClock implements Clock {
-	
-	private DateTime dateTime;
-	
-	public ControlledClock(long millis) {
-		this.dateTime = new DateTime(millis, DateTimeZone.UTC);
-	}
 
-	@Override
-	public long getTime() {
-		return dateTime.getMillis();
-	}
+  private DateTime dateTime;
 
+  public ControlledClock(long millis) {
+    this.dateTime = new DateTime(millis, DateTimeZone.UTC);
+  }
 
-	@Override
-	public boolean isBefore(long millis) {
-		return dateTime.isBefore(millis);
-	}
+  @Override
+  public long getTime() {
+    return dateTime.getMillis();
+  }
 
-	@Override
-	public boolean isAfter(long millis) {
-		return dateTime.isAfter(millis);
-	}
-	
-	@Override
-	public String toString() {
-		return dateTime.toString();
-	}
+  @Override
+  public boolean isBefore(long millis) {
+    return dateTime.isBefore(millis);
+  }
 
-	@Override
-	public DateTime minusMinutes(Integer minutes) {
-		return dateTime.plusMinutes(minutes);
-	}
+  @Override
+  public boolean isAfter(long millis) {
+    return dateTime.isAfter(millis);
+  }
+
+  @Override
+  public String toString() {
+    return dateTime.toString();
+  }
+
+  @Override
+  public DateTime minusMinutes(Integer minutes) {
+    return dateTime.plusMinutes(minutes);
+  }
 }

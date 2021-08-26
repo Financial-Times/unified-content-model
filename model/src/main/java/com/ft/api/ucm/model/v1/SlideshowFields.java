@@ -8,30 +8,29 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonPropertyOrder({"title", "slides"})
 public class SlideshowFields {
 
-	private String title;
-	private List<IndexedImage> slides;
+  private String title;
+  private List<IndexedImage> slides;
 
-	public SlideshowFields() {
-	}
+  public SlideshowFields() {}
 
-	public SlideshowFields(String title, List<IndexedImage> slides) {
-		this.title = title;
-		this.slides = slides;
-	}
+  public SlideshowFields(String title, List<IndexedImage> slides) {
+    this.title = title;
+    this.slides = slides;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public List<IndexedImage> getSlides() {
-		return slides;
-	}
+  public List<IndexedImage> getSlides() {
+    return slides;
+  }
 
-	public void setSlides(List<IndexedImage> slides) {
-		this.slides = slides;
-	}
+  public void setSlides(List<IndexedImage> slides) {
+    this.slides = slides;
+  }
 }
