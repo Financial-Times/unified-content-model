@@ -1,25 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
-
-  	<parent>
-        <groupId>com.ft.unifiedContentModel</groupId>
+	<parent>
+		<groupId>com.ft.unifiedContentModel</groupId>
 		<artifactId>ft-unifiedContentModel-parent</artifactId>
 		<version>0.41.0</version>
-  	</parent>
-	
+	</parent>
 	<artifactId>ft-unifiedContentModel-ws</artifactId>
 	<packaging>jar</packaging>
 	<name>${project.artifactId}</name>
 	<description>Support classes for ws built on top of the unified content model</description>
-	
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ft-unifiedContentModel-core</artifactId>
-            <version>${project.version}</version>
+			<version>${project.version}</version>
 		</dependency>
-		 <dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
@@ -37,17 +34,17 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-        </dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-		</dependency> 
+		</dependency>
 		<dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -56,17 +53,17 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-		    <scope>test</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-all</artifactId>
-		    <scope>test</scope>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-		    <scope>test</scope>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
