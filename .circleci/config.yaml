@@ -1,0 +1,62 @@
+version: 2.1
+
+executors:
+  maven:
+    docker:
+      - image: maven:3.6-jdk-11
+
+workflows:
+  test-and-build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - publish-nexus:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+
+jobs:
+  build:
+    working_directory: ~/unified-content-model
+    executor: maven
+    steps:
+      - checkout
+      - run:
+          name: Check maven pom files format (lint)
+          command: |
+            apt-get install -qqy libxml2-utils
+            xmllint pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml pom.xml
+            xmllint core/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml core/pom.xml
+            xmllint model/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml model/pom.xml
+            xmllint ws/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml ws/pom.xml
+            git diff --exit-code --quiet
+            retVal=$?
+            if [ $retVal -ne 0 ]; then echo "Ivalid pom.xml format: $(git diff)"; exit $retVal; fi
+      - run:
+          name: Maven Verify
+          command: |
+            mkdir /root/.m2/
+            curl -v -o /root/.m2/settings.xml "https://raw.githubusercontent.com/Financial-Times/nexus-settings/master/public-settings.xml"
+            mvn clean verify jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
+            rm -rf /root/.m2/*
+  publish-nexus:
+    working_directory: ~/unified-content-model
+    executor: maven
+    steps:
+      - checkout:
+          path: ~/java-logger
+      - run:
+          name: Publish Tag to Nexus repository
+          command: |
+            mkdir /root/.m2/
+            curl -v -o /root/.m2/settings.xml "https://raw.githubusercontent.com/Financial-Times/nexus-settings/master/public-settings.xml"
+            mvn versions:set -DnewVersion=${CIRCLE_TAG}
+            mvn versions:commit
+            mvn deploy
+            rm -rf /root/.m2/*
