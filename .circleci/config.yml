@@ -30,14 +30,15 @@ jobs:
       - run:
           name: Check maven pom files format (lint)
           command: |
+            uname -a
+            apt-get -qqy update
             apt-get install -qqy libxml2-utils
             xmllint pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml pom.xml
             xmllint core/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml core/pom.xml
             xmllint model/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml model/pom.xml
             xmllint ws/pom.xml | XMLLINT_INDENT=$'\t' xmllint --format --encode utf-8 - > /tmp/a.xml; mv /tmp/a.xml ws/pom.xml
-            git diff --exit-code --quiet
-            retVal=$?
-            if [ $retVal -ne 0 ]; then echo "Ivalid pom.xml format: $(git diff)"; exit $retVal; fi
+            # Ivalid pom.xml format if fail
+            git diff --exit-code
       - run:
           name: Maven Verify
           command: |
