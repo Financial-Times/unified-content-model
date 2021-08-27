@@ -1,30 +1,30 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
-import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ContentItemsUrlTemplateTest {
 
-	private static final String BASE_API_URL = "http://api.ft.com";
-	
-	private ContentItemsUrlTemplate template;
-	
-	@Before
-	public void setup() {
-		template = new ContentItemsUrlTemplate(BASE_API_URL);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void failsWithNullBaseApiUrl() {
-		new ContentItemUrlTemplate(null);
-	}
-	
-	@Test
-	public void shouldGenerateItemsUrl() {
-		assertEquals("http://api.ft.com/content/items/v1", template.generateUrl());
-	}
-	
-	
+  private static final String BASE_API_URL = "http://api.ft.com";
+
+  private ContentItemsUrlTemplate template;
+
+  @BeforeEach
+  public void setup() {
+    template = new ContentItemsUrlTemplate(BASE_API_URL);
+  }
+
+  @Test
+  public void failsWithNullBaseApiUrl() {
+    assertThrows(IllegalArgumentException.class, () -> new ContentItemUrlTemplate(null));
+  }
+
+  @Test
+  public void shouldGenerateItemsUrl() {
+    assertThat("http://api.ft.com/content/items/v1", equalTo(template.generateUrl()));
+  }
 }

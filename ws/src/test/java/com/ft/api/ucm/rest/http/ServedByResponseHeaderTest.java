@@ -6,33 +6,32 @@ import static org.mockito.Mockito.when;
 import com.ft.api.ucm.core.net.Host;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ServedByResponseHeaderTest {
-	
-	private static final String HOST_NAME = "hostname";
-	
-	@Mock private Host mockHost;
-	@Mock private HttpServletResponse mockResponse;
-	@Mock private HttpServletRequest mockRequest;
 
-	private ServedByResponseHeader instance;
-	
-	@Before
-	public void setUp() throws Exception {
-		instance = new ServedByResponseHeader(mockHost);
-	}
+  private static final String HOST_NAME = "hostname";
 
-	@Test
-	public void hostNameSetOnResponse() {
-		when(mockHost.getHostName()).thenReturn(HOST_NAME);
-		instance.setOn(mockResponse, mockRequest);
-		verify(mockResponse).addHeader(ServedByResponseHeader.SERVED_BY_HEADER_NAME, HOST_NAME);
-	}
-	
+  @Mock private Host mockHost;
+  @Mock private HttpServletResponse mockResponse;
+  @Mock private HttpServletRequest mockRequest;
+
+  private ServedByResponseHeader instance;
+
+  @BeforeEach
+  public void setUp() throws Exception {
+    instance = new ServedByResponseHeader(mockHost);
+  }
+
+  @Test
+  public void hostNameSetOnResponse() {
+    when(mockHost.getHostName()).thenReturn(HOST_NAME);
+    instance.setOn(mockResponse, mockRequest);
+    verify(mockResponse).addHeader(ServedByResponseHeader.SERVED_BY_HEADER_NAME, HOST_NAME);
+  }
 }

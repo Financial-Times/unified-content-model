@@ -1,28 +1,28 @@
 package com.ft.api.ucm.model.v1.notification.urls;
 
-import junit.framework.Assert;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ContentNotificationsTemplateTest {
-	
-	private static final String BASE_API_URL = "http://api.ft.com";
-	private ContentNotificationsTemplate instance;
-	
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void failsWithNullBaseApiUrl() {
-		instance = new ContentNotificationsTemplate(null);
-	}
-	
-	@Test
-	public void shouldGenerateNotificationUrl() {
-		instance = new ContentNotificationsTemplate(BASE_API_URL);
-		Assert.assertEquals("http://api.ft.com/content/notifications/v1/items", instance.generateUrl());
-	}
-	
 
+  private static final String BASE_API_URL = "http://api.ft.com";
+  private ContentNotificationsTemplate instance;
+
+  @Test
+  public void failsWithNullBaseApiUrl() {
+    assertThrows(
+        IllegalArgumentException.class, () -> instance = new ContentNotificationsTemplate(null));
+  }
+
+  @Test
+  public void shouldGenerateNotificationUrl() {
+    instance = new ContentNotificationsTemplate(BASE_API_URL);
+    assertThat("http://api.ft.com/content/notifications/v1/items", equalTo(instance.generateUrl()));
+  }
 }
