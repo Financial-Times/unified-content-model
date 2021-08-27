@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.base.Objects;
 import java.util.List;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public abstract class ContentEntity extends SimpleEntity

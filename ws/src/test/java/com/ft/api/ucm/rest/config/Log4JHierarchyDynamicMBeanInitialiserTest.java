@@ -20,10 +20,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 @Disabled(
     "This test is being ignore because it uses a static method on LogManager to configure logging. This is not cleaned, which can break "
         + "subsequent tests that invoke code that uses the logging sub system. TODO prevent this test from having side effects")
-@ExtendWith(MockitoExtension.class)
 public class Log4JHierarchyDynamicMBeanInitialiserTest {
 
   private static final String LOGGER_NAME = "TEST";

@@ -25,6 +25,8 @@ public class PolicyBasedAspectSetCollectionTest {
 
   @BeforeEach
   public void setup() {
+    when(mockAspectSetSelectionPolicy.match(mockAspectSets, mockAspectSetAware.getClass()))
+        .thenReturn(mockAspectSet);
     instance = new PolicyBasedAspectSetCollection(mockAspectSets, mockAspectSetSelectionPolicy);
   }
 

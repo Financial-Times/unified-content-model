@@ -78,6 +78,7 @@ public class UrlBuilderTest {
         equalTo(
             UrlBuilder.basedOn(newRequest(), false)
                 .withPath(NEW_SERVLET_PATH)
+                .withPath(NEW_SERVLET_PATH)
                 .withPath(SERVLET_PATH_WITH_SPECIAL_CHARS)
                 .toString()));
   }
