@@ -2,6 +2,7 @@ package com.ft.api.ucm.rest.filter;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.when;
 
 import javax.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;

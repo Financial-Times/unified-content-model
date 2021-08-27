@@ -1,6 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.ft.api.ucm.model.v1.metadata.Tag;
 import java.util.Set;
 
 @JsonDeserialize(as = MetadataImpl.class)

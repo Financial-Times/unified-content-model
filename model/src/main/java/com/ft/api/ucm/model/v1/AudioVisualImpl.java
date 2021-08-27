@@ -2,7 +2,6 @@ package com.ft.api.ucm.model.v1;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.google.common.base.MoreObjects;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"runtimeMilliseconds"})
 public class AudioVisualImpl implements AudioVisual {
