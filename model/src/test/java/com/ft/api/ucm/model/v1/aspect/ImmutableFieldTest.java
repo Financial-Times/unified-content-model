@@ -1,9 +1,9 @@
 package com.ft.api.ucm.model.v1.aspect;
 
 import static java.lang.Boolean.TRUE;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -29,14 +29,15 @@ public class ImmutableFieldTest {
 
   @Test
   public void constructObjectWithNullNameRaisesException() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> ImmutableField.valueOf(null, mockFieldResolutionPolicy));
+    assertThat(
+        () -> ImmutableField.valueOf(null, mockFieldResolutionPolicy),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void constructObjectWithNullResolutionPolicyRaisesException() {
-    assertThrows(IllegalArgumentException.class, () -> ImmutableField.valueOf(NAME, null));
+    assertThat(
+        () -> ImmutableField.valueOf(NAME, null), throwsException(IllegalArgumentException.class));
   }
 
   @Test

@@ -1,7 +1,8 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import com.ft.api.ucm.core.net.ContentApiConfiguration;
@@ -52,7 +53,8 @@ public class ContentItemUrlGeneratorImplTest {
 
   @Test
   public void shouldFailCreateUrlWithNullUuid() throws Exception {
-    assertThrows(IllegalArgumentException.class, () -> generator.createUrlForItem(null));
+    assertThat(
+        () -> generator.createUrlForItem(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -111,13 +113,15 @@ public class ContentItemUrlGeneratorImplTest {
 
   @Test
   public void shouldFailCreateUrlWithNullHash() throws Exception {
-    assertThrows(
-        IllegalArgumentException.class, () -> generator.createUrlForItemWithHash(UUID, null));
+    assertThat(
+        () -> generator.createUrlForItemWithHash(UUID, null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void shouldFailCreateUrlWithHashButNullUuid() throws Exception {
-    assertThrows(
-        IllegalArgumentException.class, () -> generator.createUrlForItemWithHash(null, HASH));
+    assertThat(
+        () -> generator.createUrlForItemWithHash(null, HASH),
+        throwsException(IllegalArgumentException.class));
   }
 }

@@ -1,9 +1,9 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,8 @@ public class ContentItemUrlTemplateTest {
 
   @Test
   public void failsWithNullBaseApiUrl() {
-    assertThrows(IllegalArgumentException.class, () -> new ContentItemUrlTemplate(null));
+    assertThat(
+        () -> new ContentItemUrlTemplate(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -40,16 +41,19 @@ public class ContentItemUrlTemplateTest {
 
   @Test
   public void shouldFailToGenerateWithNullItemUuid() {
-    assertThrows(IllegalArgumentException.class, () -> template.generateUrl(null));
+    assertThat(() -> template.generateUrl(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void shouldFailWithHashAndNullId() {
-    assertThrows(IllegalArgumentException.class, () -> template.generateUrl(null, HASH));
+    assertThat(
+        () -> template.generateUrl(null, HASH), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void shouldFailWithNullHash() {
-    assertThrows(IllegalArgumentException.class, () -> template.generateUrl(ITEM_UUID, null));
+    assertThat(
+        () -> template.generateUrl(ITEM_UUID, null),
+        throwsException(IllegalArgumentException.class));
   }
 }

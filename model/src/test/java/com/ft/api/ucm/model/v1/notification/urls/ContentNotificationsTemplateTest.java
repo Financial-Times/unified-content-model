@@ -1,8 +1,8 @@
 package com.ft.api.ucm.model.v1.notification.urls;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,8 +16,9 @@ public class ContentNotificationsTemplateTest {
 
   @Test
   public void failsWithNullBaseApiUrl() {
-    assertThrows(
-        IllegalArgumentException.class, () -> instance = new ContentNotificationsTemplate(null));
+    assertThat(
+        () -> instance = new ContentNotificationsTemplate(null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

@@ -1,7 +1,8 @@
 package com.ft.api.ucm.model.v1.aspect;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
@@ -22,7 +23,9 @@ public class HardwiredAspectSetSelectionPolicyTest {
 
   @Test
   public void ifSuppliedAspectSetIsNullExceptionThrown() {
-    assertThrows(IllegalArgumentException.class, () -> new HardwiredAspectSetSelectionPolicy(null));
+    assertThat(
+        () -> new HardwiredAspectSetSelectionPolicy(null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

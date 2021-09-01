@@ -1,9 +1,9 @@
 package com.ft.api.ucm.core.net;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.web.util.UriUtils.encodePath;
 
 import org.junit.jupiter.api.Test;
@@ -94,14 +94,15 @@ public class UrlBuilderTest {
 
   @Test
   public void withNullRequest() {
-    assertThrows(IllegalArgumentException.class, () -> UrlBuilder.basedOn(null, false));
+    assertThat(
+        () -> UrlBuilder.basedOn(null, false), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void withInvalidScheme() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> UrlBuilder.basedOn(newRequest(), false).withScheme("httttttttppppddd"));
+    assertThat(
+        () -> UrlBuilder.basedOn(newRequest(), false).withScheme("httttttttppppddd"),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

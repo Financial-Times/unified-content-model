@@ -59,6 +59,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>net.obvj</groupId>
+			<artifactId>junit-utils</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
 			<scope>test</scope>

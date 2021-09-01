@@ -1,6 +1,7 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -30,16 +31,16 @@ public class PolicyBasedAspectSetCollectionTest {
 
   @Test
   public void constructObjectWithNullAspectSetsRaisesException() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new PolicyBasedAspectSetCollection(null, mockAspectSetSelectionPolicy));
+    assertThat(
+        () -> new PolicyBasedAspectSetCollection(null, mockAspectSetSelectionPolicy),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void constructObjectWithNullAspectSetSelectionPolicyRaisesException() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new PolicyBasedAspectSetCollection(mockAspectSets, null));
+    assertThat(
+        () -> new PolicyBasedAspectSetCollection(mockAspectSets, null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

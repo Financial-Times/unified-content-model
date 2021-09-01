@@ -1,10 +1,10 @@
 package com.ft.api.ucm.model.v1;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,8 @@ public class BlogPostEntityTest {
 
   @Test
   public void exceptionThrownWhenIdIsNull() {
-    assertThrows(IllegalArgumentException.class, () -> new BlogPostEntity(null, API_URL));
+    assertThat(
+        () -> new BlogPostEntity(null, API_URL), throwsException(IllegalArgumentException.class));
   }
 
   @Test

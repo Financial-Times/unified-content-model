@@ -27,7 +27,8 @@ public class LifecycleImpl implements Lifecycle {
     return initialPublishDateTime;
   }
 
-  @JsonSerialize(using = JsonDateTimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
+  @JsonSerialize(using = JsonDateTimeSerializer.class)
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Override
   public DateTime getLastPublishDateTime() {
     return lastPublishDateTime;

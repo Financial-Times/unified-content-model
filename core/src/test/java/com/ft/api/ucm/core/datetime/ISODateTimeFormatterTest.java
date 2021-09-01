@@ -1,8 +1,8 @@
 package com.ft.api.ucm.core.datetime;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -29,7 +29,7 @@ public class ISODateTimeFormatterTest {
 
   @Test
   public void nullDateInputThrowsException() {
-    assertThrows(IllegalArgumentException.class, () -> instance.format(null));
+    assertThat(() -> instance.format(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -41,32 +41,32 @@ public class ISODateTimeFormatterTest {
 
   @Test
   public void whenANonIsoFormatStringIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    assertThrows(
-        IllegalArgumentException.class,
+    assertThat(
         () -> {
           String text = "2011-07-14";
           instance.parseDateTime(text);
-        });
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void whenAnEmptyStringIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    assertThrows(
-        IllegalArgumentException.class,
+    assertThat(
         () -> {
           String text = "";
           instance.parseDateTime(text);
-        });
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void whenNullIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    assertThrows(
-        IllegalArgumentException.class,
+    assertThat(
         () -> {
           String text = null;
           instance.parseDateTime(text);
-        });
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

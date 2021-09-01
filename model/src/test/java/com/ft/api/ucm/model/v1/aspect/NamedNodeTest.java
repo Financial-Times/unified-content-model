@@ -1,8 +1,8 @@
 package com.ft.api.ucm.model.v1.aspect;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.Test;
@@ -18,14 +18,15 @@ public class NamedNodeTest {
 
   @Test
   public void constructWithNullNameRaisesException() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new NamedNode<String>(null, Sets.<String>newHashSet()));
+    assertThat(
+        () -> new NamedNode<String>(null, Sets.<String>newHashSet()),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void constructWithNullChildrenRaisesException() {
-    assertThrows(IllegalArgumentException.class, () -> new NamedNode<String>(NAME, null));
+    assertThat(
+        () -> new NamedNode<String>(NAME, null), throwsException(IllegalArgumentException.class));
   }
 
   @Test

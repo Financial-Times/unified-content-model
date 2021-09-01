@@ -1,8 +1,8 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,8 @@ public class ContentItemsUrlTemplateTest {
 
   @Test
   public void failsWithNullBaseApiUrl() {
-    assertThrows(IllegalArgumentException.class, () -> new ContentItemUrlTemplate(null));
+    assertThat(
+        () -> new ContentItemUrlTemplate(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test

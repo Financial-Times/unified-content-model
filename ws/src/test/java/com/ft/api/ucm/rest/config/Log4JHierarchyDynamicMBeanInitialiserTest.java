@@ -1,7 +1,8 @@
 package com.ft.api.ucm.rest.config;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -56,16 +57,16 @@ public class Log4JHierarchyDynamicMBeanInitialiserTest {
 
   @Test
   public void constructionFailsWhenNullHierarchyDynamicMBean() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Log4JHierarchyDynamicMBeanInitialiser(null, mockLoggerRepository));
+    assertThat(
+        () -> new Log4JHierarchyDynamicMBeanInitialiser(null, mockLoggerRepository),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void constructionFailsWhenNullLoggerRepository() {
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Log4JHierarchyDynamicMBeanInitialiser(mockHierarchyDynamicMBean, null));
+    assertThat(
+        () -> new Log4JHierarchyDynamicMBeanInitialiser(mockHierarchyDynamicMBean, null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
