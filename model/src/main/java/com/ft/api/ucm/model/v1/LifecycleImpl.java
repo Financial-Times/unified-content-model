@@ -1,5 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ft.api.ucm.core.datetime.JsonDateTimeSerializer;
@@ -19,7 +20,8 @@ public class LifecycleImpl implements Lifecycle {
     this.lastPublishDateTime = lastPublishDateTime;
   }
 
-  @JsonSerialize(using = JsonDateTimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
+  @JsonSerialize(using = JsonDateTimeSerializer.class)
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Override
   public DateTime getInitialPublishDateTime() {
     return initialPublishDateTime;

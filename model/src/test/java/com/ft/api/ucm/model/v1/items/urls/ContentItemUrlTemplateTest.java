@@ -28,7 +28,7 @@ public class ContentItemUrlTemplateTest {
 
   @Test
   public void shouldGenerateItemUrl() {
-    assertThat("http://api.ft.com/content/items/v1/1234", equalTo(template.generateUrl(ITEM_UUID)));
+    assertThat(template.generateUrl(ITEM_UUID), equalTo("http://api.ft.com/content/items/v1/1234"));
   }
 
   @Test

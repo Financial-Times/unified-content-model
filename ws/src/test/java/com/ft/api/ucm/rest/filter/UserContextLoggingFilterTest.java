@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 
 import javax.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -32,7 +31,6 @@ public class UserContextLoggingFilterTest {
   }
 
   @Test
-  @Disabled
   public void testCreateMessage() {
 
     when(request.getHeader(UserContextLoggingFilter.API_KEY_HEADER)).thenReturn(apiKeyHeader);

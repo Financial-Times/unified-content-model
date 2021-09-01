@@ -29,7 +29,7 @@ public class PodcastEntityTest {
 
   @Test
   public void podcastIsCreated() {
-    assertThat(UUID, equalTo(instance.getId()));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test

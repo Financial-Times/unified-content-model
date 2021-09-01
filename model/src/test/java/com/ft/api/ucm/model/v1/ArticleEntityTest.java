@@ -34,26 +34,26 @@ public class ArticleEntityTest {
 
   @Test
   public void articleIsCreated() {
-    assertThat(API_URL, equalTo(instance.getApiUrl()));
-    assertThat(UUID, equalTo(instance.getId()));
+    assertThat(instance.getApiUrl(), equalTo(API_URL));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test
   public void twoArticlesAreEqualIfTheyAreTheSame() {
     Article another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoArticlesAreNotEqualIfOneIsNull() {
     Article another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentArticlesAreNotEqual() {
     Article another = new ArticleEntity(ANOTHER_UUID, API_URL);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

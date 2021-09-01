@@ -2,16 +2,15 @@ package com.ft.api.ucm.model.v1;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-// FIXME deprecate
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
 import java.util.Map;
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName(value = "image")
 @JsonPropertyOrder({"url", "type", "source", "alt", "caption", "height", "width", "mediaType"})
 public class TypeBasedImage implements com.ft.api.ucm.model.v1.Image {

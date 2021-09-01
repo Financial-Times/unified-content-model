@@ -1,8 +1,8 @@
 package com.ft.api.ucm.model.v1;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Objects;
@@ -33,7 +33,7 @@ import java.util.Map;
   "assets",
   "mediaAssets"
 })
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BlogPostEntity extends TextualEntity implements BlogPost, AssetAware {
 
   private List<MediaAsset> mediaAssets;

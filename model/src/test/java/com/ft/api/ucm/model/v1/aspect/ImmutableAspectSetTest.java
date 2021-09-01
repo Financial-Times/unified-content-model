@@ -1,5 +1,6 @@
 package com.ft.api.ucm.model.v1.aspect;
 
+import static java.lang.Boolean.TRUE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.eq;
@@ -59,15 +60,15 @@ public class ImmutableAspectSetTest {
   public void twoAspectSetsAreEqualIfTheyAreTheSame() {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet = instance;
-    assertThat(instance, equalTo(anotherAspectSet));
-    assertThat(instance.hashCode(), is(anotherAspectSet.hashCode()));
+    assertThat(anotherAspectSet, equalTo(instance));
+    assertThat(anotherAspectSet.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoAspectSetsAreNotEqualIfOneIsNull() {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet = null;
-    assertThat(instance, not(equalTo(anotherAspectSet)));
+    assertThat(anotherAspectSet, not(equalTo(instance)));
   }
 
   @Test
@@ -75,7 +76,7 @@ public class ImmutableAspectSetTest {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet =
         ImmutableAspectSet.valueOf(ANOTHER_NAME, aspects, mockAssignableVoter);
-    assertThat(instance, not(equalTo(anotherAspectSet)));
+    assertThat(anotherAspectSet, not(equalTo(instance)));
   }
 
   @Test
@@ -89,9 +90,9 @@ public class ImmutableAspectSetTest {
   @Test
   public void objectIsAssignableFrom() {
     Object test = new Object();
-    when(mockAssignableVoter.vote(aspects, test)).thenReturn(Boolean.TRUE);
+    when(mockAssignableVoter.vote(aspects, test)).thenReturn(TRUE);
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
-    assertThat(instance.assignableFrom(test), is(Boolean.TRUE));
+    assertThat(instance.assignableFrom(test), is(TRUE));
   }
 
   @Test

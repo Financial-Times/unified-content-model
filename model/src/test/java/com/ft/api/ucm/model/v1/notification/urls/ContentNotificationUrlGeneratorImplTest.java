@@ -28,7 +28,7 @@ public class ContentNotificationUrlGeneratorImplTest {
 
   @Test
   public void contentItemNotificationsUrl() {
-    String url = generator.createUrlForContentItemUpdateNotifications().toString();
-    assertThat("http://api.ft.com/content/notifications/v1/items", equalTo(url));
+    String url = generator.createUrlForContentItemUpdateNotifications();
+    assertThat(url, equalTo("http://api.ft.com/content/notifications/v1/items"));
   }
 }

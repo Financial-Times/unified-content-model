@@ -22,7 +22,7 @@ public class StringToStringListConverterTest {
     String source = "[a,b,c]";
     List<String> expected = Arrays.asList("a", "b", "c");
     List<String> actual = converter.convert(source);
-    assertThat(expected, equalTo(actual));
+    assertThat(actual, equalTo(expected));
   }
 
   @Test
@@ -30,7 +30,7 @@ public class StringToStringListConverterTest {
     String source = "[a,   b,  c ]";
     List<String> expected = Arrays.asList("a", "b", "c");
     List<String> actual = converter.convert(source);
-    assertThat(expected, equalTo(actual));
+    assertThat(actual, equalTo(expected));
   }
 
   @Test
@@ -38,6 +38,6 @@ public class StringToStringListConverterTest {
     List<String> source = Arrays.asList("a", "b", "c");
     String expected = "[a,b,c]";
     String actual = converter.unconvert(source);
-    assertThat(expected, equalTo(actual));
+    assertThat(actual, equalTo(expected));
   }
 }

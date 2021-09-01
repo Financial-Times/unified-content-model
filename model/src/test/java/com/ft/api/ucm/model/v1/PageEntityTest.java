@@ -29,7 +29,7 @@ public class PageEntityTest {
 
   @Test
   public void isCreated() {
-    assertThat(UUID, equalTo(instance.getId()));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test

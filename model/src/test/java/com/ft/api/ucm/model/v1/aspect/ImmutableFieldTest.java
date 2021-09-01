@@ -1,5 +1,6 @@
 package com.ft.api.ucm.model.v1.aspect;
 
+import static java.lang.Boolean.TRUE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,20 +42,20 @@ public class ImmutableFieldTest {
   @Test
   public void twoFieldsAreEqualIfTheyAreTheSame() {
     Field another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoFieldsAreNotEqualIfOneIsNull() {
     Field another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentFieldsAreNotEqual() {
     Field another = ImmutableField.valueOf(ANOTHER_NAME, mockFieldResolutionPolicy);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
@@ -66,8 +67,8 @@ public class ImmutableFieldTest {
   @Test
   public void objectIsAssignableFrom() {
     Object test = new Object();
-    when(mockFieldResolutionPolicy.hasField(instance, test)).thenReturn(Boolean.TRUE);
-    assertThat(instance.assignableFrom(test), is(Boolean.TRUE));
+    when(mockFieldResolutionPolicy.hasField(instance, test)).thenReturn(TRUE);
+    assertThat(instance.assignableFrom(test), is(TRUE));
   }
 
   @Test

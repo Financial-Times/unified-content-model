@@ -23,6 +23,6 @@ public class ContentNotificationsTemplateTest {
   @Test
   public void shouldGenerateNotificationUrl() {
     instance = new ContentNotificationsTemplate(BASE_API_URL);
-    assertThat("http://api.ft.com/content/notifications/v1/items", equalTo(instance.generateUrl()));
+    assertThat(instance.generateUrl(), equalTo("http://api.ft.com/content/notifications/v1/items"));
   }
 }

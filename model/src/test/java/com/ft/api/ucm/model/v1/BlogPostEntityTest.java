@@ -34,26 +34,26 @@ public class BlogPostEntityTest {
 
   @Test
   public void blogIsCreated() {
-    assertThat(API_URL, equalTo(instance.getApiUrl()));
-    assertThat(UUID, equalTo(instance.getId()));
+    assertThat(instance.getApiUrl(), equalTo(API_URL));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test
   public void twoBlogsAreEqualIfTheyAreTheSame() {
     BlogPost another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoBlogsAreNotEqualIfOneIsNull() {
     BlogPost another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentBlogsAreNotEqual() {
     BlogPost another = new BlogPostEntity(ANOTHER_UUID, API_URL);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

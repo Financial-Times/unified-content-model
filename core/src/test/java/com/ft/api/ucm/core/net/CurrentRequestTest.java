@@ -35,7 +35,7 @@ public class CurrentRequestTest {
     String s = REQUEST_URL + ".xml";
     when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
     String actual = currentRequestFormat.getFormat();
-    assertThat("xml", equalTo(actual));
+    assertThat(actual, equalTo("xml"));
   }
 
   @Test
@@ -43,7 +43,7 @@ public class CurrentRequestTest {
     String s = REQUEST_URL + ".json";
     when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
     String actual = currentRequestFormat.getFormat();
-    assertThat("json", equalTo(actual));
+    assertThat(actual, equalTo("json"));
   }
 
   @Test

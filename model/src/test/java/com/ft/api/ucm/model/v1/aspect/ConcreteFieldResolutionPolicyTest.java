@@ -36,12 +36,12 @@ public class ConcreteFieldResolutionPolicyTest {
   @Test
   public void existingPropertyIsFound() {
     when(mockField.toString()).thenReturn(NAME);
-    assertThat(TRUE, is(instance.hasField(mockField, TEST_OBJ)));
+    assertThat(instance.hasField(mockField, TEST_OBJ), is(TRUE));
   }
 
   @Test
   public void nonExistantPropertyIsNotFound() {
     when(mockField.toString()).thenReturn(NON_EXISTENT);
-    assertThat(FALSE, is(instance.hasField(mockField, TEST_OBJ)));
+    assertThat(instance.hasField(mockField, TEST_OBJ), is(FALSE));
   }
 }

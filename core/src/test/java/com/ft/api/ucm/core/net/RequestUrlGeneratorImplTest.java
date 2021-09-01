@@ -21,7 +21,7 @@ public class RequestUrlGeneratorImplTest {
   public void shouldCreateRequestUrlBasedOnSuppliedDefault() throws Exception {
     String url =
         generator.createRequestUrl("/servlet", "/path", "param1=foo&param2=bar").toString();
-    assertThat("http://api.ft.com/servlet/path?param1=foo&param2=bar", equalTo(url));
+    assertThat(url, equalTo("http://api.ft.com/servlet/path?param1=foo&param2=bar"));
   }
 
   @Test
@@ -31,7 +31,7 @@ public class RequestUrlGeneratorImplTest {
         generator
             .createRequestUrl(HttpProtocol.HTTPS, "/servlet", "/path", "param1=foo&param2=bar")
             .toString();
-    assertThat("https://api.ft.com:8080/servlet/path?param1=foo&param2=bar", equalTo(url));
+    assertThat(url, equalTo("https://api.ft.com:8080/servlet/path?param1=foo&param2=bar"));
   }
 
   @Test
@@ -40,7 +40,7 @@ public class RequestUrlGeneratorImplTest {
         generator
             .createRequestUrl(HttpProtocol.HTTP, "/servlet", "/path", "param1=foo&param2=bar")
             .toString();
-    assertThat("http://api.ft.com/servlet/path?param1=foo&param2=bar", equalTo(url));
+    assertThat(url, equalTo("http://api.ft.com/servlet/path?param1=foo&param2=bar"));
   }
 
   @Test
@@ -49,26 +49,26 @@ public class RequestUrlGeneratorImplTest {
         generator
             .createRequestUrl(HttpProtocol.HTTPS, "/servlet", "/path", "param1=foo&param2=bar")
             .toString();
-    assertThat("https://api.ft.com/servlet/path?param1=foo&param2=bar", equalTo(url));
+    assertThat(url, equalTo("https://api.ft.com/servlet/path?param1=foo&param2=bar"));
   }
 
   @Test
   public void shouldCreateRequestUrlBasedOnSuppliedWithNullQueryString() throws Exception {
     String url = generator.createRequestUrl("/servlet", "/path", null).toString();
-    assertThat("http://api.ft.com/servlet/path", equalTo(url));
+    assertThat(url, equalTo("http://api.ft.com/servlet/path"));
   }
 
   @Test
   public void shouldCreateRequestUrlBasedOnSuppliedWithNullQueryStringAndNullPathInfo()
       throws Exception {
     String url = generator.createRequestUrl("/servlet", null, null).toString();
-    assertThat("http://api.ft.com/servlet", equalTo(url));
+    assertThat(url, equalTo("http://api.ft.com/servlet"));
   }
 
   @Test
   public void shouldCreateRequestUrlBasedOnSuppliedWithdNullPathInfo() throws Exception {
     String url = generator.createRequestUrl("/servlet", null, "param1=foo&param2=bar").toString();
-    assertThat("http://api.ft.com/servlet?param1=foo&param2=bar", equalTo(url));
+    assertThat(url, equalTo("http://api.ft.com/servlet?param1=foo&param2=bar"));
   }
 
   @Test
@@ -76,21 +76,19 @@ public class RequestUrlGeneratorImplTest {
     String url = generator.createRequestUrl("/servlet", null, "foo=bar&apiKey=12345").toString();
     assertThat(
         "Expected 'blacklistedparam' to be stripped",
-        "http://api.ft.com/servlet?foo=bar",
-        equalTo(url));
+        url,
+        equalTo("http://api.ft.com/servlet?foo=bar"));
   }
 
   @Test
   public void shouldStripBlacklistedParameter() throws Exception {
     generator.addBlacklistedParameter("blacklistedparam");
     String url =
-        generator
-            .createRequestUrl("/servlet", null, "foo=bar&blacklistedparam=danger&foo=bar")
-            .toString();
+        generator.createRequestUrl("/servlet", null, "foo=bar&blacklistedparam=danger&foo=bar");
     assertThat(
         "Expected 'blacklistedparam' to be stripped",
-        "http://api.ft.com/servlet?foo=bar&foo=bar",
-        equalTo(url));
+        url,
+        equalTo("http://api.ft.com/servlet?foo=bar&foo=bar"));
   }
 
   @Test
@@ -102,7 +100,7 @@ public class RequestUrlGeneratorImplTest {
                 "/servlet", null, "blacklistedparam=danger&blacklistedparam=moredanger")
             .toString();
     assertThat(
-        "Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", equalTo(url));
+        "Expected 'blacklistedparam' to be stripped", url, equalTo("http://api.ft.com/servlet"));
   }
 
   @Test
@@ -115,7 +113,7 @@ public class RequestUrlGeneratorImplTest {
                 "/servlet", null, "blacklistedparam1=danger&blacklistedparam2=moredanger")
             .toString();
     assertThat(
-        "Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", equalTo(url));
+        "Expected 'blacklistedparam' to be stripped", url, equalTo("http://api.ft.com/servlet"));
   }
 
   @Test
@@ -128,6 +126,6 @@ public class RequestUrlGeneratorImplTest {
                 "/servlet", null, "blacklistedparam1=danger&blacklistedparam2=more%20danger")
             .toString();
     assertThat(
-        "Expected 'blacklistedparam' to be stripped", "http://api.ft.com/servlet", equalTo(url));
+        "Expected 'blacklistedparam' to be stripped", url, equalTo("http://api.ft.com/servlet"));
   }
 }

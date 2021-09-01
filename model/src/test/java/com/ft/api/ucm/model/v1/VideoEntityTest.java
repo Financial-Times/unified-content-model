@@ -29,25 +29,25 @@ public class VideoEntityTest {
 
   @Test
   public void videoIsCreated() {
-    assertThat(UUID, equalTo(instance.getId()));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test
   public void twoVideosAreEqualIfTheyAreTheSame() {
     Video another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoVideosAreNotEqualIfOneIsNull() {
     Video another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentVideosAreNotEqual() {
     Video another = new VideoEntity(ANOTHER_UUID, API_URL);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

@@ -24,7 +24,7 @@ public class ISODateTimeFormatterTest {
 
   @Test
   public void formatDateTime() {
-    assertThat(toIsoFormatWithUTCTimeZone(DATE_TIME), equalTo(instance.format(DATE_TIME)));
+    assertThat(instance.format(DATE_TIME), equalTo(toIsoFormatWithUTCTimeZone(DATE_TIME)));
   }
 
   @Test
@@ -74,7 +74,7 @@ public class ISODateTimeFormatterTest {
     String text = "2011-07-14T23:58:04Z";
     ReadableDateTime dateTime = new DateTime(2011, 7, 14, 23, 58, 4, 0, DateTimeZone.UTC);
     String formatted = instance.format(dateTime);
-    assertThat(text, equalTo(formatted));
+    assertThat(formatted, equalTo(text));
   }
 
   private String toIsoFormatWithUTCTimeZone(DateTime dateTime) {

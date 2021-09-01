@@ -27,7 +27,7 @@ public class UrlBuilderTest {
 
   @Test
   public void basedOnExistingRequest() {
-    assertThat(EXPECTED_URL_STRING, equalTo(UrlBuilder.basedOn(newRequest(), false).toString()));
+    assertThat(UrlBuilder.basedOn(newRequest(), false).toString(), equalTo(EXPECTED_URL_STRING));
   }
 
   @Test
@@ -35,52 +35,52 @@ public class UrlBuilderTest {
     MockHttpServletRequest request = newRequest();
     request.setQueryString(QUERY_STRING);
     assertThat(
-        EXPECTED_URL_STRING + '?' + QUERY_STRING,
-        equalTo(UrlBuilder.basedOn(request, true).toString()));
+        UrlBuilder.basedOn(request, true).toString(),
+        equalTo(EXPECTED_URL_STRING + '?' + QUERY_STRING));
   }
 
   @Test
   public void basedOnExistingRequestIncludingParamsWhereNotNull() {
     MockHttpServletRequest request = newRequest();
     request.setQueryString(null);
-    assertThat(EXPECTED_URL_STRING, equalTo(UrlBuilder.basedOn(request, true).toString()));
+    assertThat(UrlBuilder.basedOn(request, true).toString(), equalTo(EXPECTED_URL_STRING));
   }
 
   @Test
   public void basedOnStringUrl() {
     String baseUrl = "http://int.media.ft.com/content/images?true=false";
-    assertThat(baseUrl, equalTo(UrlBuilder.basedOn(baseUrl).toString()));
+    assertThat(UrlBuilder.basedOn(baseUrl).toString(), equalTo(baseUrl));
   }
 
   @Test
   public void basedOnStringUrlHttps() {
     String baseUrl = "https://int.media.ft.com:443/content/images?true=false";
     String expectedUrl = "https://int.media.ft.com/content/images?true=false";
-    assertThat(expectedUrl, equalTo(UrlBuilder.basedOn(baseUrl).toString()));
+    assertThat(UrlBuilder.basedOn(baseUrl).toString(), equalTo(expectedUrl));
   }
 
   @Test
   public void withNewPath() {
     assertThat(
-        SCHEME + "://" + SERVER_NAME + ":" + NON_STANDARD_PORT + NEW_SERVLET_PATH,
-        equalTo(UrlBuilder.basedOn(newRequest(), false).withPath(NEW_SERVLET_PATH).toString()));
+        UrlBuilder.basedOn(newRequest(), false).withPath(NEW_SERVLET_PATH).toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + ":" + NON_STANDARD_PORT + NEW_SERVLET_PATH));
   }
 
   @Test
   public void specialCharsEncoded() {
     assertThat(
-        SCHEME
-            + "://"
-            + SERVER_NAME
-            + ":"
-            + NON_STANDARD_PORT
-            + encodePath(SERVLET_PATH_WITH_SPECIAL_CHARS, UTF_8),
+        UrlBuilder.basedOn(newRequest(), false)
+            .withPath(NEW_SERVLET_PATH)
+            .withPath(NEW_SERVLET_PATH)
+            .withPath(SERVLET_PATH_WITH_SPECIAL_CHARS)
+            .toString(),
         equalTo(
-            UrlBuilder.basedOn(newRequest(), false)
-                .withPath(NEW_SERVLET_PATH)
-                .withPath(NEW_SERVLET_PATH)
-                .withPath(SERVLET_PATH_WITH_SPECIAL_CHARS)
-                .toString()));
+            SCHEME
+                + "://"
+                + SERVER_NAME
+                + ":"
+                + NON_STANDARD_PORT
+                + encodePath(SERVLET_PATH_WITH_SPECIAL_CHARS, UTF_8)));
   }
 
   @Test
@@ -88,8 +88,8 @@ public class UrlBuilderTest {
     MockHttpServletRequest request = newRequest();
     request.setContextPath("/");
     assertThat(
-        SCHEME + "://" + SERVER_NAME + ":" + NON_STANDARD_PORT + SERVLET_PATH,
-        equalTo(UrlBuilder.basedOn(request, false).toString()));
+        UrlBuilder.basedOn(request, false).toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + ":" + NON_STANDARD_PORT + SERVLET_PATH));
   }
 
   @Test
@@ -107,44 +107,42 @@ public class UrlBuilderTest {
   @Test
   public void withNegativePortCorrected() {
     assertThat(
-        SCHEME + "://" + SERVER_NAME + SERVLET_PATH,
-        equalTo(UrlBuilder.basedOn(newRequest(), false).withPort(-20).toString()));
+        UrlBuilder.basedOn(newRequest(), false).withPort(-20).toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + SERVLET_PATH));
   }
 
   @Test
   public void withZeroPortCorrected() {
     assertThat(
-        SCHEME + "://" + SERVER_NAME + SERVLET_PATH,
-        equalTo(UrlBuilder.basedOn(newRequest(), false).withPort(0).toString()));
+        UrlBuilder.basedOn(newRequest(), false).withPort(0).toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + SERVLET_PATH));
   }
 
   @Test
   public void defaultHttpPortNotWritten() {
     assertThat(
-        SCHEME + "://" + SERVER_NAME + SERVLET_PATH,
-        equalTo(UrlBuilder.basedOn(newRequest(), false).withPort(DEFAULT_HTTP_PORT).toString()));
+        UrlBuilder.basedOn(newRequest(), false).withPort(DEFAULT_HTTP_PORT).toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + SERVLET_PATH));
   }
 
   @Test
   public void defaultHttpsPortNotWritten() {
     assertThat(
-        SECURE_SCHEME + "://" + SERVER_NAME + SERVLET_PATH,
-        equalTo(
-            UrlBuilder.basedOn(newRequest(), false)
-                .withPort(DEFAULT_HTTPS_PORT)
-                .withScheme(SECURE_SCHEME)
-                .toString()));
+        UrlBuilder.basedOn(newRequest(), false)
+            .withPort(DEFAULT_HTTPS_PORT)
+            .withScheme(SECURE_SCHEME)
+            .toString(),
+        equalTo(SECURE_SCHEME + "://" + SERVER_NAME + SERVLET_PATH));
   }
 
   @Test
   public void overridePaths() {
     assertThat(
-        SCHEME + "://" + SERVER_NAME + "/newServletPath",
-        equalTo(
-            UrlBuilder.basedOn(newRequest(), false)
-                .withPort(DEFAULT_HTTP_PORT)
-                .overridePaths("/newServletPath")
-                .toString()));
+        UrlBuilder.basedOn(newRequest(), false)
+            .withPort(DEFAULT_HTTP_PORT)
+            .overridePaths("/newServletPath")
+            .toString(),
+        equalTo(SCHEME + "://" + SERVER_NAME + "/newServletPath"));
   }
 
   private MockHttpServletRequest newRequest() {

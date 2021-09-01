@@ -31,7 +31,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(HTTP);
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
@@ -39,7 +39,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(HTTP + "  ");
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
@@ -47,7 +47,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(HTTP.toUpperCase());
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
@@ -55,7 +55,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(HTTPS);
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTPS, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTPS));
   }
 
   @Test
@@ -63,7 +63,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(HTTPS.toUpperCase());
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTPS, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTPS));
   }
 
   @Test
@@ -71,7 +71,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn("httpx");
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
@@ -79,7 +79,7 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn(null);
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
@@ -87,48 +87,48 @@ public class HttpProtocolResolverTest {
     when(mockHttpServletRequest.getHeader(HEADER_PROTOCOL_KEY)).thenReturn("");
 
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol(mockHttpServletRequest);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToNull() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol((String) null);
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToEmtpy() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("");
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToUnknown() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("hello");
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToHttp() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("http");
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToHttpUppercase() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("HTTP");
-    assertThat(HttpProtocol.HTTP, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTP));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToHttps() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("https");
-    assertThat(HttpProtocol.HTTPS, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTPS));
   }
 
   @Test
   public void x_Forwarded_ProtoHeaderSetToHttpsUppercase() {
     HttpProtocol httpProtocol = httpProtocolResolver.getProtocol("HTTPS");
-    assertThat(HttpProtocol.HTTPS, equalTo(httpProtocol));
+    assertThat(httpProtocol, equalTo(HttpProtocol.HTTPS));
   }
 }

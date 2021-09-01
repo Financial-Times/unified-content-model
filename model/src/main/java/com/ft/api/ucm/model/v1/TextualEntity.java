@@ -1,9 +1,9 @@
 package com.ft.api.ucm.model.v1;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TextualEntity extends ContentEntity {
 
   private TextualBody textualBody;
