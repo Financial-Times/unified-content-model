@@ -3,7 +3,7 @@ package com.ft.api.ucm.model.v1;
 import static org.springframework.util.Assert.hasText;
 import static org.springframework.util.Assert.notNull;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 public class MasterImpl implements Master {
 
@@ -39,7 +39,7 @@ public class MasterImpl implements Master {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("masterSource", masterSource)
         .add("masterEntityId", masterEntityId)
         .toString();

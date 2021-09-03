@@ -1,8 +1,8 @@
 package com.ft.api.ucm.model.v1;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
   "aspectSet",

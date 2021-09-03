@@ -1,11 +1,11 @@
 package com.ft.api.ucm.model.v1;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.google.common.base.Objects;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.annotate.JsonTypeName;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeName(value = "storyPackageItem")
 @JsonPropertyOrder({"id", "apiUrl", "packaging", "provenance"})
 public class ContentPackageEntry implements Identifiable {

@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects;
 
 @JsonPropertyOrder({"runtimeMilliseconds"})
 public class AudioVisualImpl implements AudioVisual {
@@ -21,7 +21,7 @@ public class AudioVisualImpl implements AudioVisual {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("runtimeMilliseconds", getRuntimeMilliseconds())
         .toString();
   }

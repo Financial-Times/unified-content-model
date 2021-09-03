@@ -1,9 +1,10 @@
 package com.ft.api.ucm.model.v1.metadata;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import java.util.Set;
-import org.apache.commons.lang.StringUtils;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.apache.commons.lang3.StringUtils;
 
 @JsonPropertyOrder({"name", "id", "attributes", "taxonomy"})
 public class TermImpl implements Term {
@@ -87,7 +88,7 @@ public class TermImpl implements Term {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("id", id)
         .add("name", name)
         .add("taxonomy", taxonomy)

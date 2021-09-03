@@ -1,13 +1,13 @@
 package com.ft.api.ucm.model.v1;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BlogPostEntityTest {
 
@@ -17,14 +17,15 @@ public class BlogPostEntityTest {
 
   private BlogPostEntity instance;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     instance = new BlogPostEntity(UUID, API_URL);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void exceptionThrownWhenIdIsNull() {
-    new BlogPostEntity(null, API_URL);
+    assertThat(
+        () -> new BlogPostEntity(null, API_URL), throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -34,26 +35,26 @@ public class BlogPostEntityTest {
 
   @Test
   public void blogIsCreated() {
-    assertEquals(API_URL, instance.getApiUrl());
-    assertEquals(UUID, instance.getId());
+    assertThat(instance.getApiUrl(), equalTo(API_URL));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test
   public void twoBlogsAreEqualIfTheyAreTheSame() {
     BlogPost another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoBlogsAreNotEqualIfOneIsNull() {
     BlogPost another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentBlogsAreNotEqual() {
     BlogPost another = new BlogPostEntity(ANOTHER_UUID, API_URL);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

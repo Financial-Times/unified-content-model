@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1.notification;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
 
 public class NotificationImpl implements Notification {

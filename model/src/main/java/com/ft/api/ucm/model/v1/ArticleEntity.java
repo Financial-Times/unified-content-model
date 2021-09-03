@@ -2,15 +2,15 @@ package com.ft.api.ucm.model.v1;
 
 import static org.springframework.util.Assert.notNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Map;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonPropertyOrder({
   "aspectSet",
@@ -36,7 +36,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
   "assets",
   "mediaAssets"
 })
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleEntity extends TextualEntity implements Article, AssetAware {
 
   private List<MediaAsset> mediaAssets;

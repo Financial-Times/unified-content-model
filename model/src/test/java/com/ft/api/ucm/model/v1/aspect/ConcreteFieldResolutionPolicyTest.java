@@ -2,17 +2,17 @@ package com.ft.api.ucm.model.v1.aspect;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ConcreteFieldResolutionPolicyTest {
 
   private static final String NAME = "name";
@@ -28,7 +28,7 @@ public class ConcreteFieldResolutionPolicyTest {
   @Mock private Field mockField;
   private ConcreteFieldResolutionPolicy instance;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     instance = new ConcreteFieldResolutionPolicy();
   }

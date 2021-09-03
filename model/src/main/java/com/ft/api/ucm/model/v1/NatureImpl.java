@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 public class NatureImpl implements Nature {
 
@@ -23,6 +23,6 @@ public class NatureImpl implements Nature {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("category", category).toString();
+    return MoreObjects.toStringHelper(this).add("category", category).toString();
   }
 }

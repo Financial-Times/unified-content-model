@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 public abstract class SimpleEntity extends IdentifiableEntity {
 

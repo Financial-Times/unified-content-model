@@ -1,9 +1,9 @@
 package com.ft.api.ucm.core.datetime;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.joda.time.format.ISODateTimeFormat;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ControlledClockTest {
 
@@ -18,17 +18,17 @@ public class ControlledClockTest {
     long start = clock.getTime();
     Thread.sleep(100);
     long stop = clock.getTime();
-    assertTrue("Clock wasn't static! Time delta was [" + (stop - start) + "]", stop == start);
+    assertThat("Clock wasn't static! Time delta was [" + (stop - start) + "]", stop == start);
   }
 
   @Test
   public void theClockTimeWasLater() {
-    assertTrue(clock.isAfter(EARLIER));
+    assertThat(String.format("Clock should be after %d", EARLIER), clock.isAfter(EARLIER));
   }
 
   @Test
   public void theClockTimeWasEarlier() {
-    assertTrue(clock.isBefore(LATER));
+    assertThat(String.format("Clock should be before %d", LATER), clock.isBefore(LATER));
   }
 
   @Test

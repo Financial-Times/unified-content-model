@@ -1,16 +1,17 @@
 package com.ft.api.ucm.rest.filter;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 
 import javax.servlet.http.HttpServletRequest;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class UserContextLoggingFilterTest {
 
   @Mock public HttpServletRequest request;
@@ -24,7 +25,7 @@ public class UserContextLoggingFilterTest {
 
   public UserContextLoggingFilter userContextLoggingFilter;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     userContextLoggingFilter = new UserContextLoggingFilter();
   }
@@ -33,30 +34,34 @@ public class UserContextLoggingFilterTest {
   public void testCreateMessage() {
 
     when(request.getHeader(UserContextLoggingFilter.API_KEY_HEADER)).thenReturn(apiKeyHeader);
+
     when(request.getHeader(UserContextLoggingFilter.USER_IP_HEADER)).thenReturn(userIpHeader);
+
     when(request.getHeader(UserContextLoggingFilter.CONTENT_CONTROL_POLICY_HEADER))
         .thenReturn(contentControlHeader);
+
     when(request.getHeader(UserContextLoggingFilter.REQUEST_ID_HEADER)).thenReturn(requestId);
     String s = userContextLoggingFilter.createMessage(request, prefix, suffix);
 
-    assertEquals(
+    assertThat(
         s,
-        prefix
-            + UserContextLoggingFilter.API_KEY_LABEL
-            + "="
-            + apiKeyHeader
-            + " "
-            + UserContextLoggingFilter.USER_IP_LABEL
-            + "="
-            + userIpHeader
-            + " "
-            + UserContextLoggingFilter.CONTENT_CONTROL_POLCIY_LABEL
-            + "="
-            + contentControlHeader
-            + " "
-            + UserContextLoggingFilter.REQUEST_ID_LABEL
-            + "="
-            + requestId
-            + suffix);
+        equalTo(
+            prefix
+                + UserContextLoggingFilter.API_KEY_LABEL
+                + "="
+                + apiKeyHeader
+                + " "
+                + UserContextLoggingFilter.USER_IP_LABEL
+                + "="
+                + userIpHeader
+                + " "
+                + UserContextLoggingFilter.CONTENT_CONTROL_POLCIY_LABEL
+                + "="
+                + contentControlHeader
+                + " "
+                + UserContextLoggingFilter.REQUEST_ID_LABEL
+                + "="
+                + requestId
+                + suffix));
   }
 }

@@ -1,13 +1,13 @@
 package com.ft.api.ucm.model.v1;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ArticleEntityTest {
 
@@ -17,43 +17,45 @@ public class ArticleEntityTest {
 
   private ArticleEntity instance;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     instance = new ArticleEntity(UUID, API_URL);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void exceptionThrownWhenIdIsNull() {
-    new ArticleEntity(null, API_URL);
+    assertThat(
+        () -> new ArticleEntity(null, API_URL), throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void exceptionThrownWhenApiUrlIsNull() {
-    new ArticleEntity(UUID, null);
+    assertThat(
+        () -> new ArticleEntity(UUID, null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void articleIsCreated() {
-    assertEquals(API_URL, instance.getApiUrl());
-    assertEquals(UUID, instance.getId());
+    assertThat(instance.getApiUrl(), equalTo(API_URL));
+    assertThat(instance.getId(), equalTo(UUID));
   }
 
   @Test
   public void twoArticlesAreEqualIfTheyAreTheSame() {
     Article another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoArticlesAreNotEqualIfOneIsNull() {
     Article another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentArticlesAreNotEqual() {
     Article another = new ArticleEntity(ANOTHER_UUID, API_URL);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

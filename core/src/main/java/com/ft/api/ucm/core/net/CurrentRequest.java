@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.UrlPathHelper;
-import org.springframework.web.util.WebUtils;
+import org.springframework.ws.support.WebUtils;
 
 public class CurrentRequest implements Request {
 

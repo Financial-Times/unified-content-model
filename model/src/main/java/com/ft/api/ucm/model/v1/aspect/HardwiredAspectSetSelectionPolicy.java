@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1.aspect;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import java.util.Set;
 import org.springframework.util.Assert;
 
@@ -21,6 +21,6 @@ class HardwiredAspectSetSelectionPolicy implements AspectSetSelectionPolicy {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("defaultAspectSet", defaultAspectSet).toString();
+    return MoreObjects.toStringHelper(this).add("defaultAspectSet", defaultAspectSet).toString();
   }
 }

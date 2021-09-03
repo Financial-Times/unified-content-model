@@ -1,10 +1,10 @@
 package com.ft.api.ucm.rest.filter;
 
 import javax.servlet.http.HttpServletRequest;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.web.filter.Log4jNestedDiagnosticContextFilter;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
-public class UserContextLoggingFilter extends Log4jNestedDiagnosticContextFilter {
+public class UserContextLoggingFilter extends CommonsRequestLoggingFilter {
 
   public static final String API_KEY_HEADER = "X-Api-Key";
   public static final String CONTENT_CONTROL_POLICY_HEADER = "X-FT-API-Content-Control-Policy";

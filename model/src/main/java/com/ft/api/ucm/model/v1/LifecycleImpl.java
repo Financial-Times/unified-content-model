@@ -1,9 +1,10 @@
 package com.ft.api.ucm.model.v1;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ft.api.ucm.core.datetime.JsonDateTimeSerializer;
-import com.google.common.base.Objects;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.google.common.base.MoreObjects;
 import org.joda.time.DateTime;
 
 @JsonPropertyOrder({"initialPublishDateTime", "lastPublishDateTime"})
@@ -19,13 +20,15 @@ public class LifecycleImpl implements Lifecycle {
     this.lastPublishDateTime = lastPublishDateTime;
   }
 
-  @JsonSerialize(using = JsonDateTimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
+  @JsonSerialize(using = JsonDateTimeSerializer.class)
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Override
   public DateTime getInitialPublishDateTime() {
     return initialPublishDateTime;
   }
 
-  @JsonSerialize(using = JsonDateTimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
+  @JsonSerialize(using = JsonDateTimeSerializer.class)
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Override
   public DateTime getLastPublishDateTime() {
     return lastPublishDateTime;
@@ -41,6 +44,8 @@ public class LifecycleImpl implements Lifecycle {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("lastPublishDateTime", lastPublishDateTime).toString();
+    return MoreObjects.toStringHelper(this)
+        .add("lastPublishDateTime", lastPublishDateTime)
+        .toString();
   }
 }

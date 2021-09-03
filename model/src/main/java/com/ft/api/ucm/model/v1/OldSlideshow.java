@@ -1,11 +1,11 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects;
 import java.util.List;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"name", "type", "slideshowHeading", "slides"})
 public class OldSlideshow implements MediaAsset {
 
@@ -59,7 +59,7 @@ public class OldSlideshow implements MediaAsset {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("slideshowHeading", slideshowHeading)
         .add("slides", slides)
         .add("name", name)

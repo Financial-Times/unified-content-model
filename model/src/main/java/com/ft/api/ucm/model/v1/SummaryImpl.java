@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.StringUtils;
 
 public class SummaryImpl implements Summary {
 
@@ -24,6 +24,6 @@ public class SummaryImpl implements Summary {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("excerpt", excerpt).toString();
+    return MoreObjects.toStringHelper(this).add("excerpt", excerpt).toString();
   }
 }

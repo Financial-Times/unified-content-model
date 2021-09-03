@@ -1,5 +1,6 @@
 package com.ft.api.ucm.model.v1.metadata;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 public class TagImpl implements Tag {
@@ -23,7 +24,7 @@ public class TagImpl implements Tag {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("term", term).toString();
+    return MoreObjects.toStringHelper(this).add("term", term).toString();
   }
 
   @Override

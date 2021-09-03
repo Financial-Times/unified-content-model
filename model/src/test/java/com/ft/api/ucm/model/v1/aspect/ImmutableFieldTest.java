@@ -1,20 +1,18 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasToString;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static java.lang.Boolean.TRUE;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ImmutableFieldTest {
 
   private static final String NAME = "name";
@@ -24,38 +22,41 @@ public class ImmutableFieldTest {
 
   private Field instance;
 
-  @Before
+  @BeforeEach
   public void setup() {
     instance = ImmutableField.valueOf(NAME, mockFieldResolutionPolicy);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void constructObjectWithNullNameRaisesException() {
-    ImmutableField.valueOf(null, mockFieldResolutionPolicy);
+    assertThat(
+        () -> ImmutableField.valueOf(null, mockFieldResolutionPolicy),
+        throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void constructObjectWithNullResolutionPolicyRaisesException() {
-    ImmutableField.valueOf(NAME, null);
+    assertThat(
+        () -> ImmutableField.valueOf(NAME, null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void twoFieldsAreEqualIfTheyAreTheSame() {
     Field another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoFieldsAreNotEqualIfOneIsNull() {
     Field another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentFieldsAreNotEqual() {
     Field another = ImmutableField.valueOf(ANOTHER_NAME, mockFieldResolutionPolicy);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
@@ -67,8 +68,8 @@ public class ImmutableFieldTest {
   @Test
   public void objectIsAssignableFrom() {
     Object test = new Object();
-    when(mockFieldResolutionPolicy.hasField(instance, test)).thenReturn(Boolean.TRUE);
-    assertThat(instance.assignableFrom(test), is(Boolean.TRUE));
+    when(mockFieldResolutionPolicy.hasField(instance, test)).thenReturn(TRUE);
+    assertThat(instance.assignableFrom(test), is(TRUE));
   }
 
   @Test

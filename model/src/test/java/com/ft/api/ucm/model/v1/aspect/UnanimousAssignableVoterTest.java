@@ -1,19 +1,18 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
-import static org.mockito.Matchers.any;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Sets;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class UnanimousAssignableVoterTest {
 
   @Mock private Assignable assignable;
@@ -22,7 +21,7 @@ public class UnanimousAssignableVoterTest {
   private UnanimousAssignableVoter instance;
   private Set<Assignable> assignables;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     instance = new UnanimousAssignableVoter();
     assignables = Sets.newHashSet(assignable, anotherAssignable);
@@ -30,10 +29,7 @@ public class UnanimousAssignableVoterTest {
 
   @Test
   public void voteFailsIfNotAllAssignablesAgree() {
-    when(assignable.assignableFrom(any())).thenReturn(false);
-    when(anotherAssignable.assignableFrom(any())).thenReturn(true);
-
-    assertFalse(instance.vote(assignables, new Object()));
+    assertThat("Should not be assignable", !instance.vote(assignables, new Object()));
   }
 
   @Test
@@ -41,6 +37,6 @@ public class UnanimousAssignableVoterTest {
     when(assignable.assignableFrom(any())).thenReturn(true);
     when(anotherAssignable.assignableFrom(any())).thenReturn(true);
 
-    assertTrue(instance.vote(assignables, new Object()));
+    assertThat("Should be assignable", instance.vote(assignables, new Object()));
   }
 }

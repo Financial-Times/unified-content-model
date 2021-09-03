@@ -1,17 +1,18 @@
 package com.ft.api.ucm.core.net;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 
 import javax.servlet.http.HttpServletRequest;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.util.UrlPathHelper;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CurrentRequestTest {
 
   private CurrentRequest currentRequestFormat;
@@ -22,7 +23,7 @@ public class CurrentRequestTest {
   private static final String REQUEST_URL =
       "http://localhost/structure/pages/0d19f22d-9946-44a5-9198-9f181b195e99";
 
-  @Before
+  @BeforeEach
   public void setup() {
     currentRequestFormat = new CurrentRequest();
     currentRequestFormat.setRequest(httpServletRequest);
@@ -34,7 +35,7 @@ public class CurrentRequestTest {
     String s = REQUEST_URL + ".xml";
     when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
     String actual = currentRequestFormat.getFormat();
-    Assert.assertEquals("xml", actual);
+    assertThat(actual, equalTo("xml"));
   }
 
   @Test
@@ -42,13 +43,13 @@ public class CurrentRequestTest {
     String s = REQUEST_URL + ".json";
     when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(s);
     String actual = currentRequestFormat.getFormat();
-    Assert.assertEquals("json", actual);
+    assertThat(actual, equalTo("json"));
   }
 
   @Test
   public void testToString_default() {
     when(urlPathHelper.getRequestUri(httpServletRequest)).thenReturn(REQUEST_URL);
     String actual = currentRequestFormat.getFormat();
-    Assert.assertNull(actual);
+    assertThat(actual, nullValue());
   }
 }

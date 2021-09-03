@@ -1,9 +1,12 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
-import static junit.framework.Assert.assertEquals;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ContentItemUrlTemplateTest {
 
@@ -13,19 +16,20 @@ public class ContentItemUrlTemplateTest {
 
   private ContentItemUrlTemplate template;
 
-  @Before
+  @BeforeEach
   public void setup() {
     template = new ContentItemUrlTemplate(BASE_API_URL);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void failsWithNullBaseApiUrl() {
-    new ContentItemUrlTemplate(null);
+    assertThat(
+        () -> new ContentItemUrlTemplate(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void shouldGenerateItemUrl() {
-    assertEquals("http://api.ft.com/content/items/v1/1234", template.generateUrl(ITEM_UUID));
+    assertThat(template.generateUrl(ITEM_UUID), equalTo("http://api.ft.com/content/items/v1/1234"));
   }
 
   @Test
@@ -35,18 +39,21 @@ public class ContentItemUrlTemplateTest {
         template.generateUrl(ITEM_UUID, HASH));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailToGenerateWithNullItemUuid() {
-    template.generateUrl(null);
+    assertThat(() -> template.generateUrl(null), throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailWithHashAndNullId() {
-    template.generateUrl(null, HASH);
+    assertThat(
+        () -> template.generateUrl(null, HASH), throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailWithNullHash() {
-    template.generateUrl(ITEM_UUID, null);
+    assertThat(
+        () -> template.generateUrl(ITEM_UUID, null),
+        throwsException(IllegalArgumentException.class));
   }
 }

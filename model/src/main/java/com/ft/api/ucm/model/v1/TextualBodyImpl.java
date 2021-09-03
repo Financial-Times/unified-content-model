@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 public class TextualBodyImpl implements TextualBody {
 
@@ -23,6 +23,6 @@ public class TextualBodyImpl implements TextualBody {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("imageLed", imageLed).toString();
+    return MoreObjects.toStringHelper(this).add("imageLed", imageLed).toString();
   }
 }

@@ -1,16 +1,18 @@
 package com.ft.api.ucm.model.v1.conversion;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import java.util.Arrays;
 import java.util.List;
-import junit.framework.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class StringToStringListConverterTest {
 
   private StringToStringListConverter converter;
 
-  @Before
+  @BeforeEach
   public void setup() {
     converter = new StringToStringListConverter();
   }
@@ -20,7 +22,7 @@ public class StringToStringListConverterTest {
     String source = "[a,b,c]";
     List<String> expected = Arrays.asList("a", "b", "c");
     List<String> actual = converter.convert(source);
-    Assert.assertEquals(expected, actual);
+    assertThat(actual, equalTo(expected));
   }
 
   @Test
@@ -28,7 +30,7 @@ public class StringToStringListConverterTest {
     String source = "[a,   b,  c ]";
     List<String> expected = Arrays.asList("a", "b", "c");
     List<String> actual = converter.convert(source);
-    Assert.assertEquals(expected, actual);
+    assertThat(actual, equalTo(expected));
   }
 
   @Test
@@ -36,6 +38,6 @@ public class StringToStringListConverterTest {
     List<String> source = Arrays.asList("a", "b", "c");
     String expected = "[a,b,c]";
     String actual = converter.unconvert(source);
-    Assert.assertEquals(expected, actual);
+    assertThat(actual, equalTo(expected));
   }
 }

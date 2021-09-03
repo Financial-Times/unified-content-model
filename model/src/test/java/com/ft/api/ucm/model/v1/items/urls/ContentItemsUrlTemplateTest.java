@@ -1,9 +1,11 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
-import static junit.framework.Assert.assertEquals;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ContentItemsUrlTemplateTest {
 
@@ -11,18 +13,19 @@ public class ContentItemsUrlTemplateTest {
 
   private ContentItemsUrlTemplate template;
 
-  @Before
+  @BeforeEach
   public void setup() {
     template = new ContentItemsUrlTemplate(BASE_API_URL);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void failsWithNullBaseApiUrl() {
-    new ContentItemUrlTemplate(null);
+    assertThat(
+        () -> new ContentItemUrlTemplate(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void shouldGenerateItemsUrl() {
-    assertEquals("http://api.ft.com/content/items/v1", template.generateUrl());
+    assertThat(template.generateUrl(), equalTo("http://api.ft.com/content/items/v1"));
   }
 }

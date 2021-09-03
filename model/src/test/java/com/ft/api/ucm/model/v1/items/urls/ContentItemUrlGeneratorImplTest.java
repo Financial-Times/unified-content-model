@@ -1,19 +1,21 @@
 package com.ft.api.ucm.model.v1.items.urls;
 
-import static junit.framework.Assert.assertEquals;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.ft.api.ucm.core.net.ContentApiConfiguration;
 import com.ft.api.ucm.core.net.HttpProtocol;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ContentItemUrlGeneratorImplTest {
 
   private static final String API_URL = "http://api.ft.com";
@@ -25,7 +27,7 @@ public class ContentItemUrlGeneratorImplTest {
 
   private @Mock ContentApiConfiguration configuration;
 
-  @Before
+  @BeforeEach
   public void setup() {
     when(configuration.getBaseApiUrl()).thenReturn(API_URL);
     generator = new ContentItemUrlGeneratorImpl(configuration);
@@ -49,9 +51,10 @@ public class ContentItemUrlGeneratorImplTest {
     assertEquals("https://api.ft.com/content/items/v1/123", url);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailCreateUrlWithNullUuid() throws Exception {
-    generator.createUrlForItem(null);
+    assertThat(
+        () -> generator.createUrlForItem(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -108,13 +111,17 @@ public class ContentItemUrlGeneratorImplTest {
     assertEquals("http://api.ft.com/content/items/v1/123?h=010203ef", url);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailCreateUrlWithNullHash() throws Exception {
-    generator.createUrlForItemWithHash(UUID, null);
+    assertThat(
+        () -> generator.createUrlForItemWithHash(UUID, null),
+        throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void shouldFailCreateUrlWithHashButNullUuid() throws Exception {
-    generator.createUrlForItemWithHash(null, HASH);
+    assertThat(
+        () -> generator.createUrlForItemWithHash(null, HASH),
+        throwsException(IllegalArgumentException.class));
   }
 }

@@ -1,14 +1,15 @@
 package com.ft.api.ucm.core.datetime;
 
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.ReadableDateTime;
 import org.joda.time.format.ISODateTimeFormat;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ISODateTimeWithMillisFormatterTest {
 
@@ -16,44 +17,56 @@ public class ISODateTimeWithMillisFormatterTest {
 
   private ISODateTimeWithMillisFormatter instance;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     instance = new ISODateTimeWithMillisFormatter();
   }
 
   @Test
   public void formatDateTime() {
-    assertEquals(toIsoFormatWithUTCTimeZone(DATE_TIME), instance.format(DATE_TIME));
+    assertThat(instance.format(DATE_TIME), equalTo(toIsoFormatWithUTCTimeZone(DATE_TIME)));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void nullDateInputThrowsException() {
-    instance.format(null);
+    assertThat(() -> instance.format(null), throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void whenAnIsoFormatStringIsProvidedADateIsReturned() {
     String text = "2011-07-14T23:58:04.123Z";
     ReadableDateTime dateTime = instance.parseDateTime(text);
-    assertNotNull(dateTime);
+    assertThat(dateTime, is(notNullValue()));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void whenANonIsoFormatStringIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    String text = "2011-07-14";
-    instance.parseDateTime(text);
+    assertThat(
+        () -> {
+          String text = "2011-07-14";
+          instance.parseDateTime(text);
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void whenAnEmptyStringIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    String text = "";
-    instance.parseDateTime(text);
+    assertThat(
+        () -> {
+          String text = "";
+          instance.parseDateTime(text);
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void whenNullIsProvidedAnIllegalArgumentExceptionIsThrown() {
-    String text = null;
-    instance.parseDateTime(text);
+    assertThat(
+        () -> {
+          String text = null;
+          instance.parseDateTime(text);
+        },
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
@@ -61,7 +74,7 @@ public class ISODateTimeWithMillisFormatterTest {
     String text = "2011-07-14T23:58:04.123Z";
     ReadableDateTime dateTime = new DateTime(2011, 7, 14, 23, 58, 4, 123, DateTimeZone.UTC);
     String formatted = instance.format(dateTime);
-    assertEquals(text, formatted);
+    assertThat(formatted, equalTo(text));
   }
 
   private String toIsoFormatWithUTCTimeZone(DateTime dateTime) {

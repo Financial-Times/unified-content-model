@@ -1,8 +1,9 @@
 package com.ft.api.ucm.rest.http;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
 import java.text.SimpleDateFormat;
@@ -10,13 +11,13 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.httpclient.util.DateUtil;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ExpiresResponseHeaderTest {
 
   private ExpiresResponseHeader header;
@@ -24,7 +25,7 @@ public class ExpiresResponseHeaderTest {
   @Mock private HttpServletResponse mockResponse;
   @Mock private HttpServletRequest mockRequest;
 
-  @Before
+  @BeforeEach
   public void setup() {
     header = new ExpiresResponseHeader();
   }
@@ -42,6 +43,6 @@ public class ExpiresResponseHeaderTest {
 
     SimpleDateFormat sdf = new SimpleDateFormat(DateUtil.PATTERN_RFC1123);
     Date date = sdf.parse(returned);
-    assertNotNull(date);
+    assertThat(date, notNullValue());
   }
 }

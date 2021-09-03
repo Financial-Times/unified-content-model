@@ -1,24 +1,20 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static junit.framework.Assert.fail;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertThat;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.sameInstance;
 
-import com.ft.api.ucm.model.v1.ArticleEntity;
-import com.ft.api.ucm.model.v1.BlogPostEntity;
-import com.ft.api.ucm.model.v1.ContentEntity;
-import com.ft.api.ucm.model.v1.SlideshowArticleEntity;
+import com.ft.api.ucm.model.v1.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class TypeBasedAspectSetSelectionPolicyTest {
 
   @Mock private Set<AspectSet> mockAspectSets;
@@ -34,7 +30,7 @@ public class TypeBasedAspectSetSelectionPolicyTest {
   private Map<String, AspectSet> aspectSetMap;
   private TypeBasedAspectSetSelectionPolicy instance;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     aspectSetMap = new HashMap<String, AspectSet>();
     aspectSetMap.put(ARTICLE_CLASS_NAME, article);
@@ -46,22 +42,18 @@ public class TypeBasedAspectSetSelectionPolicyTest {
 
   @Test
   public void shouldThrowExceptionIfAspectSetsIsNull() {
-    try {
-      instance.match(null, SlideshowArticleEntity.class);
-      fail("Should throw IllegalArgumentException");
-    } catch (IllegalArgumentException iae) {
-      assertThat("aspectSet is null", iae.getMessage(), equalTo("aspectSets cannot be null"));
-    }
+    assertThat(
+        "aspectSet is null",
+        () -> instance.match(null, SlideshowArticleEntity.class),
+        throwsException(IllegalArgumentException.class).withMessage("aspectSets cannot be null"));
   }
 
   @Test
   public void shouldThrowExceptionIfClassIsNull() {
-    try {
-      instance.match(mockAspectSets, null);
-      fail("Should throw IllegalArgumentException");
-    } catch (IllegalArgumentException iae) {
-      assertThat("type is null", iae.getMessage(), equalTo("type cannot be null"));
-    }
+    assertThat(
+        "type is null",
+        () -> instance.match(mockAspectSets, null),
+        throwsException(IllegalArgumentException.class).withMessage("type cannot be null"));
   }
 
   @Test

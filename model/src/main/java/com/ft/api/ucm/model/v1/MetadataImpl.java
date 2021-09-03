@@ -1,12 +1,12 @@
 package com.ft.api.ucm.model.v1;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ft.api.ucm.model.v1.metadata.Tag;
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 import java.util.Set;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
   "primarySection",
   "primaryTheme",
@@ -223,7 +223,7 @@ public class MetadataImpl implements Metadata {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("primarySection", primarySection)
         .add("primaryTheme", primaryTheme)
         .add("tags", tags)

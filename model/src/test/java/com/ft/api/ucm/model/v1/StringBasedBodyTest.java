@@ -1,12 +1,10 @@
 package com.ft.api.ucm.model.v1;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class StringBasedBodyTest {
 
@@ -15,7 +13,7 @@ public class StringBasedBodyTest {
 
   private StringBasedBody instance;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     instance = new StringBasedBody(TEXT, MEDIA_TYPE);
   }
@@ -23,25 +21,25 @@ public class StringBasedBodyTest {
   @Test
   public void bodyTextEmptyIfConstructorArgIsNull() {
     instance = new StringBasedBody(null, null);
-    assertThat(instance.toString(), equalTo(null));
+    assertThat(instance.toString(), nullValue());
   }
 
   @Test
   public void equalIfTheyAreTheSame() {
     Body another = instance;
-    assertThat(instance, equalTo(another));
-    assertThat(instance.hashCode(), is(another.hashCode()));
+    assertThat(another, equalTo(instance));
+    assertThat(another.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void notEqualIfOneIsNull() {
     Body another = null;
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 
   @Test
   public void twoDifferentInstancesAreNotEqual() {
     Body another = new StringBasedBody("I AM NOT A FOX OR A DOG", MEDIA_TYPE);
-    assertThat(instance, not(equalTo(another)));
+    assertThat(another, not(equalTo(instance)));
   }
 }

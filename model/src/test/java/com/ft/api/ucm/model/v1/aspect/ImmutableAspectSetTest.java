@@ -1,12 +1,9 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasToString;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.eq;
+import static java.lang.Boolean.TRUE;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -14,13 +11,13 @@ import com.ft.api.ucm.model.v1.AspectSetAware;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ImmutableAspectSetTest {
 
   private static final String NAME = AspectEnum.LIFECYCLE.getName();
@@ -35,7 +32,7 @@ public class ImmutableAspectSetTest {
   private Set<Aspect> aspects;
   private ImmutableAspectSet instance;
 
-  @Before
+  @BeforeEach
   public void setup() {
     aspect = ImmutableAspect.valueOf(NAME, Sets.<Field>newHashSet(), mockAssignableVoter);
     anotherAspect =
@@ -63,15 +60,15 @@ public class ImmutableAspectSetTest {
   public void twoAspectSetsAreEqualIfTheyAreTheSame() {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet = instance;
-    assertThat(instance, equalTo(anotherAspectSet));
-    assertThat(instance.hashCode(), is(anotherAspectSet.hashCode()));
+    assertThat(anotherAspectSet, equalTo(instance));
+    assertThat(anotherAspectSet.hashCode(), is(instance.hashCode()));
   }
 
   @Test
   public void twoAspectSetsAreNotEqualIfOneIsNull() {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet = null;
-    assertThat(instance, not(equalTo(anotherAspectSet)));
+    assertThat(anotherAspectSet, not(equalTo(instance)));
   }
 
   @Test
@@ -79,7 +76,7 @@ public class ImmutableAspectSetTest {
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
     AspectSet anotherAspectSet =
         ImmutableAspectSet.valueOf(ANOTHER_NAME, aspects, mockAssignableVoter);
-    assertThat(instance, not(equalTo(anotherAspectSet)));
+    assertThat(anotherAspectSet, not(equalTo(instance)));
   }
 
   @Test
@@ -93,9 +90,9 @@ public class ImmutableAspectSetTest {
   @Test
   public void objectIsAssignableFrom() {
     Object test = new Object();
-    when(mockAssignableVoter.vote(aspects, test)).thenReturn(Boolean.TRUE);
+    when(mockAssignableVoter.vote(aspects, test)).thenReturn(TRUE);
     instance = ImmutableAspectSet.valueOf(NAME, aspects, mockAssignableVoter);
-    assertThat(instance.assignableFrom(test), is(Boolean.TRUE));
+    assertThat(instance.assignableFrom(test), is(TRUE));
   }
 
   @Test

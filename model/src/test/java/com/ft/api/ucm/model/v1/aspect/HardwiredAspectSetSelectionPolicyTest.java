@@ -1,16 +1,18 @@
 package com.ft.api.ucm.model.v1.aspect;
 
-import static org.junit.Assert.assertEquals;
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
 import java.util.Set;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class HardwiredAspectSetSelectionPolicyTest {
 
   @Mock private Set<AspectSet> mockAspectSets;
@@ -19,9 +21,11 @@ public class HardwiredAspectSetSelectionPolicyTest {
 
   private HardwiredAspectSetSelectionPolicy instance;
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void ifSuppliedAspectSetIsNullExceptionThrown() {
-    new HardwiredAspectSetSelectionPolicy(null);
+    assertThat(
+        () -> new HardwiredAspectSetSelectionPolicy(null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test

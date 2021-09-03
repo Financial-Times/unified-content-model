@@ -1,9 +1,9 @@
 package com.ft.api.ucm.core.datetime;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.joda.time.format.ISODateTimeFormat;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SystemClockTest {
 
@@ -14,7 +14,7 @@ public class SystemClockTest {
     long start = clock.getTime();
     Thread.sleep(100);
     long stop = clock.getTime();
-    assertTrue("Clock stopped! Time delta was [" + (stop - start) + "]", stop > start);
+    assertThat("Clock stopped! Time delta was [" + (stop - start) + "]", stop > start);
   }
 
   @Test
@@ -25,12 +25,12 @@ public class SystemClockTest {
   @Test
   public void theClockTimeWasLater() {
     long then = Long.MIN_VALUE;
-    assertTrue(clock.isAfter(then));
+    assertThat("Clock should be after min long", clock.isAfter(then));
   }
 
   @Test
   public void theClockTimeWasEarlier() {
     long theFuture = Long.MAX_VALUE;
-    assertTrue(clock.isBefore(theFuture));
+    assertThat("Clock should be before max long", clock.isBefore(theFuture));
   }
 }

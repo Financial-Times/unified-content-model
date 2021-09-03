@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.StringUtils;
 
 public class AttributionImpl implements Attributed {
 
@@ -24,6 +24,6 @@ public class AttributionImpl implements Attributed {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("byline", byline).toString();
+    return MoreObjects.toStringHelper(this).add("byline", byline).toString();
   }
 }

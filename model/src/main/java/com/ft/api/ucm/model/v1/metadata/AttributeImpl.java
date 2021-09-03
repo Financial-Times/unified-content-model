@@ -1,7 +1,8 @@
 package com.ft.api.ucm.model.v1.metadata;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.springframework.util.Assert;
 
 @JsonPropertyOrder({"key", "value"})
@@ -65,6 +66,6 @@ public class AttributeImpl implements Attribute, Comparable<AttributeImpl> {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("key", key).add("value", value).toString();
+    return MoreObjects.toStringHelper(this).add("key", key).add("value", value).toString();
   }
 }

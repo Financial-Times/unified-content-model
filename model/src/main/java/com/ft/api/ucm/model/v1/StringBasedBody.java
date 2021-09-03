@@ -1,6 +1,6 @@
 package com.ft.api.ucm.model.v1;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import com.google.common.base.Objects;
 

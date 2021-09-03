@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
 import com.ft.api.ucm.model.v1.version.Version;
-import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 public abstract class IdentifiableEntity implements Identifiable, Versionable, Retrievable {
 
@@ -45,8 +45,8 @@ public abstract class IdentifiableEntity implements Identifiable, Versionable, R
     return toStringHelper().toString();
   }
 
-  protected Objects.ToStringHelper toStringHelper() {
-    return Objects.toStringHelper(this)
+  protected MoreObjects.ToStringHelper toStringHelper() {
+    return MoreObjects.toStringHelper(this)
         .add("id", id)
         .add("modelVersion", modelVersion)
         .add("apiUrl", apiUrl);

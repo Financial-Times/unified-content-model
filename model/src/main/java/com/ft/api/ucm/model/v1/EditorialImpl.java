@@ -1,9 +1,9 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.common.base.MoreObjects;
 import java.util.Set;
-import org.apache.commons.lang.StringUtils;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.apache.commons.lang3.StringUtils;
 
 @JsonPropertyOrder({"otherTitles", "subheading", "leadBody", "standFirst"})
 public class EditorialImpl extends AttributionImpl implements Editorial {
@@ -59,7 +59,7 @@ public class EditorialImpl extends AttributionImpl implements Editorial {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("otherTitles", otherTitles)
         .add("byline", getByline())
         .add("subheading", subheading)

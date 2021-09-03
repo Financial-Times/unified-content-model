@@ -1,17 +1,20 @@
 package com.ft.api.ucm.model.v1.aspect;
 
+import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PolicyBasedAspectSetCollectionTest {
 
   @Mock private Set<AspectSet> mockAspectSets;
@@ -21,26 +24,35 @@ public class PolicyBasedAspectSetCollectionTest {
 
   private PolicyBasedAspectSetCollection instance;
 
-  @Before
+  @BeforeEach
   public void setup() {
-    when(mockAspectSetSelectionPolicy.match(mockAspectSets, mockAspectSetAware.getClass()))
-        .thenReturn(mockAspectSet);
     instance = new PolicyBasedAspectSetCollection(mockAspectSets, mockAspectSetSelectionPolicy);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void constructObjectWithNullAspectSetsRaisesException() {
-    new PolicyBasedAspectSetCollection(null, mockAspectSetSelectionPolicy);
+    assertThat(
+        () -> new PolicyBasedAspectSetCollection(null, mockAspectSetSelectionPolicy),
+        throwsException(IllegalArgumentException.class));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void constructObjectWithNullAspectSetSelectionPolicyRaisesException() {
-    new PolicyBasedAspectSetCollection(mockAspectSets, null);
+    assertThat(
+        () -> new PolicyBasedAspectSetCollection(mockAspectSets, null),
+        throwsException(IllegalArgumentException.class));
   }
 
   @Test
   public void applyToSelectsAspectSetAndDelegates() {
+    // Giving
+    when(mockAspectSetSelectionPolicy.match(eq(mockAspectSets), eq(mockAspectSetAware.getClass())))
+        .thenReturn(mockAspectSet);
+
+    // When
     instance.applyTo(mockAspectSetAware);
+
+    // Then
     verify(mockAspectSet).applyTo(mockAspectSetAware);
   }
 }

@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.StringUtils;
 
 public class ProvenanceImpl implements Provenance {
 
@@ -24,6 +24,6 @@ public class ProvenanceImpl implements Provenance {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this).add("originatingParty", originatingParty).toString();
+    return MoreObjects.toStringHelper(this).add("originatingParty", originatingParty).toString();
   }
 }

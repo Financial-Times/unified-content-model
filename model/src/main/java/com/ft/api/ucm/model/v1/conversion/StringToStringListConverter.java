@@ -2,7 +2,7 @@ package com.ft.api.ucm.model.v1.conversion;
 
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 
 public class StringToStringListConverter implements Converter<String, List<String>> {

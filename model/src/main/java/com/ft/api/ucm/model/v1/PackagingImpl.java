@@ -1,7 +1,7 @@
 package com.ft.api.ucm.model.v1;
 
-import com.google.common.base.Objects;
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.StringUtils;
 
 public class PackagingImpl implements Packaging {
 
@@ -35,7 +35,7 @@ public class PackagingImpl implements Packaging {
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
+    return MoreObjects.toStringHelper(this)
         .add("kicker", kicker)
         .add("spHeadline", spHeadline)
         .toString();

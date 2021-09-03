@@ -2,10 +2,10 @@ package com.ft.api.ucm.model.v1;
 
 import static org.springframework.util.Assert.notNull;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ft.api.ucm.model.v1.aspect.AspectEnum;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
   "aspectSet",
