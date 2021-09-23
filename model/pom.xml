@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.ft.unifiedContentModel</groupId>
 		<artifactId>ft-unifiedContentModel-parent</artifactId>
-		<version>1.0.0</version>
+		<version>3.0.0</version>
 	</parent>
 	<artifactId>ft-unifiedContentModel-model</artifactId>
 	<packaging>jar</packaging>
