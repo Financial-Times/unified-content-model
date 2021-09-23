@@ -51,7 +51,6 @@ jobs:
     executor: maven
     steps:
       - checkout:
-          path: ~/java-logger
       - run:
           name: Publish Tag to Nexus repository
           command: |
