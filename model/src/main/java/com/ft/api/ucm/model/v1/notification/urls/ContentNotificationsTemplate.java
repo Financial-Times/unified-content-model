@@ -9,7 +9,7 @@ public class ContentNotificationsTemplate {
   private final String urlTemplate;
 
   public ContentNotificationsTemplate(String baseApiUrl) {
-    Assert.notNull(baseApiUrl);
+    Assert.notNull(baseApiUrl, "baseApiUrl should not be null");
     this.urlTemplate = baseApiUrl + URL_TEMPLATE;
   }
 

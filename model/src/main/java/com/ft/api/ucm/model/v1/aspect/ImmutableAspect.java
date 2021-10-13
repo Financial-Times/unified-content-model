@@ -10,9 +10,9 @@ public final class ImmutableAspect implements Aspect {
   private NamedNode<Field> namedNode;
 
   private ImmutableAspect(String name, Set<Field> fields, AssignableVoter assignableVoter) {
-    notNull(assignableVoter);
-    notNull(AspectEnum.getByValue(name));
-    namedNode = new NamedNode<Field>(name, fields);
+    notNull(assignableVoter, "assignableVoter should not be null");
+    notNull(AspectEnum.getByValue(name), String.format("Unable to find aspect by name %s", name));
+    namedNode = new NamedNode<>(name, fields);
     this.assignableVoter = assignableVoter;
   }
 

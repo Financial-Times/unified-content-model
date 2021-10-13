@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
- * Internal class for building URLs based on a {@link RequestUrl} or an {@link HttpServletRequest}.
+ * Internal class for building URLs based on a {@link URL} or an {@link HttpServletRequest}.
  *
  * @author andrew.winter
  */
@@ -57,7 +57,7 @@ public final class UrlBuilder {
 
   /** Create a new UrlBuilder from an HttpServletRequest */
   public static UrlBuilder basedOn(HttpServletRequest request, boolean includeParameters) {
-    notNull(request);
+    notNull(request, "request should not be null");
     return new UrlBuilder(request, includeParameters);
   }
 
@@ -82,7 +82,9 @@ public final class UrlBuilder {
   }
 
   public UrlBuilder withScheme(String scheme) {
-    Assert.isTrue(HTTP.equalsIgnoreCase(scheme) || HTTPS.equalsIgnoreCase(scheme));
+    Assert.isTrue(
+        HTTP.equalsIgnoreCase(scheme) || HTTPS.equalsIgnoreCase(scheme),
+        "scheme should be http or https");
     this.scheme = scheme.toLowerCase();
     return this;
   }

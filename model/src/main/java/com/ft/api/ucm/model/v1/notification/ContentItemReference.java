@@ -6,8 +6,6 @@ public class ContentItemReference implements NotificationReference, Serializable
   private String id;
   private String apiUrl;
 
-  public ContentItemReference() {}
-
   public ContentItemReference(String id, String apiUrl) {
     this.id = id;
     this.apiUrl = apiUrl;

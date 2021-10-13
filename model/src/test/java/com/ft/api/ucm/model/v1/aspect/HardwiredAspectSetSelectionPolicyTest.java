@@ -3,7 +3,7 @@ package com.ft.api.ucm.model.v1.aspect;
 import static net.obvj.junit.utils.matchers.AdvancedMatchers.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import com.ft.api.ucm.model.v1.AspectSetAware;
 import java.util.Set;
@@ -32,6 +32,6 @@ public class HardwiredAspectSetSelectionPolicyTest {
   public void sameAspectSetReturnedAlways() {
     instance = new HardwiredAspectSetSelectionPolicy(mockAspectSet);
     assertEquals(mockAspectSet, instance.match(mockAspectSets, mockAspectSetAware.getClass()));
-    verifyZeroInteractions(mockAspectSets);
+    verifyNoMoreInteractions(mockAspectSets);
   }
 }

@@ -13,8 +13,8 @@ public class PolicyBasedAspectSetCollection implements AspectSetCollection {
 
   public PolicyBasedAspectSetCollection(
       Set<AspectSet> aspectSets, AspectSetSelectionPolicy aspectSetSelectionPolicy) {
-    notNull(aspectSets);
-    notNull(aspectSetSelectionPolicy);
+    notNull(aspectSets, "aspectSets should not be null");
+    notNull(aspectSetSelectionPolicy, "aspectSetSelectionPolicy should not be null");
     this.aspectSets = aspectSets;
     this.aspectSetSelectionPolicy = aspectSetSelectionPolicy;
   }

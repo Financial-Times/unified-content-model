@@ -12,7 +12,7 @@ public class JsonDateTimeSerializer extends BaseJsonDateTimeSerializer {
   }
 
   JsonDateTimeSerializer(DateTimeFormatter dateTimeFormatter) {
-    notNull(dateTimeFormatter);
+    notNull(dateTimeFormatter, "dateTimeFormatter should not be null");
     super.dateTimeFormatter = dateTimeFormatter;
   }
 }
