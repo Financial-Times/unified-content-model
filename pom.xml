@@ -16,7 +16,7 @@
 	<!-- This project -->
 	<groupId>com.ft.unifiedContentModel</groupId>
 	<artifactId>ft-unifiedContentModel-parent</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>5.3.18</spring.version>
@@ -40,9 +40,7 @@
 		<hamcrest.version>2.2</hamcrest.version>
 		<jetty.version>7.4.0.RC0</jetty.version>
 		<mockito.version>3.12.2</mockito.version>
-		<slf4j.version>1.7.32</slf4j.version>
-		<apache-log4j.version>2.14.1</apache-log4j.version>
-		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.36</slf4j.version>
 		<restassured.version>1.2.2</restassured.version>
 		<groovy.version>1.7.9</groovy.version>
 		<jbehave.core.version>3.4.5</jbehave.core.version>
@@ -212,17 +210,6 @@
 				<groupId>commons-httpclient</groupId>
 				<artifactId>commons-httpclient</artifactId>
 				<version>${commons-httpclient.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${apache-log4j.version}</version>
-			</dependency>
-			<!-- FIXME remove this old library, use https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api-->
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
