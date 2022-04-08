@@ -48,7 +48,7 @@ public class ArticleEntity extends TextualEntity implements Article, AssetAware 
 
   public ArticleEntity(String id, String apiUrl) {
     super(id, apiUrl);
-    notNull(apiUrl);
+    notNull(apiUrl, "apiUrl should not be null");
   }
 
   @Override

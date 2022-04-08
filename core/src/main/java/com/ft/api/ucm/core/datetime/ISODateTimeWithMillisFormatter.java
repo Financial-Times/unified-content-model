@@ -13,7 +13,7 @@ public class ISODateTimeWithMillisFormatter implements DateTimeFormatter {
 
   @Override
   public String format(ReadableDateTime readableDateTime) {
-    notNull(readableDateTime);
+    notNull(readableDateTime, "readableDateTime should not be null");
     return readableDateTime
         .toDateTime()
         .withZone(DateTimeZone.UTC)
@@ -22,7 +22,7 @@ public class ISODateTimeWithMillisFormatter implements DateTimeFormatter {
 
   @Override
   public ReadableDateTime parseDateTime(String dateTime) {
-    notNull(dateTime);
+    notNull(dateTime, "dateTime should not be null");
     return DEFAULT_DATE_FORMATTER.parseDateTime(dateTime);
   }
 }

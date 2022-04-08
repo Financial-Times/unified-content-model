@@ -13,8 +13,8 @@ public class MasterImpl implements Master {
   public MasterImpl() {}
 
   public MasterImpl(String masterEntityId, MasterSource masterSource) {
-    notNull(masterSource);
-    hasText(masterEntityId);
+    notNull(masterSource, "masterSource should not be null");
+    hasText(masterEntityId, "masterEntityId should not be null");
     this.masterEntityId = masterEntityId;
     this.masterSource = masterSource;
   }

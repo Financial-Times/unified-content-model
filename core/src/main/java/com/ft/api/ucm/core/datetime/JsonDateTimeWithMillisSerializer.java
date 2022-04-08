@@ -12,7 +12,7 @@ public class JsonDateTimeWithMillisSerializer extends BaseJsonDateTimeSerializer
   }
 
   JsonDateTimeWithMillisSerializer(DateTimeFormatter dateTimeFormatter) {
-    notNull(dateTimeFormatter);
+    notNull(dateTimeFormatter, "dateTimeFormatter should not be null");
     super.dateTimeFormatter = dateTimeFormatter;
   }
 }

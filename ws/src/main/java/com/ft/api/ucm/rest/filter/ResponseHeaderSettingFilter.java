@@ -27,7 +27,7 @@ public class ResponseHeaderSettingFilter extends OncePerRequestFilter {
   private List<ResponseHeader> responseHeaders;
 
   public ResponseHeaderSettingFilter(List<ResponseHeader> responseHeaders) {
-    Assert.notEmpty(responseHeaders);
+    Assert.notEmpty(responseHeaders, "responseHeaders should not be null");
     this.responseHeaders = ImmutableList.copyOf(responseHeaders);
   }
 

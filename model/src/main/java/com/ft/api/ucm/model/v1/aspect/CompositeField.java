@@ -10,8 +10,8 @@ public final class CompositeField implements Field {
   private NamedNode<Field> namedNode;
 
   public CompositeField(String name, Set<Field> fields, AssignableVoter assignableVoter) {
-    notNull(assignableVoter);
-    namedNode = new NamedNode<Field>(name, fields);
+    notNull(assignableVoter, "assignableVoter should not be null");
+    namedNode = new NamedNode<>(name, fields);
     this.assignableVoter = assignableVoter;
   }
 

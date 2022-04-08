@@ -21,7 +21,7 @@ public final class ImmutableAspectSet implements AspectSet {
   private NamedNode<Aspect> namedNode;
 
   private ImmutableAspectSet(String name, Set<Aspect> aspects, AssignableVoter assignableVoter) {
-    notNull(assignableVoter);
+    notNull(assignableVoter, "assignableVoter should not be null");
     namedNode = new NamedNode<Aspect>(name, aspects);
     this.assignableVoter = assignableVoter;
   }

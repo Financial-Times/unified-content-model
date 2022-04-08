@@ -10,7 +10,7 @@ class HardwiredAspectSetSelectionPolicy implements AspectSetSelectionPolicy {
   private AspectSet defaultAspectSet;
 
   public HardwiredAspectSetSelectionPolicy(AspectSet defaultAspectSet) {
-    Assert.notNull(defaultAspectSet);
+    Assert.notNull(defaultAspectSet, "defaultAspectSet should not be null");
     this.defaultAspectSet = defaultAspectSet;
   }
 

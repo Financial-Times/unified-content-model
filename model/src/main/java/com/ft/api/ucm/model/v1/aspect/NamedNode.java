@@ -13,8 +13,8 @@ final class NamedNode<C> implements Node<C> {
   private Set<C> children;
 
   public NamedNode(String name, Set<C> children) {
-    notNull(name);
-    notNull(children);
+    notNull(name, "name should not be null");
+    notNull(children, "children should not be null");
     this.name = name;
     this.children = sortedCopy(children);
   }

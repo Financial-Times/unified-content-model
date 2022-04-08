@@ -47,7 +47,7 @@ public class SlideshowArticleEntity extends TextualEntity implements SlideshowAr
 
   public SlideshowArticleEntity(String id, String apiUrl) {
     super(id, apiUrl);
-    notNull(apiUrl);
+    notNull(apiUrl, "apiUrl should not be null");
   }
 
   @Override

@@ -17,8 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- * A {@link Filter} that decorates the {@link HttpServletResponse} to supportLogger sent HTTP
- * errors.
+ * A {@link OncePerRequestFilter} that decorates the {@link HttpServletResponse} to supportLogger
+ * sent HTTP errors.
  *
  * @author andrew.winter
  */

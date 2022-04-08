@@ -8,8 +8,8 @@ public final class ImmutableField implements Field {
   private final FieldResolutionPolicy fieldResolutionPolicy;
 
   private ImmutableField(String name, FieldResolutionPolicy fieldResolutionPolicy) {
-    notNull(name);
-    notNull(fieldResolutionPolicy);
+    notNull(name, "name should not be null");
+    notNull(fieldResolutionPolicy, "fieldResolutionPolicy should not be null");
     this.name = name;
     this.fieldResolutionPolicy = fieldResolutionPolicy;
   }

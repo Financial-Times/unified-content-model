@@ -14,8 +14,8 @@ public class AttributeImpl implements Attribute, Comparable<AttributeImpl> {
   public AttributeImpl() {}
 
   public AttributeImpl(String key, String value) {
-    Assert.notNull(key);
-    Assert.notNull(value);
+    Assert.notNull(key, "key should not be null");
+    Assert.notNull(value, "value should not be null");
     this.key = key;
     this.value = value;
   }

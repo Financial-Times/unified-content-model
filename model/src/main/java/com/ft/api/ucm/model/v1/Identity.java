@@ -19,7 +19,7 @@ public final class Identity implements Serializable {
   }
 
   public static Identity fromValue(String value) {
-    Assert.hasText(value);
+    Assert.hasText(value, "value should not be null");
     return new Identity(value);
   }
 
