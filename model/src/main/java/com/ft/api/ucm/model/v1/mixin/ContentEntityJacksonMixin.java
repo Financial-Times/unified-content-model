@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.ft.api.ucm.model.v1.ArticleEntity;
 import com.ft.api.ucm.model.v1.BlogPostEntity;
-import com.ft.api.ucm.model.v1.PageEntity;
 import com.ft.api.ucm.model.v1.PodcastEntity;
 import com.ft.api.ucm.model.v1.SlideshowArticleEntity;
 import com.ft.api.ucm.model.v1.VideoEntity;
@@ -17,7 +16,6 @@ import com.ft.api.ucm.model.v1.VideoEntity;
   @JsonSubTypes.Type(value = SlideshowArticleEntity.class, name = "slideshow"),
   @JsonSubTypes.Type(value = BlogPostEntity.class, name = "blogPost"),
   @JsonSubTypes.Type(value = VideoEntity.class, name = "video"),
-  @JsonSubTypes.Type(value = PodcastEntity.class, name = "podcast"),
-  @JsonSubTypes.Type(value = PageEntity.class, name = "page")
+  @JsonSubTypes.Type(value = PodcastEntity.class, name = "podcast")
 })
 public abstract class ContentEntityJacksonMixin {}
