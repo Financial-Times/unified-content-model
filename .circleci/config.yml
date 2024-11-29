@@ -12,7 +12,10 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - publish-nexus:
+          context:
+            - cm-cloudsmith
+            - cm-team-github
+      - publish-cloudsmith:
           requires:
             - build
           filters:
@@ -20,6 +23,9 @@ workflows:
               ignore: /.*/
             tags:
               only: /^\d+\.\d+\.\d+$/
+          context:
+            - cm-cloudsmith
+            - cm-team-github
 
 jobs:
   build:
@@ -42,22 +48,22 @@ jobs:
       - run:
           name: Maven Verify
           command: |
-            mkdir /root/.m2/
-            curl -v -o /root/.m2/settings.xml "https://raw.githubusercontent.com/Financial-Times/nexus-settings/master/public-settings.xml"
+            mkdir ~/.m2/
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.raw" -v -o ~/.m2/settings.xml -L "https://raw.githubusercontent.com/Financial-Times/cloudsmith-settings/main/public-settings.xml"
             mvn clean verify jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
-            rm -rf /root/.m2/*
-  publish-nexus:
+            rm -rf ~/.m2/*
+  publish-cloudsmith:
     working_directory: ~/unified-content-model
     executor: maven
     steps:
       - checkout:
           path: ~/unified-content-model
       - run:
-          name: Publish Tag to Nexus repository
+          name: Publish Tag to CloudSmith repository
           command: |
-            mkdir /root/.m2/
-            curl -v -o /root/.m2/settings.xml "https://raw.githubusercontent.com/Financial-Times/nexus-settings/master/public-settings.xml"
+            mkdir ~/.m2/
+            curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.raw" -v -o ~/.m2/settings.xml -L "https://raw.githubusercontent.com/Financial-Times/cloudsmith-settings/main/public-settings.xml"
             mvn versions:set -DnewVersion=${CIRCLE_TAG}
             mvn versions:commit
             mvn deploy
-            rm -rf /root/.m2/*
+            rm -rf ~/.m2/*
