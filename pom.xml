@@ -3,15 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<distributionManagement>
 		<repository>
-			<id>releases</id>
-			<name>Internal Releases</name>
-			<url>https://nexus.in.ft.com/repository/releases</url>
+			<id>financial-times-financial-times-internal-releases</id>
+			<url>https://packages.ft.com/basic/financial-times-internal-releases/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<uniqueVersion>true</uniqueVersion>
-			<url>https://nexus.in.ft.com/repository/snapshots/</url>
-		</snapshotRepository>
 	</distributionManagement>
 	<!-- This project -->
 	<groupId>com.ft.unifiedContentModel</groupId>
@@ -25,8 +27,7 @@
 		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 		<java.version>11</java.version>
 		<jackson.version>2.13.2</jackson.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!--		FIXME migrate to java.time https://www.oracle.com/technical-resources/articles/java/jf14-date-time.html-->
+		<!-- FIXME migrate to java.time https://www.oracle.com/technical-resources/articles/java/jf14-date-time.html -->
 		<joda-time.version>2.10.10</joda-time.version>
 		<guava.version>30.1.1-jre</guava.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
