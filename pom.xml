@@ -185,7 +185,7 @@
 				<groupId>org.springframework.ws</groupId>
 				<artifactId>spring-ws-core</artifactId>
 				<!-- TODO remove this old library used from com.ft.api.ucm.core.net.CurrentRequest as WebUtils -->
-				<version>3.1.2</version>
+				<version>3.1.6</version>
 			</dependency>
 			<!-- JSON serialisation-->
 			<dependency>
