@@ -3,7 +3,8 @@ version: 2.1
 executors:
   maven:
     docker:
-      - image: maven:3.6-jdk-11
+      - image: cimg/openjdk:11.0.26
+        user: root
 
 workflows:
   test-and-build:
