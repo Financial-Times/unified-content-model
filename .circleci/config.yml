@@ -34,6 +34,12 @@ jobs:
     executor: maven
     steps:
       - checkout
+        # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
           name: Check maven pom files format (lint)
           command: |
@@ -53,6 +59,11 @@ jobs:
             curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.raw" -v -o ~/.m2/settings.xml -L "https://raw.githubusercontent.com/Financial-Times/cloudsmith-settings/main/public-settings.xml"
             mvn clean verify jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
             rm -rf ~/.m2/*
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
   publish-cloudsmith:
     working_directory: ~/unified-content-model
     executor: maven
