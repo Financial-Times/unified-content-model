@@ -4,6 +4,7 @@ executors:
   maven:
     docker:
       - image: cimg/openjdk:11.0.25
+        user: root
 
 workflows:
   test-and-build:
