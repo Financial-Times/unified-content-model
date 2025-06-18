@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Maven Verify
           command: |
-            mkdir ~/.m2/
+            mkdir -p ~/.m2/
             curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.raw" -v -o ~/.m2/settings.xml -L "https://raw.githubusercontent.com/Financial-Times/cloudsmith-settings/main/public-settings.xml"
             mvn clean verify jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
       - save_cache:
