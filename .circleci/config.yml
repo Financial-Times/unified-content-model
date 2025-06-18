@@ -58,7 +58,6 @@ jobs:
             mkdir ~/.m2/
             curl -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.raw" -v -o ~/.m2/settings.xml -L "https://raw.githubusercontent.com/Financial-Times/cloudsmith-settings/main/public-settings.xml"
             mvn clean verify jacoco:report coveralls:report -DrepoToken=${COVERALLS_TOKEN}
-            rm -rf ~/.m2/*
       - save_cache:
           paths:
             - ~/.m2
@@ -78,4 +77,3 @@ jobs:
             mvn versions:set -DnewVersion=${CIRCLE_TAG}
             mvn versions:commit
             mvn deploy
-            rm -rf ~/.m2/*
