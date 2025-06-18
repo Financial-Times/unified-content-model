@@ -33,6 +33,7 @@ jobs:
     executor: maven
     steps:
       - checkout
+      - run: whoami
       - run:
           name: Check maven pom files format (lint)
           command: |
